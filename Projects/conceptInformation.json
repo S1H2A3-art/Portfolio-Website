@@ -1,0 +1,923 @@
+[
+    {
+        "conceptName": "identity",
+        "relatedProjects": [
+            "Self Portrait",
+            "Self Portrait 2.0",
+            "Portfolio Website"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 3.00)",
+            "fluidity (relatedness: 1.00)",
+            "externalization (relatedness: 2.00)",
+            "internalization (relatedness: 1.00)",
+            "vessal (relatedness: 1.00)",
+            "randomness (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "mask (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "connection (relatedness: 1.00)",
+            "concept (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "fluidity",
+        "relatedProjects": [
+            "Self Portrait",
+            "Water…"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "fluidity (relatedness: 2.00)",
+            "externalization (relatedness: 1.00)",
+            "internalization (relatedness: 1.00)",
+            "vessal (relatedness: 1.00)",
+            "cycle (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "process (relatedness: 1.00)",
+            "flow (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "externalization",
+        "relatedProjects": [
+            "Self Portrait",
+            "Snap and Play!",
+            "Self Portrait 2.0"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 2.00)",
+            "fluidity (relatedness: 1.00)",
+            "externalization (relatedness: 3.00)",
+            "internalization (relatedness: 1.00)",
+            "vessal (relatedness: 1.00)",
+            "randomness (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "distortion (relatedness: 1.00)",
+            "interaction (relatedness: 1.00)",
+            "mask (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "internalization",
+        "relatedProjects": [
+            "Self Portrait",
+            "The Guidebook for the Conscious Book"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "fluidity (relatedness: 1.00)",
+            "externalization (relatedness: 1.00)",
+            "internalization (relatedness: 2.00)",
+            "vessal (relatedness: 2.00)",
+            "life (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "intelligence (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "vessal",
+        "relatedProjects": [
+            "Self Portrait",
+            "Matrix",
+            "The Guidebook for the Conscious Book"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "fluidity (relatedness: 1.00)",
+            "externalization (relatedness: 1.00)",
+            "internalization (relatedness: 2.00)",
+            "vessal (relatedness: 3.00)",
+            "simulation (relatedness: 1.00)",
+            "life (relatedness: 1.00)",
+            "flow (relatedness: 1.00)",
+            "numbers (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "intelligence (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "outer space",
+        "relatedProjects": [
+            "Solar System",
+            "Random Planet Destruction Simulator",
+            "Cosmic Tunes"
+        ],
+        "relatedConcepts": [
+            "outer space (relatedness: 3.00)",
+            "simulation (relatedness: 2.00)",
+            "sphere (relatedness: 1.00)",
+            "destruction (relatedness: 1.00)",
+            "randomness (relatedness: 1.00)",
+            "flow (relatedness: 1.00)",
+            "tunes (relatedness: 1.00)",
+            "cosmos (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "simulation",
+        "relatedProjects": [
+            "Solar System",
+            "Random Planet Destruction Simulator",
+            "Ecosystem",
+            "Matrix",
+            "The Thinker"
+        ],
+        "relatedConcepts": [
+            "vessal (relatedness: 1.00)",
+            "outer space (relatedness: 2.00)",
+            "simulation (relatedness: 5.00)",
+            "sphere (relatedness: 1.00)",
+            "destruction (relatedness: 1.00)",
+            "randomness (relatedness: 2.00)",
+            "life (relatedness: 1.00)",
+            "cycle (relatedness: 2.00)",
+            "flow (relatedness: 1.00)",
+            "interaction (relatedness: 1.00)",
+            "numbers (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "escape (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "sphere",
+        "relatedProjects": [
+            "Solar System"
+        ],
+        "relatedConcepts": [
+            "outer space (relatedness: 1.00)",
+            "simulation (relatedness: 1.00)",
+            "sphere (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "destruction",
+        "relatedProjects": [
+            "Random Planet Destruction Simulator",
+            "Eye, Heart, and Knowledge"
+        ],
+        "relatedConcepts": [
+            "outer space (relatedness: 1.00)",
+            "simulation (relatedness: 1.00)",
+            "destruction (relatedness: 2.00)",
+            "randomness (relatedness: 1.00)",
+            "eyeball (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "history (relatedness: 1.00)",
+            "human (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "randomness",
+        "relatedProjects": [
+            "Random Planet Destruction Simulator",
+            "Ecosystem",
+            "Body Segmentation Experiment",
+            "Self Portrait 2.0"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "externalization (relatedness: 1.00)",
+            "outer space (relatedness: 1.00)",
+            "simulation (relatedness: 2.00)",
+            "destruction (relatedness: 1.00)",
+            "randomness (relatedness: 4.00)",
+            "life (relatedness: 1.00)",
+            "cycle (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "particles (relatedness: 1.00)",
+            "mask (relatedness: 1.00)",
+            "body (relatedness: 1.00)",
+            "connection (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "eyeball",
+        "relatedProjects": [
+            "Project Anima",
+            "Eye, Heart, and Knowledge",
+            "AR 3D-ize Experiment"
+        ],
+        "relatedConcepts": [
+            "destruction (relatedness: 1.00)",
+            "eyeball (relatedness: 3.00)",
+            "sensation (relatedness: 1.00)",
+            "game (relatedness: 1.00)",
+            "alienation (relatedness: 2.00)",
+            "dasein (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "history (relatedness: 1.00)",
+            "human (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "illusion (relatedness: 1.00)",
+            "mask (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "sensation",
+        "relatedProjects": [
+            "Project Anima",
+            "Shhhh!!!"
+        ],
+        "relatedConcepts": [
+            "eyeball (relatedness: 1.00)",
+            "sensation (relatedness: 2.00)",
+            "game (relatedness: 2.00)",
+            "alienation (relatedness: 1.00)",
+            "dasein (relatedness: 1.00)",
+            "horror (relatedness: 1.00)",
+            "immersion (relatedness: 1.00)",
+            "silence (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "game",
+        "relatedProjects": [
+            "Project Anima",
+            "Shhhh!!!",
+            "Aristotle vs the Giant Octopus",
+            "Aristotle vs Giant Robot Octopuses"
+        ],
+        "relatedConcepts": [
+            "eyeball (relatedness: 1.00)",
+            "sensation (relatedness: 2.00)",
+            "game (relatedness: 4.00)",
+            "alienation (relatedness: 1.00)",
+            "dasein (relatedness: 1.00)",
+            "horror (relatedness: 1.00)",
+            "immersion (relatedness: 1.00)",
+            "silence (relatedness: 1.00)",
+            "cycle (relatedness: 1.00)",
+            "Aristotle (relatedness: 2.00)",
+            "ocean creatures (relatedness: 2.00)",
+            "competition (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "alienation",
+        "relatedProjects": [
+            "Project Anima",
+            "AR 3D-ize Experiment",
+            "One Thousand Years Dawn"
+        ],
+        "relatedConcepts": [
+            "eyeball (relatedness: 2.00)",
+            "sensation (relatedness: 1.00)",
+            "game (relatedness: 1.00)",
+            "alienation (relatedness: 3.00)",
+            "dasein (relatedness: 1.00)",
+            "history (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "illusion (relatedness: 1.00)",
+            "mask (relatedness: 1.00)",
+            "judgement (relatedness: 1.00)",
+            "automation (relatedness: 1.00)",
+            "universality (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "dasein",
+        "relatedProjects": [
+            "Project Anima"
+        ],
+        "relatedConcepts": [
+            "eyeball (relatedness: 1.00)",
+            "sensation (relatedness: 1.00)",
+            "game (relatedness: 1.00)",
+            "alienation (relatedness: 1.00)",
+            "dasein (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "creation",
+        "relatedProjects": [
+            "Eye, Heart, and Knowledge",
+            "At the Dawn of the World",
+            "Portfolio Website"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "destruction (relatedness: 1.00)",
+            "eyeball (relatedness: 1.00)",
+            "creation (relatedness: 3.00)",
+            "history (relatedness: 1.00)",
+            "human (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "judgement (relatedness: 1.00)",
+            "freedom (relatedness: 1.00)",
+            "God (relatedness: 1.00)",
+            "power (relatedness: 1.00)",
+            "connection (relatedness: 1.00)",
+            "concept (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "history",
+        "relatedProjects": [
+            "Eye, Heart, and Knowledge",
+            "One Thousand Years Dawn"
+        ],
+        "relatedConcepts": [
+            "destruction (relatedness: 1.00)",
+            "eyeball (relatedness: 1.00)",
+            "alienation (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "history (relatedness: 2.00)",
+            "human (relatedness: 1.00)",
+            "judgement (relatedness: 1.00)",
+            "automation (relatedness: 1.00)",
+            "universality (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "human",
+        "relatedProjects": [
+            "Eye, Heart, and Knowledge"
+        ],
+        "relatedConcepts": [
+            "destruction (relatedness: 1.00)",
+            "eyeball (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "history (relatedness: 1.00)",
+            "human (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "horror",
+        "relatedProjects": [
+            "Shhhh!!!"
+        ],
+        "relatedConcepts": [
+            "sensation (relatedness: 1.00)",
+            "game (relatedness: 1.00)",
+            "horror (relatedness: 1.00)",
+            "immersion (relatedness: 1.00)",
+            "silence (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "immersion",
+        "relatedProjects": [
+            "Shhhh!!!"
+        ],
+        "relatedConcepts": [
+            "sensation (relatedness: 1.00)",
+            "game (relatedness: 1.00)",
+            "horror (relatedness: 1.00)",
+            "immersion (relatedness: 1.00)",
+            "silence (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "silence",
+        "relatedProjects": [
+            "Shhhh!!!"
+        ],
+        "relatedConcepts": [
+            "sensation (relatedness: 1.00)",
+            "game (relatedness: 1.00)",
+            "horror (relatedness: 1.00)",
+            "immersion (relatedness: 1.00)",
+            "silence (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "life",
+        "relatedProjects": [
+            "Ecosystem",
+            "The Guidebook for the Conscious Book"
+        ],
+        "relatedConcepts": [
+            "internalization (relatedness: 1.00)",
+            "vessal (relatedness: 1.00)",
+            "simulation (relatedness: 1.00)",
+            "randomness (relatedness: 1.00)",
+            "life (relatedness: 2.00)",
+            "cycle (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "intelligence (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "cycle",
+        "relatedProjects": [
+            "Ecosystem",
+            "Water…",
+            "Aristotle vs Giant Robot Octopuses",
+            "The Thinker"
+        ],
+        "relatedConcepts": [
+            "fluidity (relatedness: 1.00)",
+            "simulation (relatedness: 2.00)",
+            "randomness (relatedness: 1.00)",
+            "game (relatedness: 1.00)",
+            "life (relatedness: 1.00)",
+            "cycle (relatedness: 4.00)",
+            "experimentation (relatedness: 1.00)",
+            "process (relatedness: 1.00)",
+            "flow (relatedness: 1.00)",
+            "Aristotle (relatedness: 1.00)",
+            "ocean creatures (relatedness: 1.00)",
+            "interaction (relatedness: 1.00)",
+            "consciousness (relatedness: 2.00)",
+            "escape (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "experimentation",
+        "relatedProjects": [
+            "Water…",
+            "Animated Images Experiment",
+            "Snap and Play!",
+            "Animated Images Experiment 3D",
+            "AR 3D-ize Experiment",
+            "Teachable Machine Experiment",
+            "Body Segmentation Experiment"
+        ],
+        "relatedConcepts": [
+            "fluidity (relatedness: 1.00)",
+            "externalization (relatedness: 1.00)",
+            "randomness (relatedness: 1.00)",
+            "eyeball (relatedness: 1.00)",
+            "alienation (relatedness: 1.00)",
+            "cycle (relatedness: 1.00)",
+            "experimentation (relatedness: 7.00)",
+            "process (relatedness: 2.00)",
+            "flow (relatedness: 1.00)",
+            "cosmos (relatedness: 1.00)",
+            "particles (relatedness: 4.00)",
+            "distortion (relatedness: 4.00)",
+            "interaction (relatedness: 1.00)",
+            "illusion (relatedness: 1.00)",
+            "mask (relatedness: 1.00)",
+            "power (relatedness: 1.00)",
+            "body (relatedness: 2.00)",
+            "connection (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "process",
+        "relatedProjects": [
+            "Water…",
+            "Animated Images Experiment 3D"
+        ],
+        "relatedConcepts": [
+            "fluidity (relatedness: 1.00)",
+            "cycle (relatedness: 1.00)",
+            "experimentation (relatedness: 2.00)",
+            "process (relatedness: 2.00)",
+            "flow (relatedness: 1.00)",
+            "cosmos (relatedness: 1.00)",
+            "particles (relatedness: 1.00)",
+            "distortion (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "flow",
+        "relatedProjects": [
+            "Water…",
+            "Cosmic Tunes",
+            "Matrix"
+        ],
+        "relatedConcepts": [
+            "fluidity (relatedness: 1.00)",
+            "vessal (relatedness: 1.00)",
+            "outer space (relatedness: 1.00)",
+            "simulation (relatedness: 1.00)",
+            "cycle (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "process (relatedness: 1.00)",
+            "flow (relatedness: 3.00)",
+            "tunes (relatedness: 1.00)",
+            "cosmos (relatedness: 1.00)",
+            "numbers (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "Aristotle",
+        "relatedProjects": [
+            "Aristotle vs the Giant Octopus",
+            "Aristotle vs Giant Robot Octopuses"
+        ],
+        "relatedConcepts": [
+            "game (relatedness: 2.00)",
+            "cycle (relatedness: 1.00)",
+            "Aristotle (relatedness: 2.00)",
+            "ocean creatures (relatedness: 2.00)",
+            "competition (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "ocean creatures",
+        "relatedProjects": [
+            "Aristotle vs the Giant Octopus",
+            "Aristotle vs Giant Robot Octopuses"
+        ],
+        "relatedConcepts": [
+            "game (relatedness: 2.00)",
+            "cycle (relatedness: 1.00)",
+            "Aristotle (relatedness: 2.00)",
+            "ocean creatures (relatedness: 2.00)",
+            "competition (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "competition",
+        "relatedProjects": [
+            "Aristotle vs the Giant Octopus"
+        ],
+        "relatedConcepts": [
+            "game (relatedness: 1.00)",
+            "Aristotle (relatedness: 1.00)",
+            "ocean creatures (relatedness: 1.00)",
+            "competition (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "tunes",
+        "relatedProjects": [
+            "Cosmic Tunes"
+        ],
+        "relatedConcepts": [
+            "outer space (relatedness: 1.00)",
+            "flow (relatedness: 1.00)",
+            "tunes (relatedness: 1.00)",
+            "cosmos (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "cosmos",
+        "relatedProjects": [
+            "Cosmic Tunes",
+            "Animated Images Experiment 3D"
+        ],
+        "relatedConcepts": [
+            "outer space (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "process (relatedness: 1.00)",
+            "flow (relatedness: 1.00)",
+            "tunes (relatedness: 1.00)",
+            "cosmos (relatedness: 2.00)",
+            "particles (relatedness: 1.00)",
+            "distortion (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "particles",
+        "relatedProjects": [
+            "Animated Images Experiment",
+            "Animated Images Experiment 3D",
+            "Zero Gravity Theatre: The Brothers Karamazov",
+            "Teachable Machine Experiment",
+            "Body Segmentation Experiment"
+        ],
+        "relatedConcepts": [
+            "randomness (relatedness: 1.00)",
+            "experimentation (relatedness: 4.00)",
+            "process (relatedness: 1.00)",
+            "cosmos (relatedness: 1.00)",
+            "particles (relatedness: 5.00)",
+            "distortion (relatedness: 3.00)",
+            "judgement (relatedness: 1.00)",
+            "freedom (relatedness: 1.00)",
+            "devil (relatedness: 1.00)",
+            "God (relatedness: 1.00)",
+            "power (relatedness: 1.00)",
+            "body (relatedness: 2.00)",
+            "connection (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "distortion",
+        "relatedProjects": [
+            "Animated Images Experiment",
+            "Snap and Play!",
+            "Animated Images Experiment 3D",
+            "Teachable Machine Experiment"
+        ],
+        "relatedConcepts": [
+            "externalization (relatedness: 1.00)",
+            "experimentation (relatedness: 4.00)",
+            "process (relatedness: 1.00)",
+            "cosmos (relatedness: 1.00)",
+            "particles (relatedness: 3.00)",
+            "distortion (relatedness: 4.00)",
+            "interaction (relatedness: 1.00)",
+            "power (relatedness: 1.00)",
+            "body (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "interaction",
+        "relatedProjects": [
+            "Snap and Play!",
+            "Automatic Blessing Apparatus",
+            "The Thinker"
+        ],
+        "relatedConcepts": [
+            "externalization (relatedness: 1.00)",
+            "simulation (relatedness: 1.00)",
+            "cycle (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "distortion (relatedness: 1.00)",
+            "interaction (relatedness: 3.00)",
+            "consciousness (relatedness: 1.00)",
+            "God (relatedness: 1.00)",
+            "bless (relatedness: 1.00)",
+            "sickness (relatedness: 1.00)",
+            "automation (relatedness: 1.00)",
+            "escape (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "numbers",
+        "relatedProjects": [
+            "Matrix"
+        ],
+        "relatedConcepts": [
+            "vessal (relatedness: 1.00)",
+            "simulation (relatedness: 1.00)",
+            "flow (relatedness: 1.00)",
+            "numbers (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "illusion",
+        "relatedProjects": [
+            "AR 3D-ize Experiment"
+        ],
+        "relatedConcepts": [
+            "eyeball (relatedness: 1.00)",
+            "alienation (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "illusion (relatedness: 1.00)",
+            "mask (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "mask",
+        "relatedProjects": [
+            "AR 3D-ize Experiment",
+            "Self Portrait 2.0"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "externalization (relatedness: 1.00)",
+            "randomness (relatedness: 1.00)",
+            "eyeball (relatedness: 1.00)",
+            "alienation (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "illusion (relatedness: 1.00)",
+            "mask (relatedness: 2.00)"
+        ]
+    },
+    {
+        "conceptName": "consciousness",
+        "relatedProjects": [
+            "The Guidebook for the Conscious Book",
+            "Aristotle vs Giant Robot Octopuses",
+            "Portfolio Website",
+            "The Thinker"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "internalization (relatedness: 1.00)",
+            "vessal (relatedness: 1.00)",
+            "simulation (relatedness: 1.00)",
+            "game (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "life (relatedness: 1.00)",
+            "cycle (relatedness: 2.00)",
+            "Aristotle (relatedness: 1.00)",
+            "ocean creatures (relatedness: 1.00)",
+            "interaction (relatedness: 1.00)",
+            "consciousness (relatedness: 4.00)",
+            "intelligence (relatedness: 1.00)",
+            "connection (relatedness: 1.00)",
+            "concept (relatedness: 1.00)",
+            "escape (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "intelligence",
+        "relatedProjects": [
+            "The Guidebook for the Conscious Book"
+        ],
+        "relatedConcepts": [
+            "internalization (relatedness: 1.00)",
+            "vessal (relatedness: 1.00)",
+            "life (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "intelligence (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "judgement",
+        "relatedProjects": [
+            "Zero Gravity Theatre: The Brothers Karamazov",
+            "One Thousand Years Dawn",
+            "At the Dawn of the World"
+        ],
+        "relatedConcepts": [
+            "alienation (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "history (relatedness: 1.00)",
+            "particles (relatedness: 1.00)",
+            "judgement (relatedness: 3.00)",
+            "freedom (relatedness: 2.00)",
+            "devil (relatedness: 1.00)",
+            "God (relatedness: 2.00)",
+            "power (relatedness: 1.00)",
+            "automation (relatedness: 1.00)",
+            "universality (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "freedom",
+        "relatedProjects": [
+            "Zero Gravity Theatre: The Brothers Karamazov",
+            "At the Dawn of the World"
+        ],
+        "relatedConcepts": [
+            "creation (relatedness: 1.00)",
+            "particles (relatedness: 1.00)",
+            "judgement (relatedness: 2.00)",
+            "freedom (relatedness: 2.00)",
+            "devil (relatedness: 1.00)",
+            "God (relatedness: 2.00)",
+            "power (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "devil",
+        "relatedProjects": [
+            "Zero Gravity Theatre: The Brothers Karamazov"
+        ],
+        "relatedConcepts": [
+            "particles (relatedness: 1.00)",
+            "judgement (relatedness: 1.00)",
+            "freedom (relatedness: 1.00)",
+            "devil (relatedness: 1.00)",
+            "God (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "God",
+        "relatedProjects": [
+            "Zero Gravity Theatre: The Brothers Karamazov",
+            "Automatic Blessing Apparatus",
+            "At the Dawn of the World"
+        ],
+        "relatedConcepts": [
+            "creation (relatedness: 1.00)",
+            "particles (relatedness: 1.00)",
+            "interaction (relatedness: 1.00)",
+            "judgement (relatedness: 2.00)",
+            "freedom (relatedness: 2.00)",
+            "devil (relatedness: 1.00)",
+            "God (relatedness: 3.00)",
+            "power (relatedness: 1.00)",
+            "bless (relatedness: 1.00)",
+            "sickness (relatedness: 1.00)",
+            "automation (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "power",
+        "relatedProjects": [
+            "Teachable Machine Experiment",
+            "At the Dawn of the World"
+        ],
+        "relatedConcepts": [
+            "creation (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "particles (relatedness: 1.00)",
+            "distortion (relatedness: 1.00)",
+            "judgement (relatedness: 1.00)",
+            "freedom (relatedness: 1.00)",
+            "God (relatedness: 1.00)",
+            "power (relatedness: 2.00)",
+            "body (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "body",
+        "relatedProjects": [
+            "Teachable Machine Experiment",
+            "Body Segmentation Experiment"
+        ],
+        "relatedConcepts": [
+            "randomness (relatedness: 1.00)",
+            "experimentation (relatedness: 2.00)",
+            "particles (relatedness: 2.00)",
+            "distortion (relatedness: 1.00)",
+            "power (relatedness: 1.00)",
+            "body (relatedness: 2.00)",
+            "connection (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "connection",
+        "relatedProjects": [
+            "Body Segmentation Experiment",
+            "Portfolio Website"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "randomness (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "experimentation (relatedness: 1.00)",
+            "particles (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "body (relatedness: 1.00)",
+            "connection (relatedness: 2.00)",
+            "concept (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "bless",
+        "relatedProjects": [
+            "Automatic Blessing Apparatus"
+        ],
+        "relatedConcepts": [
+            "interaction (relatedness: 1.00)",
+            "God (relatedness: 1.00)",
+            "bless (relatedness: 1.00)",
+            "sickness (relatedness: 1.00)",
+            "automation (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "sickness",
+        "relatedProjects": [
+            "Automatic Blessing Apparatus"
+        ],
+        "relatedConcepts": [
+            "interaction (relatedness: 1.00)",
+            "God (relatedness: 1.00)",
+            "bless (relatedness: 1.00)",
+            "sickness (relatedness: 1.00)",
+            "automation (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "automation",
+        "relatedProjects": [
+            "Automatic Blessing Apparatus",
+            "One Thousand Years Dawn"
+        ],
+        "relatedConcepts": [
+            "alienation (relatedness: 1.00)",
+            "history (relatedness: 1.00)",
+            "interaction (relatedness: 1.00)",
+            "judgement (relatedness: 1.00)",
+            "God (relatedness: 1.00)",
+            "bless (relatedness: 1.00)",
+            "sickness (relatedness: 1.00)",
+            "automation (relatedness: 2.00)",
+            "universality (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "universality",
+        "relatedProjects": [
+            "One Thousand Years Dawn"
+        ],
+        "relatedConcepts": [
+            "alienation (relatedness: 1.00)",
+            "history (relatedness: 1.00)",
+            "judgement (relatedness: 1.00)",
+            "automation (relatedness: 1.00)",
+            "universality (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "concept",
+        "relatedProjects": [
+            "Portfolio Website"
+        ],
+        "relatedConcepts": [
+            "identity (relatedness: 1.00)",
+            "creation (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "connection (relatedness: 1.00)",
+            "concept (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "escape",
+        "relatedProjects": [
+            "The Thinker"
+        ],
+        "relatedConcepts": [
+            "simulation (relatedness: 1.00)",
+            "cycle (relatedness: 1.00)",
+            "interaction (relatedness: 1.00)",
+            "consciousness (relatedness: 1.00)",
+            "escape (relatedness: 1.00)"
+        ]
+    }
+]

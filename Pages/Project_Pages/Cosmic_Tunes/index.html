@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+
+    <meta charset="utf-8" />
+
+    <title>Cosmic Tunes</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="CelestialBody.js"></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions =""></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer">
+        <div id="controls" style="display: flex;justify-content: space-between;"></div>
+        <div id="monitor"></div>
+      </div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Process</h3>
+      <p>The project is an attempt to remake another project that I made at the start of last semester, which similarly attempts to simulate the solar system using p5 WEBGL: <a href="../Solar_System/index.html">Solar System</a></p>
+      <p><strong>Planets and Orbit</strong></p>
+      <p>The key difference is that this time I wanted to move the planets using their x and y-coordinates instead of simply rotating them. I calculated the exact x and y-coordinates of each planet using the cos() and sin() functions, as demonstrated in the diagram below.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img1.png" alt="The key difference is that this time I wanted to move the planets using their x and y-coordinates instead of simply rotating them. I calc...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Additionally, I wanted to play a note each time a planet is touches the x-axis, which is when the sine of the angle is 0.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img2.png" alt="Additionally, I wanted to play a note each time a planet is touches the x-axis, which is when the sine of the angle is 0.">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>This time, I also wanted to make the sizes, orbit speed, and distance from the sun of the planets directly porportional to each other. However, even though the ratio between the sizes, orbit speed, and distance from the sun of different planets respectively correspond to reality, they are not inter correlative(the ratio between the size of a planet and its distance to the sun does not reflect reality) for aesthetic and practical purposes.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.png" alt="This time, I also wanted to make the sizes, orbit speed, and distance from the sun of the planets directly porportional to each other. Ho...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p><strong>Camera</strong></p>
+      <p>I also wanted to add a camera that orbits around each planet when a button corresponding to each planet is pressed. The camera works in a similar fashion as how a planet orbits around the sun.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img4.png" alt="I also wanted to add a camera that orbits around each planet when a button corresponding to each planet is pressed. The camera works in a...">
+      <img src="page_asset/img5.png" alt="I also wanted to add a camera that orbits around each planet when a button corresponding to each planet is pressed. The camera works in a...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>There is also a camera that displays a comprehensive view of the solar system. This is achieved by placing it at a higher y position facing the sun.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img6.webp" alt="There is also a camera that displays a comprehensive view of the solar system. This is achieved by placing it at a higher y position faci...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p><strong>Orbit Frequency Monitor</strong></p>
+      <p>The most challenging part of this project is to visualize the orbiting movement of the planets using sine waves. Since I used WEBGL for the canvas, I had to create a separate 2D canvas to display sine waves. I came across a page while I was researching how to incorporate 2 separate canvases in one single sketch(<a href="https://p5js.org/examples/advanced-canvas-rendering-multiple-canvases/">link</a>), which achieved this by calling the other canvas as a function. Then, I simply added the visuals of the sine wave that models each of the planet’s movement. The y-value of the sine wave reaches 0 when the planet is on the x-axis. I then used the p5.MonoSynth() to play its corresponding note when a planet is on the x-axis.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img7.png" alt="The most challenging part of this project is to visualize the orbiting movement of the planets using sine waves. Since I used WEBGL for t...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>In the more comprehensive top view of the solar system, the orbit of the planet that has played a note will be highlighted in yellow.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img8.png" alt="In the more comprehensive top view of the solar system, the orbit of the planet that has played a note will be highlighted in yellow.">
+      <custom-spacing size = "10rem"></custom-spacing>
+      
+
+    </div>
+    </div>
+    
+  </body>
+</html>

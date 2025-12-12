@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Animated Images Experiment Project Page</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions ="hide"></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"><div id="controls" sytle="display:flex"></div></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Process</h3>
+      <p>I first started by using a 2D array of beads to fill up the canvas.</p>
+      <img src="page_asset/img1.png" width="40%" alt="Diagram of beads">
+      <p>Each bead necessarily consists of an x,y position, a diameter, adn a color. As I wanted to represent images using the beads, I needed to make the color of each bead correspond to the color of the pixel on the same x and y position. This correspondence is achieved by using the pixels array after loading the pixels of selected background image. Specifics about the pixels array can be found on:<a href="Each bead necessarily consists of an x,y position, a diameter, adn a color. As I wanted to represent images using the beads, I needed to make the color of each bead correspond to the color of the pixel on the same x and y position. This correspondence is achieved by using the pixels array after loading the pixels of selected background image. Specifics about the pixels array can be found on:https://p5js.org/reference/p5/pixels/, which was a massive help to my project.">link</a>, which was a massive help to my project.</p>
+      <img src="page_asset/img2.png" width="40%" alt="properties of beads">
+      <p>I then experimented with different interactions between the beads to achieve different effects on the image.</p>
+      <p>The pixelate effect is simply achieved by drawing the beads and setting their x/y velocity to a random value between -1 and 1.
+</p>
+      <img src="page_asset/img3.png" width="40%" alt="Asset from the Animated Images Experiment project">
+      <p>The wash effect is achieved by making the beads bounce around when they touch each other.</p>
+      <img src="page_asset/img4.png" width="40%" alt="Asset from the Animated Images Experiment project">
+      <p>The flow effect is achieved by setting the y velocity of each bead to a random positive value between 0 and 10 and gradually erasing the beads and the background image.</p>
+      <img src="page_asset/img5.png" width="40%" alt="Asset from the Animated Images Experiment project">
+      <p>I also allowed the user to reset the canvas by resetting the position of the beads, the background image, and updating the pixels array to allow for multiple attempts to modify the selected image.</p>
+      <img src="page_asset/img6.png" width="40%" alt="Asset from the Animated Images Experiment project">
+
+
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

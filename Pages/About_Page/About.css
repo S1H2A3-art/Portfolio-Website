@@ -1,0 +1,187 @@
+body{
+    opacity:1;
+}
+
+#mainDisplay {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#aboutContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 80%;
+    max-width: 80%;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+
+h1 {
+    font-size: 6rem;
+    font-weight: normal;
+    font-weight: 500;
+    line-height: 1.2;
+    background-image: radial-gradient(ellipse at center, rgb(100, 100, 100), rgb(23, 23, 23));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.textAndImage {
+    align-items: stretch;
+    display: flex;
+    width: 100%;
+}
+
+img {
+    margin-right: 6rem;
+    border-radius: 5rem;
+}
+
+p,
+li {
+    font-family: "manrope";
+    font-weight: normal;
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+.customSpacing {
+    color: rgba(255, 255, 255, 0);
+    width: "100%";
+    display: "block";
+}
+
+.rightTextAndImageElement {
+    margin-left: 4rem;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+#descriptionButton,
+#skillsDescriptionButton,
+#featuredProjectsButton,
+#interestedConceptsButton {
+    border: none;
+    border-radius: 1rem;
+    color: black;
+    width: 100%;
+    height: 100%;
+    font-size: 2.5rem;
+    margin: none;
+    background-image: linear-gradient(to top left, rgba(124, 124, 124, 0.756), rgb(231, 231, 231), rgb(255, 255, 255));
+    opacity: 0.7;
+    transition: scale 0.3s;
+    cursor: pointer;
+}
+
+#descriptionButton{
+    background-image: radial-gradient(circle, rgba(233, 233, 233, 0.756), rgb(231, 231, 231), rgb(255, 255, 255));
+}
+
+#descriptionButton:disabled,
+#skillsDescriptionButton:disabled,
+#featuredProjectsButton:disabled,
+#interestedConceptsButton:disabled,
+#descriptionButton:hover,
+#skillsDescriptionButton:hover,
+#featuredProjectsButton:hover,
+#interestedConceptsButton:hover {
+    color: white;
+    opacity: 1;
+    scale: 1.05;
+    background-image: linear-gradient(to bottom right, rgba(248, 60, 76, 0.66), rgba(106, 80, 210, 0.643));
+}
+
+#descriptionButton:disabled,
+#skillsDescriptionButton:disabled,
+#featuredProjectsButton:disabled,
+#interestedConceptsButton:disabled {
+    animation: gradient-animation 25s linear infinite;
+    scale: 1.0;
+    color: rgba(0, 0, 0, 0.64);
+
+    background: repeating-linear-gradient(45deg,
+            #f0f0f0,
+            #f0f0f0 30px,
+            /* Stripe width */
+            rgba(114, 114, 114, 0.26) 30px,
+            /* Darker gray stripe color */
+            rgba(114, 114, 114, 0.26) 60px
+            /* Stripe width */
+        );
+         background-size: 200% 100%;
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%; /* Moves the gradient horizontally */
+    }
+}
+
+#skillsDescriptionContainer {
+    overflow-x: hidden;
+    height: 50rem;
+    overflow-y: auto;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-image: linear-gradient(to bottom right, rgba(248, 60, 76, 0.66), rgba(106, 80, 210, 0.643)) 1;
+    padding: 1rem;
+}
+
+#featuredProjectsContainer {
+    overflow-x: hidden;
+    height: 50rem;
+    overflow-y: auto;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-image: linear-gradient(to bottom right, rgba(248, 60, 76, 0.66), rgba(106, 80, 210, 0.643)) 1;
+    padding: 1rem;
+}
+
+#interestedConceptsContainer {
+    display: flex;
+    height: 50rem;
+    padding: 1rem;
+    align-items: center;
+}
+
+h2 {
+    font-size: 4rem;
+    font-weight: normal;
+    font-weight: 500;
+    line-height: 1.2;
+    color: black;
+}
+
+pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+    max-height: 50rem;
+    font-size: 2rem;
+    overflow-y: auto;
+}
+
+.leftTextAndImageElement:hover{
+   cursor: pointer;
+}
+
+#thinkerCanvas{
+    opacity: 0;
+    transition:opacity 10s;
+    display:none
+}
+
+
+
+
+

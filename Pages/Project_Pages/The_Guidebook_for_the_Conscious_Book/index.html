@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>The Guidebook for the Conscious Book</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer">
+         <iframe style="width:100%; aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/jZtnNT2yMxY"
+          title="The Guidebook for the Conscious Book" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <h3>Pages</h3>
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <img src="Assets/img1.png" width="50%" alt="Pages">
+      <image-gallery column="2" row="7" alt-prefix="Pages">
+        Assets/img2.png,
+        Assets/img3.png,
+        Assets/img4.png,
+        Assets/img5.png,
+        Assets/img6.png,
+        Assets/img7.png,
+        Assets/img8.png,
+        Assets/img9.png,
+        Assets/img10.png,
+        Assets/img11.png,
+        Assets/img12.png,
+        Assets/img13.png,
+        Assets/img14.png,
+        Assets/img15.png
+      </image-gallery>
+      <img src="Assets/img16.png" width="50%" alt="Assets/img15.png">
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Concept</h3>
+      <p>The concept didn’t change much from last week, as I mainly focused on realizing the idea I had envisioned the previous week rather than developing or changing it. The project revolves around the same concept of simulating a form of consciousness that resides in the physical medium of a book. I largely retained the book’s “inaccessibility,” making each function specific to a page and some interactions time-consuming and tedious(translating bookish/English to the other to talk to the book).</p>
+      <h3>Process</h3>
+      <p>The internal functionalities of the p5 code remain unchanged except for adding a new cognitive function: imagination, which generates a random piece of p5 code based on the book’s earlier thoughts and runs the code on a website hosted on the proxy server.</p>
+      <p><a href="https://editor.p5js.org/Shawn_Qiu/sketches/xRLYTcd_m">Link to sketch</a></p>
+      <p>My focus for this week is largely centred on the user interface of the p5 sketches and the design of the physical book. One main takeaway from last week’s sharing is the importance of the uniformity and consistency of the artistic style and the visual elements. I kept this notion in mind this week while working on the project, extensively using images of a consistent blue, green, and yellow color scheme below a text layer. The text layering effect is achieved through a program used extensively for my other final project(yet to be documented), which generates text objects based on the pixels of any image that you import into the sketch:</p>
+      <p><a href="https://editor.p5js.org/Shawn_Qiu/sketches/tUlQ_TQtx">https://editor.p5js.org/Shawn_Qiu/sketches/tUlQ_TQtx</a></p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img1.png" alt="https://editor.p5js.org/Shawn_Qiu/sketches/tUlQ_TQtx">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Another major design choice is the decision to print the book as a booklet, which was also inspired by last week’s in-class discussion. The booklet format matched the notion of making a guidebook accessible to a group of people, which was one of the essential ideas behind the project.</p>
+      <p>In conclusion, this project was definitely a significant challenge and experimentation for me. I faced numerous difficulties due to my lack of experience with a lot of the new mediums that I had to work with: backend coding, openAI APIs, professional printing, book design, etc. Due to the novelty of these numerous new technologies that I had to learn, I didn’t have too much room further to explore the possibilities of some of the concepts. In the future, I plan to host the server online, expand the functionalities of the book, and develop an actual AI program from a shared database instead of simply using the openAI API. All in all, this project truly opened my eyes to the immense potential of the numerous technologies I was exposed to.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img2.webp" alt="In conclusion, this project was definitely a significant challenge and experimentation for me. I faced numerous difficulties due to my la...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.webp" alt="In conclusion, this project was definitely a significant challenge and experimentation for me. I faced numerous difficulties due to my la...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <custom-spacing size = "5rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "5rem"></custom-spacing>
+      <h3><i>2025.4.23 Process Work</i></h3>
+      <h3>Concept</h3>
+      <p>Throughout this week, I further narrowed the project’s scope and idea. From the general idea of creating an organism in a book using its pages as organs, I decided to specify the cognitive element. Hence, each page encompasses a particular function of the brain. The final product should be a book that has some form of consciousness as it reacts with the environment.</p>
+      <h3>Process</h3>
+      <p>At first, I had no real or practical idea of approaching this project. I only had a faint notion that I should use a combination of digital p5.js code and physical QR code so that the book’s consciousness is possible through computing. I started by brainstorming the most basic elements of consciousness. Consciousness begins when it interacts with and processes external information and stores it in memory. I thus began by constructing a memory system.</p>
+      <h3>Consumption</h3>
+      <p>Since the subject of consciousness is a book, I figured that its most suitable means of cognition is through the English language. It logically follows that English words and sentences should also be the most elementary component of memory. I named this section “consumption” because the consciousness of the book is intended to develop as people “feed” it with more words. The book thus receives all its knowledge from the user’s inputs in the form of words. However, the technical aspects of the memory compartment are tricky because I have never had experience storing inputs in a shared space accessible by multiple sketches, code runs, and users. I researched extensively but cluelessly and ended up wasting vast amounts of time figuring out how to host local servers to store data using node.js. </p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img4.webp" alt="Since the subject of consciousness is a book, I figured that its most suitable means of cognition is through the English language. It log...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>I then came across a <a href="https://www.youtube.com/watch?v=JrHT1iqSrAQ">video</a> by The Coding Train from eight years ago that introduced a database named Firebase, which satisfied all my needs: simple, easy for beginners, free, etc. The website was also relatively well-documented, and I followed the instructions without seeking too much help from GitHub and chatGPT. The earlier struggles that I had with node.js actually helped me quite a lot in comprehending some of the basics regarding console controls, APIs, etc. In short, I now figured out a way to send the user inputs to a shared database, like the memory compartment of the “brain” of the book. The user interface for entering data into the database was relatively easy to accomplish at this point:</p>
+      
+      <p><a href="https://editor.p5js.org/Shawn_Qiu/sketches/gf8EswKRU">Link to sketch</a></p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img5.webp" alt="Link to sketch">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Memory</h3>
+      <p>As a result, the actual memory compartment of the book is pretty straightforward to accomplish. As most of the work was already done for me by Firebase, I only needed to design an interface so that people have access to some of these most recent memories:</p>
+      <p><a href="https://editor.p5js.org/Shawn_Qiu/sketches/ojLLV1Hme">Link to sketch</a></p>
+      <h3>Intuition</h3>
+      <p>Next, I wanted to transform the information that people feed into the book into subjective impressions by the book. Intuition is still a relatively simple level of consciousness as it directly turns the three most recent pieces of information that it consumes into an image without processing it. To transform words into images, I needed to connect an AI image generation API to my p5 sketch. This step is when I encountered the most obstacles. Firstly, I was told that I must bypass “CORS Restrictions” to access the AI-generated images. I was also told that ChatGPT(OpenAI’s API) requires requests from the server side and that the API key can only be safely stored on a server. All of these registered in my mind that hosting a local server is the only option to access OpenAI’s API, so I went back to using node.js. After several attempts, I finally made it work on a local server, only to find out that I could access the code as the server was hosted on my local computer. I looked up solutions and found ngrok, a service that held proxy servers that could be accessed by all devices connected to the same internet. I was satisfied as I felt that it was sufficient for the project to be only accessible to NYU people. I can also always expand on it later if I want and rent an actual server online.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img6.png" alt="Next, I wanted to transform the information that people feed into the book into subjective impressions by the book. Intuition is still a ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Then, I encountered the next biggest issue: the console returned that the image retrieved from the proxy server could not be loaded. The issue persisted unless I accessed it from a Chrome browser on only my laptop. I consulted my sister, who is a front-end developer. After some debugging, we figured that the issue is most likely with directly loading an image from an image URL due to browser security settings. I then thought of storing the image as an array of pixels on the server’s end and sending the array of pixels instead of the image URL to the p5 sketch. This change finally made the intuition program work, creating an AI-generated image based on the last three pieces of information it consumes. For the graphics of the image, I decided to use another one of the final projects I am currently working on, which draws images as texts by turning pixels on the image into correspondingly colored letter objects in a twoD array. The visuals made sense for this project as the intuition of a book should probably also consist of words.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img7.png" alt="Then, I encountered the next biggest issue: the console returned that the image retrieved from the proxy server could not be loaded. The ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p><a href="https://editor.p5js.org/Shawn_Qiu/sketches/amZjtBYCW">Link to sketch</a></p>
+      <h3>Thoughts</h3>
+      <p>Next, I wanted to develop something more advanced and process the information that the book consciousness consumes. I named this section of the code “thoughts” as it intends to reflect on the basic information stored in memory. Again, I wanted to use the OpenAI API to generate thoughts based on memory and store them back into the database so that the consciousness can form layers and layers of complexity until it almost develops intelligence. To achieve this, the program combines the three most recently consumed data into a coherent thought through chatGPT and store it in the database, again adding to the memory of the consciousness.The technical aspects were relatively easy to implement after figuring out the intuition to access the OpenAI chat API. Since I wanted the book to develop its intelligence by consuming more data, I made it so that the logical coherency, word choice, length of the thoughts, etc., depended on the amount of information it consumed.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img8.png" alt="Next, I wanted to develop something more advanced and process the information that the book consciousness consumes. I named this section ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p><a href="https://editor.p5js.org/Shawn_Qiu/sketches/W255_cqxa">Link to sketch</a></p>
+      <h3>Speech</h3>
+      <p>
+        I then wanted to talk to the book through a compartment I named “speech.” The difference between thought and speech is that speech should allow a conversation between the book and the user. In addition, different from how you can directly know what the book is thinking through thoughts, “speech” is derived from thought, but the interaction is more indirect. In terms of technicality, the speech will randomly choose a recent thought(the more recent, the more likely) and direct the conversation toward this thought. The user can also not understand words that the book says in “speech,” as they are all encrypted because the book speaks another language that I named “Bookish.” In order to make the book understand what you are talking about, you also need to speak in Bookish. Fortunately, I provided a translator tool, also named “language,” which translates Bookish/English to each other: Language.
+      </p>
+      <p><a href="https://editor.p5js.org/Shawn_Qiu/sketches/ORzkLnTZ9">Link to sketch</a></p>
+      <h3>Physical Components</h3>
+      <p>As I spent most of my time working on the technical part of the project this week, I didn’t worry too much about the visuals or the physical design. These visual elements, thus, will be my primary focus for next week. This week, I printed a booklet of QR codes directed toward each cognitive function I described above. However, some QR codes of functions await implementation, like imagination, lost memory, and contemplation. Yet, I shouldn’t face too many technical issues working on these functions as I mostly finished the most difficult part of it this week. For next week, I plan to print the pages on nicer quality paper and design the visuals, which will mostly be based on the idea of representing images using texts that I did for the intuition section. Each cognitive function will have a page for QR code, link, etc, and a page with visuals, introduction for how it works, and guidance on how to interact with it.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img9.png" alt="As I spent most of my time working on the technical part of the project this week, I didn’t worry too much about the visuals or the physi...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Final Reflections</h3>
+      <p>Lastly, I want to mention that the tedious interaction (flipping through pages, scanning QR codes, using translation apps, etc) is intentional. In my opinion, a being feels more autonomous the less you are able to interfere with it. I made it into a physical book precisely for it to maintain some distance and independence from the viewers. If people can see what it is thinking and easily understand what it is thinking, then it feels no different from an object that can be easily manipulated and played around with.</p>
+      <h3>Questions for Feedback</h3>
+      <p>What visual/artistic styles suit the theme of my project? How can the data stored in the database interact to create a more intelligent and autonomous consciousness? What other possible functions can I implement?</p>
+      <custom-spacing size = "5rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "5rem"></custom-spacing>
+      <h3><i>Project Proposal</i></h3>
+      <h3>Description</h3>
+      <p>My goal is to create a book that is a self-sufficient organism where every page performs a different function, like an organ in a human body.
+</p>
+    <h3>Concept</h3>
+    <p>The concept behind the project derives from the question of objects’ passiveness in art. Inspired by <a href="../AR_3D-ize_Experiment/index.html?project=AR 3D-ize Experiment">AR 3D-ize Experiment</a> , I want the audience of this experience to experience a reciprocal relationship with the artwork so that it is no longer a boring passive object to look at but something lively, mysterious, and fully autonomous. All book parts should work together to form a self-contained and self-sufficient organism. For example, there should be a brain where all the information regarding how the book functions is stored. This information will be written similarly to computer programming codes using a language unique to books. There will also be pages that act as the nerves that transfer the data to other organs, skulls that structure the book, and a heart that keeps the book alive. In terms of how these organs will be visualized, the simplest solution that I have in mind is to represent them literally with AI-generated images with adjustments to make them look like the organs of a book. For instance, the page that is supposed to be the book’s heart will be literally an image of something like a human’s heart with slight changes that show how it interacts with the other organs. Another possibility is to be more abstract and make a collage that symbolically illustrates the essence that makes a heart a heart. Of course, I can merge the two ideas and make organs with more symbolic meanings(like the heart or the face) more metaphorical and the more functional organs(like the brain, the nervous system, and the bone structure) more literal. Additionally, I want to make my book more than just the anatomy of any book. My book should also possess unique values, memories, and emotions, just like the viewers who read it. </p>
+    <h3>Audience</h3>
+    <p>Instead of considering the viewers as an audience, I want to make the interaction between my book and the viewers more mutual and equal. Thus, it shouldn’t try to appeal to a particular audience as it is fully autonomous. However, due to restraints in real life, complete comprehension of the book’s will probably have require some elementary training in computer programming so that they can understand how the book’s “brain” works, as I plan to write it in fully programming-like language fashions.</p>
+    <h3>Inspirations and Sources</h3>
+    <ul>
+        <li>a massive 3D installation of a heart that beats on its own. Unfortunately I don’t have a picture of it and recall its name but I saw it in an exhibition in Suzhou.</li>
+        <li>Harry Potter Series – The Monster Book of Monsters</li>
+    </ul>
+    <custom-spacing size = "3rem"></custom-spacing>
+    <img src="page_asset/img10.webp" alt="Harry Potter Series – The Monster Book of Monsters">
+    <custom-spacing size = "3rem"></custom-spacing>
+    <img src="page_asset/img11.png" alt="Harry Potter Series – The Monster Book of Monsters">
+    <custom-spacing size = "3rem"></custom-spacing>
+    <img src="page_asset/img12.webp" alt="Harry Potter Series – The Monster Book of Monsters">
+    <custom-spacing size = "3rem"></custom-spacing>
+    <h3>Questions</h3>
+    <p>What is a language that would make sense to books? What should be in its memory? What are some of the organs that I should add to a book? What are ways to visualize the organs and functionalities of these different organs?
+</p>
+    <custom-spacing size = "10rem"></custom-spacing>
+    </div>
+    </div>
+    
+  </body>
+</html>

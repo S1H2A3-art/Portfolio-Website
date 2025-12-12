@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Matrix</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="Grid.js"></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js" defer></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions =""></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"><div id="controls" ></div></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Intention</h3>
+      <p>The project intends to create a 3-dimensional grid system where each grid possesses a numerical value that can be exchanged and interact with the grids around it.</p>
+      <h3>Process</h3>
+      <p>I started by creating a 3D array of grid objects for the grid system. Each grid object has an x, y, and z position and a numerical value.</p>
+      <img src="page_asset/img1.png" alt="I started by creating a 3D array of grid objects for the grid system. Each grid object has an x, y, and z position and a numerical value.">
+      <p>There are four possible interactions that I implemented into the system: randomize, clear, add, and subtract. Randomize assigns random integers from 0 to 99 to random grid objects. Clear resets the numerical value of all the grid objects to 0. Subtracting and adding are more complicated as they compare the numerical value of each grid to their six neighboring grids using the compare method.</p>
+      <img src="page_asset/img2.png" alt="There are four possible interactions that I implemented into the system: randomize, clear, add, and subtract. Randomize assigns random in...">
+      <p>The compare method creates three sorted arrays: smallerGrid[], largerGrid[], and equalGrid[]. The method compares the current grid with each of its neighboring grids to decide if it is larger, smaller, or equal and adds it to the respective array.
+</p>
+      <img src="page_asset/img3.png" alt="The compare method creates three sorted arrays: smallerGrid[], largerGrid[], and equalGrid[]. The method compares the current grid with e...">
+      <p>The compare method returns the three arrays sorted based on their numerical values from smallest to largest. For the subtract function, the program gives one numerical value to its smallest neighbor that it is larger than.</p>
+      <img src="page_asset/img4.png" alt="The compare method returns the three arrays sorted based on their numerical values from smallest to largest. For the subtract function, t...">
+      <p>On the other hand, the add function gives one numerical value to its largest neighbor that it is smaller than.</p>
+      <img src="page_asset/img5.png" alt="On the other hand, the add function gives one numerical value to its largest neighbor that it is smaller than.">
+      <p>If no neighboring grids are larger than it, the program will give one numerical value to a neighbor that possesses an equal numerical value.</p>
+      <img src="page_asset/img6.png" alt="If no neighboring grids are larger than it, the program will give one numerical value to a neighbor that possesses an equal numerical value.">
+      <p>I then enhanced the program’s visuals by mapping each grid’s stroke weight and opacity relative to the numerical value.</p>
+      <img src="page_asset/img7.png" alt="I then enhanced the program’s visuals by mapping each grid’s stroke weight and opacity relative to the numerical value.">
+      <p>Lastely, I implemented a cam() method that changes the camera angle every 150 iterations.</p>
+      <img src="page_asset/img8.png" alt="Lastely, I implemented a cam() method that changes the camera angle every 150 iterations.">
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

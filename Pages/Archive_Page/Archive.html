@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../Assets/icon.jpeg" type="image/x-icon">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Archive</title>
+
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="stylesheet" type="text/css" href="Archive.css">
+
+
+    <script src="../../libraries/p5.min.js"></script>
+    <script src="../../libraries/p5.sound.min.js"></script>
+
+  </head>
+    <body>
+        <script src="../../AIAssistant.js" defer></script>
+        <script src="../processProjects.js" defer></script>
+
+        <script src="../menuBar.js" defer></script>
+
+        <script src="Archive.js" defer></script>
+        
+
+        <div id="menuBar">
+            <div class="menuItems">
+                <div class="menuItem" id="Explorer_Page">
+                    <a href="../Explorer_Page/Explorer.html">Explorer</a>
+                </div>
+                <div class="menuItem" id="Archive_Page">
+                    <a href="../Archive_Page/Archive.html">Archive</a>
+                </div>
+
+                <div class="menuItem" id="About_Page">
+                    <a href="../About_Page/About.html">About</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="menuButton">
+            <div class="menuIcon" onclick="toggleMenu()">
+                placeholder
+            </div>
+            <div id="menuName"onclick="toggleMenu()">
+                Shawn Qiu
+            </div>
+        </div>
+        
+        <div id="mainDisplay">  
+                       
+            <div id= "archiveContent">    
+                
+             <h1 id="archiveTitle">Archive /
+             <div id="selectGenre">
+             <span id="genreLabel">Genre</span>
+             <div id="genreContainer">
+                <button class="genre" onclick="selectGenre('All'); clearInput();">All</button>
+             </div>
+            </div> / 
+              <input id="searchProject" type="text" placeholder="Enter project">
+            </h1>
+             <div id="searchAlert"></div>
+              
+          
+            </div>
+            
+        </div>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Animated Images Experiment 3D</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="Bead.js"></script>
+    <script src="Pic.js"></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions =""></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"><div id="controls"></div></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      
+      <h3>Screenshots</h3>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <image-gallery column = "2" row="5" alt-prefix="Screenshots of results of possible results from effects applied to different images">
+        page_asset/img1.png,
+        page_asset/img2.png,
+        page_asset/img3.png,
+        page_asset/img4.png,
+        page_asset/img5.png,
+        page_asset/img6.png,
+        page_asset/img7.png,
+        page_asset/img8.png,
+        page_asset/img9.png,
+        page_asset/img10.png
+      </image-gallery>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Inspiration</h3>
+      <p>
+This project is mainly inspired by the <a href="../Animated_Images_Experiment/index.html?project=Animated Images Experiment">Animated Images Experiment</a> and tries to recreate it in a 3D environment using the earlier experience with <a href="../Cosmic_Tunes/index.html?project=Cosmic_Tunes">Cosmic Tunes</a> using WebGL. <a href="../Animated_Images_Experiment/index.html?project=Animated Images Experiment">Animated Images Experiment</a> provides a template to turn pixels on an image into objects with the picSet() function. <a href="../Cosmic_Tunes/index.html?project=Cosmic Tunes">Cosmic Tunes</a> provides the necessary experience of manipulating spheres using WebGL.</p>
+        
+      <h3>Process</h3>
+      <p>I started by changing the picSet() function in the <a href="../Animated_Images_Experiment/index.html?project=Animated Images Experiment">Animated Images Experiment</a> so that each particle representing a pixel on the image turns into a 3D object. </p>
+      <p>Then, I designed effects that are specific to 3D objects:</p>
+      <p><strong>Neutral: </strong>The neutral effect returns the particles to their original positions by creating a velocity vector that subtracts their current position from their original position.</p>
+      <p><strong>Emphasize: </strong> Emphasize helps order the particles in the z-axis based on their brightness/darkness. The brighter the particles, the more positive they are in the z-axis. The darker they are, the more negative they are in the z-axis. This effect is achieved by declaring a position vector for the destination that subtracts the current position vector from the velocity vector.</p>
+      <p><strong>Wave: </strong>: The wave effect adds an oscillation movement on the particles in the z-axis using the sin() function.</p>
+      <p><strong>2D Spread: </strong>: 2D spread creates a velocity vector that points away from the center of the image in the x and y axis, so the particles spread out from the center two-dimensionally.</p>
+      <p><strong>3D Spread: </strong>: The only difference between 2D spread and 2D spread is that the velocity vector now points away from the x and y-axis and the z-axis.</p>
+      <p><strong>2D Shrink: </strong>: 2D shrink reverses 2D spread by pointing the velocity vector towards the center.</p>
+      <p><strong>3D Shrink: </strong>: 3D shrink adds the third dimension to 2D shrink.</p>
+      <p>Users can creatively play around with an existing image by manipulating it on a 3D canvas using these different effects. The program also has an additional feature that allows the user to save the canvas by pressing the take pic button to save any interesting composition. </p>
+      
+       <h3>Next Steps</h3>
+       <p>In the future, I want to add more interesting 3D effects that the users can play around with. I also want to make the interaction more interesting by replacing the buttons with hand gesture control using ml5. Additionally, I could make two or more images interact with each other on the 3D canvas to produce more interesting effects.</p>
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

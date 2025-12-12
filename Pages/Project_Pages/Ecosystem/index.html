@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Ecosystem</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions ="hide"></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3><i>2025.2.6 Update</i></h3>
+      <p>In the newest version I incorporated vector values to control the movement of the predator and prey objects. I also used vectors for the coordinates of vegetation class objects. I found some of the methods that are contained in the vector to be really helpful, including add() and rotate().</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img1.png" alt="In the newest version I incorporated vector values to control the movement of the predator and prey objects. I also used vectors for the ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>In addition, I changed the mechanism when an object exists the screen by making it reappear on the other side.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img2.png" alt="In addition, I changed the mechanism when an object exists the screen by making it reappear on the other side.">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Intention</h3>
+      <p>The intention behind the project is to simulate a balanced ecosystem using random() and noise() in p5.js and exclusively random movement. The ecosystem consists of 3 levels: the vegetation level, the prey(herbivore) level and the predator(carnivore) level. Each level of the ecosystem interact with each other to maintain an equilibrium.</p>
+      <h3>Process</h3>
+      
+      <p><strong>Vegetation</strong></p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.png" alt="Vegetation">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>I started with representing the vegetation level using objects from the vegetation class. Each vegetation object is a tile in a grid system with a given coordinate and a food variable. When a prey object is on top of tile x, it will consume the food variable of tile x until it becomes 0. The grow function will recover the food variable of a vegetation gradually until it reaches its maximum capacity of 10.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img4.png" alt="I started with representing the vegetation level using objects from the vegetation class. Each vegetation object is a tile in a grid syst...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Prey</h3> 
+      <custom-spacing size = "3rem"></custom-spacing> 
+      <img src="page_asset/img5.png" alt="Prey">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>The second layer of the ecosystem are the preys. The objects of the prey class are visually represented as tiny multicolored particles. They feed on vegetations and provide food for the predators. They also reproduce babies whose colors are semi-determined by the color of their parents.
+</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img6.png" alt="The second layer of the ecosystem are the preys. The objects of the prey class are visually represented as tiny multicolored particles. T...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Both reproduce() and move() of the prey class use the random() function that we learned in class.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img7.png" alt="Both reproduce() and move() of the prey class use the random() function that we learned in class.">
+      <img src="page_asset/img8.png" alt="Both reproduce() and move() of the prey class use the random() function that we learned in class.">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Predator</h3>  
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img9.png" alt="Predator">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>The third and highest level of the ecosystem are predators that feed on preys. The objects of the predator class are visually represented as small multicolored circles. Predators reproduce only when they have ample of food and at a slower pace compared to the preys. Predators consume preys that are in contact with it. The color of predators are determined by the colors of the prey they consume.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img10.png" alt="The third and highest level of the ecosystem are predators that feed on preys. The objects of the predator class are visually represented...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>The move() function of the predator class uses noise() that I learned from the book and the videos to generate a relatively smoother and more natural movement.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img11.png" alt="The move() function of the predator class uses noise() that I learned from the book and the videos to generate a relatively smoother and ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Lastly, I made numerous small adjustments to particular values(such as the rate at which a vegetation object regains food, the speed at which the predators/preys move and reproduce, etc) so that each level of the ecosystem maintain an equilibrium with each other similar to what is observed in nature.</p>
+      <h3>Challenges & Discoveries</h3>
+      <p>I find the lesson on Perlin Noise to be really helpful when generating more organic movements. However, I faced some challenges when trying to use it to generate the movement of the predator objects as it is my first time using it. I first tried to directly control the x and y coordinates of the predator object using noise(), but it made the predators move in a very clear determined way with a lack of randomness. Thus, I used noise() to control the distance and direction each predator object moves to more indirectly control the x and y coordinates of the predator object using the noise() function.</p>
+      <h3>Future Possibilities:</h3>
+      <ul>
+        <li>
+            <p>make the color of each predator/prey object a significant factor instead of being purely visual</p>
+        </li>
+        <li>
+            <p>Add obstacles in the terrain to limit the movement of predators/preys in certain areas</p>
+        </li>
+        <li>
+            <p>add more layers to the ecosystem</p>
+        </li>
+        <li>
+            <p>and more</p>
+        </li>
+      </ul>
+     
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>AR 3D-ize Experiment</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+
+      <control-instruction instructions ="hide"></control-instruction>
+
+
+      <div id = "projectContainer"></div>
+      <h3>Demo Images</h3>
+        <p><strong>Link:</strong> <a href="https://adobeaero.app.link/Z8fbEEFzpSb">Adobe Aero</a></p>
+      <image-gallery column ="1" row="4" alt-prefix="Link: Adobe Aero">
+        page_asset/img1.webp,
+        page_asset/img2.webp,
+        page_asset/img3.webp,
+        page_asset/img5.jpg
+      </image-gallery>
+
+      
+      
+       <h3>QR Code</h3>
+       <custom-spacing size = "2rem"></custom-spacing>
+       <img src = "page_asset/img6.png" alt="QR Code">
+       <custom-spacing size = "2rem"></custom-spacing>
+
+       <h3>Anchor Image</h3>
+       <custom-spacing size = "2rem"></custom-spacing>
+       <img src = "page_asset/img7.png" alt="Anchor Image">
+      
+       <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Process</h3>
+      <p>This project is motivated by the attempt to overcome the technical challenge of creating 3D objects in Adobe Aero using only flat images. I first generated AI images of objects I wanted to make 3D, specifying in its prompt that the pictures must be in black and white and have lighting pointing at the center. This specification is intended to make dividing the image into different layers easier based on its brightness/darkness.</p>
+      <img src = "page_asset/img8.png" alt="This project is motivated by the attempt to overcome the technical challenge of creating 3D objects in Adobe Aero using only flat images....">
+      <p>I then dragged each image into Photoshop and separated them into different layers using the magic wand tool/the round selection tool.</p>
+      <image-gallery column ="2" row="1" alt-prefix="I then dragged each image into Photoshop and separated them into different layers using the magic...">
+        page_asset/img9.png,
+        page_asset/img10.png
+      </image-gallery>
+      <p>Next, I imported the PSD files into Adobe Aero and adjusted the distance between each layer using the layer spacing toggle to create a sense of depth based on the order of the layers.</p>
+      <image-gallery column ="2" row="1" alt-prefix="Next, I imported the PSD files into Adobe Aero and adjusted the distance between each layer using...">
+        page_asset/img12.png,
+        page_asset/img13.png
+      </image-gallery>
+      <p>The spherical shape of the eyeball is formed by multiplying a single side of the eyeball image 5 times and stacking them onto each other.</p>
+      <image-gallery column ="2" row="1" alt-prefix="The spherical shape of the eyeball is formed by multiplying a single side of the eyeball image 5 ...">
+        page_asset/img14.png,
+        page_asset/img15.png
+      </image-gallery>
+      <h3>Reflection</h3>
+      <p>As the 3D effect that I want to achieve is the complete opposite of the flatness of the image that I chose, I wanted to make the contrast more apparent by increasing the sizes of the 3D objects, making the scene more chaotic, and dramatizing the spacing between each object to emphasize the three-dimensionality of the x, y, and z-axis. The story I want to tell through the scene happens in an alien world entirely foreign to ours that seems absurd and random. In this alien world, everything is under constant surveillance by the eyeballs that can perceive every angle and the mask figures that float about in mid-air, looking down onto visitors of this world. Other than to elicit the sentiment of strangeness and absurdism, I want the audience of this experience to feel a reciprocal relationship with the artwork(as they perceive it, it is also perceiving them) so that it is no longer a boring passive object to look at but something lively, mysterious, and even dangerous.</p>
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

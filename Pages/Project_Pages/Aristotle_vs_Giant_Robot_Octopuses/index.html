@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <script src="https://unpkg.com/ml5@1/dist/ml5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Aristotle vs Giant Robot Octopuses</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+      <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+      
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions ="LEFT: left arrow, RIGHT: right arrow, JUMP: up arrow, SWING: enter"></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Intention</h3>
+      <p>The intention of this project is to use the ml5 neural network for training the AI of a simple 2D badminton game using neuroevolution. The original version of the game can be accessed via: Aristotle vs the Giant Octopus.</p>
+
+      <h3>Process</h3>
+      <p>To begin with, I created a class for the AI players with the exact same properties and methods as the player class. Then, referencing the neuroevolution chapter of the Nature of Code textbook by Daniel Shiffman, I added a brain object as the neural network and a think() method that inputs relevant data(distance from the ball, velocity of the ball, etc) into the brain and outputs an action(move left, move right, jump, swing).
+      Next, I created 20 instances of the AI player object and 20 ball objects for each of the AI player object. I established a rule of elimination when I play the game against the 20 AI players, which is when the ball lands on the ground. The fitness of each AI player is determined by multiple factors, including how many times it is able to hit the ball, how long it survives, and more. I asked chatGPT for guidance on setting the reward/punishment values to ensure growth in the “intelligence” of the AI players. Finally, based on the “brain” of the previous AI players with the highest fitness value, a reproduction() method will determine 20 new AI players when the old ones are all eliminated. After a certain number of iterations, an AI which is good at the game will be generated.</p>
+      </p>
+
+    <custom-spacing size = "10rem"></custom-spacing>
+    </div>
+    </div>
+    
+  </body>
+</html>

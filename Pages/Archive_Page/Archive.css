@@ -1,0 +1,265 @@
+
+
+a h1:hover{
+     background-image: radial-gradient(ellipse at center, rgb(255, 0, 0),rgb(255, 0, 0));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+     text-shadow: 0.05rem 0.05rem 2px rgba(255, 0, 0, 0.336);  
+}
+
+#mainDisplay{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#archiveContent{
+    display:flex;
+    flex-direction: column;
+    flex: 1 1 80%;
+    max-width: 80%;
+    margin-top: 2%;
+    margin-left: 10%;
+}
+
+.project{
+    border-bottom: 0.1rem solid black;
+    display: flex;
+    align-items: center;
+    
+}
+
+.projectDate{
+    margin-top: 0;
+    color:rgb(117, 117, 117);
+}
+
+.projectCategory{
+    margin-top: 0;
+    color:rgb(117, 117, 117);
+}
+
+.projectConcepts{
+    display:flex;
+    margin-bottom: 2rem;
+}
+
+.conceptTag{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    border-image: linear-gradient(to right, rgb(255, 79, 79),rgb(255, 87, 132)) 1;
+    background-image: linear-gradient(to right, rgb(255, 79, 79),rgb(255, 87, 132));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    border-style: solid;
+    border-width: 0.1rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+}
+
+.space{
+    color:rgba(255, 255, 255, 0);
+    height: 2.5rem;
+}
+
+#archiveTitle{
+    font-size: 6.5rem;
+}
+
+h1{
+    font-size: 4rem;
+    font-weight: normal;
+    font-weight:500;
+    line-height: 1.2;
+    background-image: radial-gradient(ellipse at center, rgb(100, 100, 100),rgb(23, 23, 23));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+
+.conceptTag:hover{
+  opacity:100%;
+  box-shadow: 0.05rem 0.05rem 10px rgba(0, 0, 0, 0.226);
+   text-shadow: 0.05rem 0.05rem 5px rgba(255, 0, 0, 0.336);  
+}
+
+.conceptTag:active{
+    box-shadow: 0.05rem 0.05rem 10px rgba(0, 0, 0, 0.226);
+    background-color: rgba(0, 0, 0, 0.599);
+    background: rgba(0, 0, 0, 0.599); 
+}
+
+#searchBar{
+    display: flex;
+    align-self: flex-start;
+    width:"100%";
+}
+
+#searchProject{
+    overflow: hidden;
+    display: inline-block;
+    font-size: 6rem;
+    line-height: 1.2;
+    border: 0;
+    text-decoration: underline rgb(150, 150, 150);
+    background-image: radial-gradient(ellipse at center, rgb(150, 150, 150));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    width: 50rem;
+    font-weight: normal;
+}
+
+#searchProject:hover{
+    background-image: radial-gradient(ellipse at center, rgb(255, 0, 0));
+    text-decoration: underline rgb(255, 0, 0);
+    text-shadow: 0.05rem 0.05rem 5px rgba(0, 0, 0, 0.336);  
+
+}
+
+#selectGenre{
+    font-weight: normal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 6rem;
+    line-height: 1.2;
+    border: 0;
+    padding: auto;
+    width: auto;
+    background-color: transparent;   
+    background-image: radial-gradient(ellipse at center, rgb(150, 150, 150));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    text-decoration: underline rgb(150, 150, 150);
+    cursor: pointer;
+}
+
+#selectGenre:hover #genreContainer{
+    display:flex;
+    pointer-events: auto;
+    box-shadow: 0.1rem 0.1rem 15px rgba(0, 0, 0, 0.5);
+
+
+}
+#genreContainer:hover{
+    display:flex;
+    pointer-events: auto;
+ 
+
+}
+
+#selectGenre:hover{
+     background-image: radial-gradient(ellipse at center, red);
+      text-decoration: underline rgb(255, 0, 0);
+           text-shadow: 0.05rem 0.05rem 5px rgba(255, 0, 0, 0.336);  
+
+   
+}
+
+#genreContainer{
+    display:none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%);
+    min-width: 100%;  
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffffdb;
+    pointer-events: none;
+    height: 30rem;
+    overflow: auto;
+
+}
+
+.genre {
+  display: block;
+  width: 100%;
+  font-size: 3rem;
+  background-color: #ffffff;
+  background-image: radial-gradient(ellipse at center, rgb(150, 150, 150));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+
+
+  
+}
+
+.genre:hover{
+    background-image: radial-gradient(ellipse at center, rgb(0, 0, 0));
+    text-shadow: 0.05rem 0.05rem 5px rgba(0, 0, 0, 0.336);  
+
+}
+
+
+#searchProject:active, #searchProject:focus{
+    outline: none;
+    text-decoration: none;
+     background-image: radial-gradient(ellipse at center, rgb(100, 100, 100),rgb(23, 23, 23));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+.customSpacing {
+  color:rgba(255, 255, 255, 0);
+  width : "100%";
+  padding: 0%;
+
+}
+
+.searchResults{
+    display:flex;
+}
+
+.noSearchResults{
+    display:none;
+}
+
+body{
+  background-image: linear-gradient(to left, rgb(255, 255, 255), rgb(255, 255, 255),rgb(255, 255, 255),rgb(255, 255, 255),rgb(255, 255, 255),rgba(213, 213, 213, 0.535));
+}
+
+#pageButtonsContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#pageButtonsContainer button{
+    font-size: 4rem;
+    margin: 0.5rem;
+    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: rgba(200, 200, 200, 0);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    
+}
+
+#pageButtonsContainer button:hover{
+    box-shadow: none;
+    text-shadow: 0.05rem 0.05rem 10px rgba(0, 0, 0, 0.386);  
+}
+
+.currentPageButton{
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 2px solid rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+    text-decoration: underline rgb(255, 0, 0);
+    
+}
+
+.currentPageButton:hover{
+      background-color: rgb(102, 0, 0);
+}

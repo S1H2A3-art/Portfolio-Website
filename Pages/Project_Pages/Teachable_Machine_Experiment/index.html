@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <script src="../../../libraries/ml5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Teachable Machine Experiment</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="Bead.js"></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions ="Clear Noise:hold fist "></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Intention</h3>
+      <p>The goal of this project is to create a program using P5.js and Teachable Machine that allows the user to distort the webcam video by simple hand gestures. Specifically, the video will become more/less inverted(color), responsive, and flashing, based on how loose/tight the user’s grip is.</p>
+      <h3>Process</h3>
+      <p>The first step of the project is to register pixels of the image as objects with properties that can be mutated to create different video distortion effects. The same general idea and code can be found from my earlier project: <a href="../Animated_Images_Experiment/index.html?=Animated Images Experiment">Animated Images Experiment</a>. However, in the case of this project, I had to adjust the previous code to accommodate video inputs and update the color of each Bead(pixel object) every iteration of the draw function.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img1.png" alt="The first step of the project is to register pixels of the image as objects with properties that can be mutated to create different video...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>The intensity of these effects are determined by the following variables.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img2.png" alt="The intensity of these effects are determined by the following variables.">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Next, I declared 6 different modes of distinct visual effect variables to create templates for different video effects. Exactly one mode will be active at a time. The current effect variables will gradually transition towards the values of the visual variable of the specific mode that is active.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.png" alt="Next, I declared 6 different modes of distinct visual effect variables to create templates for different video effects. Exactly one mode ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Finally, I linked teachable machine to the code as an input that determines the mode. Mode 0 will be active when teachable machine recognizes images that belong to group 0(when it doesn’t see a hand). And as a tighter grip is detected, the corresponding mode will be activated.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <image-gallery row="5" column="1" alt-prefix="Finally, I linked teachable machine to the code as an input that determines the mode. Mode 0 will...">
+        page_asset/img4.png,
+        page_asset/img5.png,
+        page_asset/img6.png,
+        page_asset/img7.png,
+        page_asset/img8.png
+      </image-gallery>
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

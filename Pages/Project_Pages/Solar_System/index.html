@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <meta charset="utf-8" />
+
+    <title>Solar System</title>
+<body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+      
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions = ""></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+        <h2>Process</h2>
+        <p>I started first with implementing the spheres and the basic orbiting logic of these spheres around the center of the solar system. In order to have some level of resemblance of reality, I used a chart as a reference for the relative sizes of the “planets”, how far away they are from the sun, and how long did it take for each of them to complete a full orbit around the sun.</p>
+        <custom-spacing size = "3rem"></custom-spacing>
+        <img src = "page_asset/img1.png" alt="I started first with implementing the spheres and the basic orbiting logic of these spheres around the center of the solar system. In ord...">
+        <custom-spacing size = "3rem"></custom-spacing>
+        <p>I decided to ajust many of these values and sacrifice accuracy for the sake of aesthetics since, all-in-all, this is a creative computing assignment and not a physics assignment. One example is that the planets would be extremely far apart if the distance in between them is relative to their actual sizes before I made the adjustments. The sun in reality as we all know is also much much much larger than the depiction of it in my program but again it would ruin the aesthetics of the work.</p>
+        <custom-spacing size = "3rem"></custom-spacing>
+        <img src = "page_asset/img2.png" alt="I decided to ajust many of these values and sacrifice accuracy for the sake of aesthetics since, all-in-all, this is a creative computing...">
+        <img src = "page_asset/img3.png" alt="I decided to ajust many of these values and sacrifice accuracy for the sake of aesthetics since, all-in-all, this is a creative computing...">
+        <custom-spacing size = "3rem"></custom-spacing>
+        <h2>WEBGL</h2>
+        <p>The next big challenge for me is to use the WEBGL function for the first time to draw the planets in 3D. I relied on the p5.js reference website and Github heavily in order to understand how the coordination system works on a 3-Dimensional canvas. And during the process, I encountered numerous basic issues such as the circle not being round enough, spheres rotating about the wrong coordinates, and the axis of rotation being the same for every single planet. However, these issues weren’t overly difficult to fix with the help from the online community and the reference website.</p>
+        <h2>Importing Images</h2>
+        <p>I then started adding textures to each planet by importing images of the surface of planets to p5.js. An issue with that was that the images wouldn’t load if I access the code file using my p5.js account, but succesfully loaded when I opened it logged out of my account. This issue still occurs frequently and based on my understanding is not an issue regarding my code but is related to the browser’s privacy settings or something along those lines.</p>
+        <custom-spacing size = "3rem"></custom-spacing>
+        <img src = "page_asset/img4.png" alt="I then started adding textures to each planet by importing images of the surface of planets to p5.js. An issue with that was that the ima...">
+        <custom-spacing size = "3rem"></custom-spacing>
+        <p>Otherwise, the process was pretty successful. I mostly took the images from this website:https://sketchfab.com/feed and the link to each of the images are specified in the comments of the code.</p>
+        <p>Basically what I did after adding the textures was to refine and introduce a bunch of functions to the existing basic logic of planets orbiting around the sun:</p>
+        <ol>
+          <li>I used arrays and objects to organize all the similar variables or objects and used a single for loop to do most of the work.</li>
+          <li>I made the circles that illustrate the orbit paths of each planet rounder by using ellipses instead of circles.</li>
+          <li>I allowed each planet to rotate about a different axis</li>
+          <li>I introduced the pause function so that the viewer can pause the animation to see each planet better</li>
+          <li>I added a moon that orbits around the Earth</li>
+          <li>I also added a ring to Jupiter</li>
+          <li>And I made minor changes here and there to help the program run better</li>
+        </ol>
+
+        <custom-spacing size = "10rem"></custom-spacing>
+      </div>
+
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>Self Portrait 2.0</title>
+
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+   <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <script src="../../../libraries/ml5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+
+  </head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+     <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="../displayBasicInformation.js"></script>
+    <script src="triangulation.js"></script>
+    <script src="Triangles.js"></script>
+    <script src="project.js"></script>
+    
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+      
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions ="hide"></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"><div id = "controls" style ="width:100%; display:flex; flex-wrap: nowrap;"></div></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+
+      <h3>Intention</h3>
+      <p>This project intends to recreate my first creative project in p5.js(<a href="../Self_Portrait/index.html?project=Self%20Portrait">Self Portrait</a>) using the faceMesh model.</p>
+      
+      <h3>Process</h3>
+      <p>I started by thinking of ways to triangulate the face using key points outputted by the faceMesh model. I figured that it's really hard to draw each triangle one-by-one unless you hardcode which key points to connect. I used a source on the class github:<a href="https://editor.p5js.org/jackbdu/sketches/J_NYWKtT7">link</a> which records the path of all the triangles in an array.</p>
+      <img src="page_asset/img1.png" width="40%" alt="I started by thinking of ways to triangulate the face using key points outputted by the faceMesh model. I figured that it's really hard t...">
+      <p>Next, I stored each triangle as Tri objects in an array. A function(Tri.update()) will loop through the array to determine the new position, size, and color of each Tri object based on the video input. Then, I programmed a function checkTriHover() to make a triangle disappear when the mouse hovers above it. Triangle collision is calculated the same way as in Self Portrait. As more triangles disappear, the flashing effect will grow more intense, until the program resets when most of the triangles have disappeared. These effects are all based on the original visual style of Self Portrait.</p>
+      
+
+      <custom-spacing size = "10rem"></custom-spacing>  
+    </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Snap and Play!</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    
+    <script src="Bead.js"></script>
+    <script src="Pic.js"></script>
+    <script src="video.js"></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions ="Move:arrow keys, Colorize:t,Inverse:q,Posterize:w,Grain:e,Duotone:r,Take Pic:space key,Capture:enter key,Reset:shift key"></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3><i>2025.3.12 Final Version</i></h3>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img1.png" alt="2025.3.12 Final Version">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img2.png" alt="2025.3.12 Final Version">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>In-class user testing observations</h3>
+      <p>During the in-class user testing session, I noticed that the main issue was that the instructions and the user interface weren’t clear enough. I had to provide instructions and guide the users through their exploration frequently. It is promising, however, that people are generally interested in exploring the different effects and producing many interesting results. Thus, I focused primarily on optimizing user interaction and only making minor tweaks to the effects themselves.</p>
+      <h3>Design refinements</h3>
+      <p>First, I decided to redesign the user interface to make it physical and more intuitive by sticking stickers to signify the function of a particular key. </p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.webp" alt="First, I decided to redesign the user interface to make it physical and more intuitive by sticking stickers to signify the function of a ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>For the keys that apply an artistic effect(inverse, posterize, noise, duotone, and colorize), the design intends to emphasize and visualize what each effect achieves. The more functional keys(export, reset, capture, and arrow keys) are outlined in black to highlight their importance and utility purpose. There are also comments outlined in black dashes that explain each key’s function to clarify any remaining ambiguity.</p>
+      <p>Because of the new user interface, I was able to remove all the buttons and move the canvas to the center of the screen.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img4.webp" alt="Because of the new user interface, I was able to remove all the buttons and move the canvas to the center of the screen.">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Another critical but less visible adjustment is changes to how the posterize and duotone functions work.</p>
+      <custom-spacing size = "8rem"></custom-spacing>
+      <text-and-image>
+        Before, I merely declared certain fixed thresholds that determined which color the pixel should be categorized under.,,
+        page_asset/img5.png
+      </text-and-image>
+      <custom-spacing size = "8rem"></custom-spacing>
+      <text-and-image>
+        Now, the thresholds depend on the quantiles so that the pixels will necessarily be distributed among each color evenly, even if they are all very similar. This change prevents all the pixels in an image from turning into one color for falling under a specific fixed threshold.,,
+        page_asset/img6.png
+      </text-and-image>
+      <custom-spacing size = "8rem"></custom-spacing>
+      <h3>Additional observations</h3>
+      <p>The new observation matched my expectations. The instructions on the user interface are clear enough that I don’t need to provide additional information to help the users interact with the photo booth. I also found it exciting that they were all interested in experimentation and enjoyed playing with the different effects.</p>
+      <custom-seperator></custom-seperator>
+      <h3><i>2025.3.5 Prototype</i></h3>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img7.png" alt="2025.3.5 Prototype">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img8.png" alt="2025.3.5 Prototype">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img9.png" alt="2025.3.5 Prototype">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Intervention</h3>
+      <p>Rather than thinking about constraints, I first wanted to enlarge the effects of the user’s creativity to enable more possibilities with the images. This object is achieved by allowing them to create a collage of 9(3*3) different photographs. Each photograph is independent and can be retaken if the previous image is unsatisfactory. I also added numerous effects(grain, colorize, posterize, inverse, and duotone), which can be applied to an image by hovering above and clicking the image after selecting the respective effect.</p>
+      <p>The constraint is that each effect’s result is randomized and intended to produce different images. I added the randomness to restrict the user’s ability so that the results are unexpected, making the entire experience exploratory and exciting. For the final version, I wish to add more interventions with regards to the trigger of each effects so they are not simply buttons to make the interaction more engaging and diverse.</p>
+      <h3>Inspiration</h3>
+      <p>The main inspiration for this project in terms of the technical aspect comes from a previous project that similarly explores around representing pixels in images with p5.js objects: <a href="../Animated_Images_Experiment/index.html?project=Animated Images Experiment">Animated Images Experiment</a></p>
+      <p>With regards to the creative and artistic aspects, it is inspired by German Photographer Rolf Behme’s works and specifically how he plays with collages that feature numerous photographs:</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <image-gallery column="2" row="1" alt-prefix="With regards to the creative and artistic aspects, it is inspired by German Photographer Rolf Beh...">
+        page_asset/img10.png,
+        page_asset/img11.png
+      </image-gallery>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Process</h3>
+      <p>Like the <a href="../Animated_Images_Experiment/index.html?project=Animated Images Experiment">Animated Images Experiment</a>, I created a class of bead objects representing a pixel on an image. Each bead contains a color and a position. What is different for this project is that the points overlap, so the entire canvas will be covered.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img12.png" alt="Like the Animated Images Experiment , I created a class of bead objects representing a pixel on an image. Each bead contains a color and ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img13.png" alt="Like the Animated Images Experiment , I created a class of bead objects representing a pixel on an image. Each bead contains a color and ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Next, I wanted to store all the beads that make up an image in a 2D-Array for each image so that an image can be saved in p5.js. I thus created a Pic class of objects that represented each of the 3*3=9 images. Each pic object contains a 2D array of beads that stores its pixels and a position object that indicates where it is located on the canvas. The Pic class includes two most important functions: picSet() and picShow(). picSet() sets the 2D array of beads according to the pixels of an image when a photograph is taken to store the image. picShow() then draws the stored image onto the canvas. </p>
+      <p>An array of 3*3 Pic objects is created to make a collage of photographs. When the mouse hovers above an image and clicks on it, the picSet() and picShow() functions are activated to redraw the moment the photograph was taken. Before picSet() is activated to store an image, the video of the camera’s view is played.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img14.png" alt="An array of 3*3 Pic objects is created to make a collage of photographs. When the mouse hovers above an image and clicks on it, the picSe...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Lastly, I added numerous effects that manipulate how each individual bead by interfering with the show() function of the Bead class.</p>
+      <h3>User Testing Plan & Questions</h3>
+      <p>For next class, I want to test how people interact and utilize the different effects to create interesting collages. This knowledge could help me develop more interesting effects for the final version. In addition, I would like to survey people about how other triggers can be implemented to replace the buttons that I have right now.</p>
+    
+      <h3>Questions</h3>
+      <p>What might be other effects that people might be interested in? Could I also implement effects that distort the images in different ways instead of only changing the color of the pixels? Should I add more effects or reduce the amount of effects to make the controls more digestible?</p>
+      <p>How can I replace buttons that users click on to change the effect that is to be applied to an image? Could they be physical triggers, using touch, sound, or light? Or should it be like a game?</p>
+      <custom-spacing size = "10rem"></custom-spacing>
+    
+    </div>
+    </div>
+    
+  </body>
+</html>

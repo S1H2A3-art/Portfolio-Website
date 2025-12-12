@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link rel="icon" href="../../Assets/icon.jpeg" type="image/x-icon">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About</title>
+
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="stylesheet" type="text/css" href="About.css">
+
+    <script src="../../libraries/p5.min.js"></script>
+    <script src="../../libraries/p5.sound.min.js"></script>
+
+</head>
+
+<body>
+    <script src="../../AIAssistant.js" defer></script>
+    <script src="../Project_Pages/DOM.js" defer></script>
+    <script src="../menuBar.js" defer></script>
+    <script src="About.js" defer></script>
+    <script src="ThinkerActivation.js" defer></script>
+
+    <script src="The Thinker/Text.js" defer></script>
+    <script src="The Thinker/Grid.js" defer></script>
+    <script src="The Thinker/sketch.js" defer></script>
+    <script src="The Thinker/Thinker.js" defer></script>
+ 
+    <!-- ->menubar.js -->
+    <div id="menuBar">
+        <div class="menuItems">
+            <div class="menuItem" id="Explorer_Page">
+                <a href="../Explorer_Page/Explorer.html">Explorer</a>
+            </div>
+            <div class="menuItem" id="Archive_Page">
+                <a href="../Archive_Page/Archive.html">Archive</a>
+            </div>
+
+            <div class="menuItem" id="About_Page">
+                <a href="../About_Page/About.html">About</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="menuButton">
+        <div class="menuIcon" onclick="toggleMenu()">
+            placeholder
+        </div>
+        <div id="menuName" onclick="toggleMenu()">
+            Shawn Qiu
+        </div>
+    </div>
+
+    <!-- page content -->
+    <div id="mainDisplay">
+        <div id="aboutContent">
+            <custom-spacing size="5rem"></custom-spacing>
+            <h1 id="aboutTitle">About Me</h1>
+
+            <h2>Artist Statement</h2>
+            <text-and-image leftWidth = "42">
+                ../../Assets/icon.jpeg,,
+                <!-- text div added by About.js-->
+            </text-and-image>
+            <custom-spacing size="5rem"></custom-spacing>
+
+            
+            <p id="contactInfo">
+                Email: shawn.qiu@nyu.edu<br>
+                GitHub: <a href="https://github.com/S1H2A3-art">https://github.com/S1H2A3-art</a><br>
+                LinkedIn: <a
+                    href="https://www.linkedin.com/in/shawn-qiu-123456789/">https://www.linkedin.com/in/shawn-qiu-123456789/</a>
+            </p>
+
+            <h2>Interested Concepts</h2>
+            <div id="interestedConceptsContainer">
+                 <!-- text div added by About.js-->
+            </div>
+
+            <custom-spacing size="5rem"></custom-spacing>
+
+            <h2>Skills</h2>
+            <div id="skillsDescriptionContainer">
+                 <!-- text div added by About.js-->
+            </div>
+
+            <custom-spacing size="5rem"></custom-spacing>
+
+            <h2>Featured Projects</h2>
+            <div id="featuredProjectsContainer">
+                 <!-- text div added by About.js-->
+            </div>
+
+            <custom-spacing size="15rem"></custom-spacing>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

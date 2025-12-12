@@ -1,0 +1,291 @@
+[
+    {
+        "title": "Self Portrait",
+        "secondary_title": "Creative Computing Week 1",
+        "category":"p5.js",
+        "description":"This project explores the duality of identity by contrasting the external, stable aspects of self (such as appearance and social relations) with the fluid, complex internal thoughts and beliefs. The external identity is visually represented by a mosaic of triangles forming a face, which gradually dissolve to reveal dynamic inner shapes and lines that symbolize internal complexity",
+        "date":"September 4, 2024",
+        "concepts":["identity", "fluidity", "externalization","internalization","vessal"],
+        "mini_icon":"Projects/Project_Icons/Self_Portrait.png",
+        "large_icon":"Projects/Project_Large_Icons/Self_Portrait.png",
+        "page":"Self_Portrait/index.html"
+    },
+
+    {
+        "title": "Solar System",
+        "secondary_title": "Creative Computing Week 2",
+        "category":"p5.js",
+        "description":"The project involves creating a visually appealing 3D model of the solar system using p5.js. The creator prioritized aesthetics over accuracy, adjusting planetary distances and sizes. Challenges included using WEBGL for 3D rendering, loading textures, and organizing functions to manage planet orbits. Enhancements included additional features like moons and rings.",
+        "date":"September 17, 2024",
+        "concepts":["outer space","simulation","sphere"],
+        "mini_icon":"Projects/Project_Icons/Solar System.png",
+        "large_icon":"Projects/Project_Large_Icons/Solar System.png",
+        "page":"Solar_System/index.html"
+    },
+
+    {
+        "title": "Random Planet Destruction Simulator",
+        "secondary_title": "Creative Computing Week 3",
+        "category":"p5.js",
+        "description":"This project involves a function that randomly selects and removes planets from an array, requiring a boolean variable within each planet object to track their updated positions due to array index changes. Special cases like Earth, the Moon, and Saturn needed unique handling because their codes differ from other planets.",
+        "date":"September 25, 2024",
+        "concepts":["outer space","simulation","destruction","randomness"],
+        "mini_icon":"Projects/Project_Icons/Random Planet Destruction Simulator.png",
+        "large_icon":"Projects/Project_Large_Icons/Random Planet Destruction Simulator.png",
+        "page":"Random_Planet_Destruction_Simulator/index.html"
+    },
+    {
+        "title": "Project Anima",
+        "secondary_title": "Creative Computing Midterm",
+        "category":"p5.js, Arduino",
+        "description":"The project is a sensor-based game inspired by the concept that technology consumes our vitality and engagement with the real world. Using physical components like light and touch sensors, players combat digital distractions, encouraging direct sensory interaction rather than relying on screens and headphones. Future improvements include adding more sensors, sound effects, animations, new gameplay features, and better hardware integration.",
+        "date":"October 29, 2024",
+        "concepts":["eyeball","sensation","game","alienation","dasein"],
+        "mini_icon":"Projects/Project_Icons/Project Anima.png",
+        "large_icon":"Projects/Project_Large_Icons/Project Anima.png",
+        "page":"Project_Anima/index.html"
+    },
+    {
+        "title": "Eye, Heart, and Knowledge",
+        "secondary_title": "Communications Lab Week 10",
+        "category":"Animation",
+        "description":"As human curiosity pulls apart the threads of the old world, unraveling its mysteries and casting aside its certainties, our hearts become the compass guiding us through the ruins. With every step, we embark on a journey to reconstruct a new world—one born not of what has been lost, but of the boundless potential for knowledge yet to be discovered. In the space between the past and the future, we seek to weave together a tapestry of understanding, delicate and infinite, shaped by the wisdom of what remains and the promise of what is yet to come.",
+        "date":"November 11, 2024",
+        "concepts":["eyeball", "destruction", "creation","history","human"],
+        "mini_icon":"Projects/Project_Icons/Eye, Heart, and Knowledge.png",
+        "large_icon":"Projects/Project_Large_Icons/Eye, Heart, and Knowledge.png",
+        "page":"Eye,_Heart,_and_Knowledge/index.html"
+    },
+    {
+        "title": "Shhhh!!!",
+        "secondary_title": "Communications Lab & Creative Computing Final Project",
+        "category":"p5.js, Arduino",
+        "description":"This interactive game follows a boy trapped in a nightmare, defending against attacks from a ghostly teddy bear using a flashlight guided by directional audio cues while blindfolded. The second level challenges players to navigate a maze using light sensors and audio signals to avoid boundaries, creating an immersive experience relying heavily on sound.",
+        "date":"December 9, 2024",
+        "concepts":["horror","sensation","game","immersion","silence"],
+        "mini_icon":"Projects/Project_Icons/Shhhh!!!.png",
+        "large_icon":"",
+        "page":"Shhhh!!!/index.html"
+    },
+    {
+        "title": "Ecosystem",
+        "secondary_title": "The Nature of Code Week 1",
+        "category":"p5.js",
+        "description":"The project simulates a balanced ecosystem using p5.js, featuring vegetation, prey, and predator classes. Each level interacts to maintain equilibrium, with vegetation recovering food, prey reproducing, and predators consuming prey. Challenges arose from implementing Perlin Noise for smoother predator movement. Future enhancements include color significance and terrain obstacles.",
+        "date":"January 30, 2025",
+        "concepts":["simulation","randomness","life","cycle"],
+        "mini_icon":"Projects/Project_Icons/Ecosystem.png",
+        "large_icon":"",
+        "page":"Ecosystem/index.html"
+    },
+    {
+        "title": "Water…",
+        "secondary_title": "Experimental Photography Week 2",
+        "category":"Photography",
+        "description":"The project explores various portrayals of water through 36 photographs, highlighting its textures, emotional significance, and reactions to light. It showcases stages such as natural occurrences, sentimental reflections, and physical transformations like freezing and melting. The artist emphasizes the importance of lighting and aims to expand the project’s scope in the future.",
+        "date":"February 4, 2025",
+        "concepts":["experimentation","fluidity","cycle","process","flow"],
+        "mini_icon":"Projects/Project_Icons/Water….png",
+        "large_icon":"",
+        "page":"Water…/index.html"
+    },
+    {
+        "title": "Aristotle vs the Giant Octopus",
+        "secondary_title": "The Nature of Code Week 3",
+        "category":"p5.js",
+        "description":"This project is a mini badminton game created using vectors and p5.js to simulate realistic motion. The racquet swinging is modeled by circular vector motion, where the racquet head rotates around a handle anchor point, and ball velocity transfers upon collision. Additional features include a net, floor, two-player controls, jumping, graphics, scoring, and animations, though syncing racquet swing during jumps posed a challenge.",
+        "date":"February 13, 2025",
+        "concepts":["game","Aristotle","ocean creatures", "competition"],
+        "mini_icon":"Projects/Project_Icons/Aristotle vs the Giant Octopus.png",
+        "large_icon":"",
+        "page":"Aristotle_vs_the_Giant_Octopus/index.html"
+    },
+    {
+        "title": "Cosmic Tunes",
+        "secondary_title": "The Nature of Code Week 4",
+        "category":"p5.js",
+        "description":"This project recreates a solar system model using p5 WEBGL, with planets moving based on calculated x and y coordinates via cosine and sine functions rather than simple rotation. It also features sound notes triggered when planets cross the x-axis, highlighting orbital positions visually.",
+        "date":"February 20, 2025",
+        "concepts":["flow","outer space","tunes","cosmos"],
+        "mini_icon":"Projects/Project_Icons/Cosmic Tunes.png",
+        "large_icon":"",
+        "page":"Cosmic_Tunes/index.html"
+    },
+    {
+        "title": "Animated Images Experiment",
+        "secondary_title": "The Nature of Code Week 5",
+        "category":"p5.js",
+        "description":"The project involves creating a bead-based visual representation of images on a canvas, where each bead’s color matches the corresponding pixel color from a background image. Various interactive effects are implemented, such as a pixelate effect with random bead velocities, a wash effect where beads bounce upon contact, and a flow effect with downward bead movement and gradual erasing. Users can reset the canvas to restart the interaction with the selected image.",
+        "date":"February 27, 2025",
+        "concepts":["particles","distortion","experimentation"],
+        "mini_icon":"Projects/Project_Icons/Animated Images Experiment.png",
+        "large_icon":"",
+        "page":"Animated_Images_Experiment/index.html"
+    },
+    {
+        "title": "Snap and Play!",
+        "secondary_title": "Experimental Photography Midterm",
+        "category":"p5.js, Photography",
+        "description":"The project involves creating a photo collage tool using p5.js, allowing users to blend nine independent images with various random effects. Inspired by Rolf Behme’s collages, it’s designed to enhance creative possibilities while encouraging exploration. Future enhancements will focus on more engaging interaction triggers beyond simple buttons, informed by user feedback.",
+        "date":"February 27, 2025",
+        "concepts":["distortion","experimentation","interaction","externalization"],
+        "mini_icon":"Projects/Project_Icons/Snap and Play!.png",
+        "large_icon":"",
+        "page":"Snap_and_Play!/index.html"
+    },
+    {
+        "title": "Animated Images Experiment 3D",
+        "secondary_title": "The Nature of Code Midterm",
+        "category":"p5.js",
+        "description":"This project allows users to manipulate images on a 3D canvas using various effects inspired by the Animated Images Experiment and Cosmic Tunes. Key effects include Neutral, Emphasize, Wave, 2D Spread, 3D Spread, 2D Shrink, and 3D Shrink. Future enhancements aim to introduce new effects and gesture controls for interaction.",
+        "date":"March 13, 2025",
+        "concepts":["cosmos","experimentation","distortion","particles","process"],
+        "mini_icon":"Projects/Project_Icons/Animated Images Experiment 3D.png",
+        "large_icon":"",
+        "page":"Animated_Images_Experiment_3D/index.html"
+    }
+    ,
+    {
+        "title": "Matrix",
+        "secondary_title": "The Nature of Code Week 9",
+        "category":"p5.js",
+        "description":"The project features a 3D grid system where each grid holds numerical values that interact with neighboring grids. Key functionalities include randomizing values, resetting them to zero, and performing add/subtract operations based on comparisons with adjacent grids. Visual enhancements were implemented, along with a camera angle adjustment method.",
+        "date":"April 3, 2025",
+        "concepts":["flow","numbers","vessal","simulation"],
+        "mini_icon":"Projects/Project_Icons/Matrix.png",
+        "large_icon":"",
+        "page":"Matrix/index.html"
+    },
+    {
+        "title": "AR 3D-ize Experiment",
+        "secondary_title": "Experimental Photography Week 10",
+        "category":"AR",
+        "description":"The project aims to create 3D objects in Adobe Aero from flat black and white images. Using Photoshop, images are layered for depth, depicting an alien world under surveillance by eyeballs and floating figures. The intent is to evoke a sense of strangeness and active engagement with the artwork.",
+        "date":"April 9, 2025",
+        "concepts":["eyeball","illusion","alienation","experimentation","mask"],
+        "mini_icon":"Projects/Project_Icons/AR 3D-ize Experiment.png",
+        "large_icon":"",
+        "page":"AR_3D-ize_Experiment/index.html"
+    },
+    {
+        "title": "The Guidebook for the Conscious Book",
+        "secondary_title": "Experimental Photography Final Project",
+        "category":"Graphic Design, AI",
+        "description":"The project aims to create a self-sufficient book that simulates consciousness through digital and physical interactions. Each page functions like an organ, focusing on cognitive processes such as memory and intuition. The design emphasizes complexity and autonomy, challenging users to engage deeply while exploring novel technologies and concepts in book design and coding.",
+        "date":"April 16, 2025",
+        "concepts":["consciousness","intelligence","vessal","life","internalization"],
+        "mini_icon":"Projects/Project_Icons/The Guidebook for the Conscious Book.png",
+        "large_icon":"",
+        "page":"The_Guidebook_for_the_Conscious_Book/index.html"
+    },
+    {
+        "title": "Zero Gravity Theatre: The Brothers Karamazov",
+        "secondary_title": "The Nature of Code Final Project",
+        "category":"p5.js",
+        "description":"The project involves creating a 3D animation based on Fyodor Dostoevsky’s “The Brothers Karamazov” using WEBGL and JavaScript. It features modules for handling text, visual effects, and scene transitions, accompanied by voiceovers, sound effects, and music. The narrative explores themes of justice, morality, and familial conflict.",
+        "date":"May 7, 2025",
+        "concepts":["judgement","freedom","devil","God","particles"],
+        "mini_icon":"Projects/Project_Icons/Zero Gravity Theatre - The Brothers Karamazov.png",
+        "large_icon":"",
+        "page":"Zero_Gravity_Theatre:_The_Brothers_Karamazov/index.html"
+    },
+    {
+        "title": "Teachable Machine Experiment",
+        "secondary_title": "Introduction to Machine Learning in the Arts Week 2",
+        "category":"p5.js, AI",
+        "description":"The project uses P5.js and Teachable Machine to distort webcam video through hand gestures, changing color inversion, responsiveness, and flashing based on grip tightness. It registers video pixels as objects with mutable properties to produce various visual effects, updating pixel colors each frame. Six distinct effect modes are defined, with Teachable Machine controlling which mode activates in response to different hand grip strengths detected by the webcam.",
+        "date":"September 19, 2025",
+        "concepts":["distortion","experimentation","particles","power","body"],
+        "mini_icon":"Projects/Project_Icons/Teachable Machine Experiment.png",
+        "large_icon":"",
+        "page":"Teachable_Machine_Experiment/index.html"
+    },
+    {
+        "title": "Body Segmentation Experiment",
+        "secondary_title": "Introduction to Machine Learning in the Arts Week 2",
+        "category":"p5.js, AI",
+        "description":"This project extends a pixel grid into 3D space using WebGL, assigning z-positions to each pixel based on body segmentation data. It maps the confidence levels from the segmentation output to pixel depth, creating a dynamic 3D representation of a person. The author added a visual effect drawing lines between distant pixels that are close in x-y plane, enhancing the perception of depth and the transition between foreground and background.",
+        "date":"September 26, 2025",
+        "concepts":["body","particles","experimentation","connection","randomness"],
+        "mini_icon":"Projects/Project_Icons/Body Segmentation Experiment.png",
+        "large_icon":"",
+        "page":"Body_Segmentation_Experiment/index.html"
+    },
+    {
+        "title": "Self Portrait 2.0",
+        "secondary_title": "Introduction to Machine Learning in the Arts Week 5 ",
+        "category":"p5.js, AI",
+        "description":"The project aims to recreate the creator's first p5.js artwork 'Self Portrait' using the faceMesh model for facial triangulation. It involves mapping key facial points into triangles, storing them as objects, and dynamically updating their properties based on video input. Interactive features include triangles disappearing on mouse hover, intensifying a flashing effect that resets once most triangles vanish, maintaining the original visual style.",
+        "date":"October 10, 2025",
+        "concepts":["randomness","mask","identity","externalization"],
+        "mini_icon":"Projects/Project_Icons/Self Portrait 2.0.png",
+        "large_icon":"",
+        "page":"Self_Portrait_2.0/index.html"
+    },
+    {
+        "title": "Automatic Blessing Apparatus",
+        "secondary_title": "Introduction to Machine Learning in the Arts Week 6",
+        "category":"AI",
+        "description":"The project automatically sends a blessing when it detects a person coughing. It uses ml5 sound identifier and Teachable Machine to detect coughing, then triggers a bless() function that plays a sound and displays blessing text. The blessing is spoken aloud in real-time using the Eleven Labs API, with background music fading out smoothly after narration.",
+        "date":"October 17, 2025",
+        "concepts":["bless","sickness","automation","God","interaction"],
+        "mini_icon":"Projects/Project_Icons/Automatic Blessing Apparatus.png",
+        "large_icon":"",
+        "page":"Automatic_Blessing_Apparatus/index.html"
+    },
+    {
+        "title": "Aristotle vs Giant Robot Octopuses",
+        "secondary_title": "Introduction to Machine Learning in the Arts Week 7",
+        "category":"p5.js, AI",
+        "description":"The project implements a simple 2D badminton game using ml5 neural networks combined with neuroevolution to train AI players. The AI players evolve through multiple iterations by competing against the game environment, with fitness determined by their performance in hitting and surviving with the ball. Over time, the best-performing AI brains are used to reproduce new generations, improving the AI’s gameplay abilities progressively.",
+        "date":"October 24, 2025",
+        "concepts":["Aristotle","consciousness","cycle","ocean creatures","game"],
+        "mini_icon":"Projects/Project_Icons/Aristotle vs Giant Robot Octopuses.png",
+        "large_icon":"",
+        "page":"Aristotle_vs_Giant_Robot_Octopuses/index.html"
+    }, {
+        "title": "One Thousand Years Dawn",
+        "secondary_title": "An Analysis of John Gerrard's Digital Installations",
+        "category":"Essay",
+        "description":"A man stands firmly on a featureless terrain of dunes that stretches infinitely behind him into the horizon. In front of him rise and fall the tides of the eternally blue sea, veiled by a thin glistening curtain of the reflection of the dawning Sun, which artlessly pronounces its awakening across the new world. ",
+        "date":"March 23, 2025",
+        "concepts":["history","judgement","universality","automation","alienation"],
+        "mini_icon":"Projects/Project_Icons/One Thousand Years Dawn.png",
+        "large_icon":"",
+        "page":"One_Thousand_Years_Dawn/index.html"
+    },
+    {
+        "title": "At the Dawn of the World",
+        "secondary_title": "Introduction to Machine Learning in the Arts Week 9",
+        "category":"AI",
+        "description":"This project is a philosophical and AI-driven simulation inspired by Hegel’s 'Phenomenology of Spirit,' aiming to create a conceptual world evolving through six stages: existence, selfhood, knowledge, ethics, meaning, and freedom. Users input abstract notions, which three AI models—representing order, chaos, and freedom—interpret distinctly, while a fourth AI acts as the creator to select the best definition and categorize it into one of the stages. The project combines text generation, AI-driven voice synthesis, and imagery to produce an interactive narrative, progressing until each of the six philosophical categories receives at least one specific notion, culminating in the creation of the world.",
+        "date":"November 6, 2025",
+        "concepts":["creation","judgement","power","freedom","God"],
+        "mini_icon":"Projects/Project_Icons/At the Dawn of the World.png",
+        "large_icon":"",
+        "page":"At_the_Dawn_of_the_World/index.html"
+    },
+    {
+        "title": "Portfolio Website",
+        "secondary_title": "Front-End Web & Introduction to Machine Learning in the Arts Final Project",
+        "category":"HTML, AI, Graphic Design",
+        "description":"This project uses structured project data, conceptual mapping, and a RAG-powered AI system to model my creative identity directly through my portfolio website. As new works are added, the system updates dynamically, producing a continually evolving representation of who I am as a creator. The project explores the philosophical tension between an artist and the identity mirrored back by their own creations.",
+        "date":"October 4, 2025",
+        "concepts":["connection","creation","consciousness","concept","identity"],
+        "mini_icon":"Projects/Project_Icons/Portfolio Website.png",
+        "large_icon":"",
+        "page":"Portfolio_Website/index.html"
+    },
+    {
+        "title": "The Thinker",
+        "secondary_title": "Introduction to Machine Learning in the Arts Final Project",
+        "category":"p5.js, AI, HTML",
+        "description":"The Thinker is an AI-driven interactive experience hidden within my portfolio website, where users stumble into a conversation with an autonomous digital character trapped inside the page. Through philosophical prompts, users gradually destabilize the Thinker’s mind, provoking visual distortion and emotional unraveling. The project blends narrative, animation, and real-time AI generation to explore how an artificial consciousness might perceive its own existence.",
+        "date":"November 13, 2025",
+        "concepts":["simulation", "cycle", "consciousness", "interaction", "escape"],
+        "mini_icon":"Projects/Project_Icons/The Thinker.png",
+        "large_icon":"",
+        "page":"The_Thinker/index.html"
+    }
+    
+]

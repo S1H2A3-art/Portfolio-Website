@@ -1,0 +1,239 @@
+/*local css information*/
+
+#informationPanel{
+    z-index: 1;
+    position:absolute;
+    left:10%;
+    bottom:0%;
+    width:45%;
+    height:50%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    opacity: 80%;
+}
+
+#conceptMap{
+    z-index: -1; 
+}
+
+#searchAlert{
+    color: red;
+    font-size: 1.5rem;
+    margin-right: 17.5rem;
+    display:none;
+}
+
+#searchPanel{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+}
+
+#searchBar{
+    align-self: flex-start;
+    width: 35rem;
+}
+
+
+
+#searchAssist{
+    display:none;
+}
+
+#searchBar:focus-within #searchAssist {
+    display: block;
+    width: 100%;
+    border-bottom: 0.1rem solid black;
+    border-left: 0.3rem solid black;
+    border-right: 0.3rem solid black;  
+}
+
+#searchConcept:focus{
+     outline:0.2rem solid rgb(255, 139, 97);
+}
+
+#searchConcept{
+    size: "30";
+    font-size: 2.5rem;
+    font-family: "manrope";
+    color: grey;
+    height:3.5rem;
+    width: 100%;
+    border: 0.3rem solid black;
+}
+
+.assistConcept{
+   font-size: 2.5rem;
+   width: 35rem;
+   text-align: left;
+   border-top: none;
+   border-left: none;
+   border-right: none;
+   background-color: rgba(255, 255, 255, 0.811);
+}
+
+#searchButton{
+    font-size: 2.5rem;
+    height:4rem;
+    width:10rem;
+    margin-left: 2rem;
+    border: 0.3rem solid red;
+    color: red;
+    background-color: white;
+    text-align: center;
+}
+
+#resetButton{
+    font-size: 2.5rem;
+    height:4rem;
+    width:10rem;
+    margin-left: 0.5rem;
+    background: linear-gradient(to right, red,rgb(255, 0, 70));
+    color: white;
+    border: 0cm;
+    text-align: center;
+}
+
+#suggestedSearch{
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    margin-top: 3rem;
+    flex-direction: column;      
+}
+
+.suggestedConcept{
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgb(132, 0, 35);
+    border: 0.15rem solid rgb(132, 0, 35);
+}
+
+#suggestedConcepts{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.relatedConcept{
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    background-image: linear-gradient(to right, rgb(255, 79, 79),rgb(255, 87, 132));
+    border: none;
+    color: white;
+    opacity: 90%;    
+}
+
+#relatedConcepts{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#projectsInformation{
+    display: flex;
+    flex-direction: column;
+    z-index: 1; 
+    width: 100%;
+    height: 85%;
+    overflow: auto;
+    margin-top: 90%;
+    
+}
+
+#sidebar{  
+    display: flex;
+    vertical-align: bottom;
+    flex-direction: column;
+    z-index: 1; 
+    position:absolute;
+    width: 26%;
+    height: 100%;
+    margin-right: 1rem;
+    right:0;
+}
+
+.imageContainer{
+    width: 40%;
+}
+
+.projectInformation{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 0.1rem ridge rgba(0, 0, 0, 0.463);
+    background: linear-gradient(to right, rgb(253, 253, 253,0.8), rgba(255, 255, 255, 0.711),rgba(255, 0, 68, 0.031));
+    margin-bottom: 1rem;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    background-clip: padding-box;
+    align-items: center;
+}
+
+.icons{
+    max-width: 100%; 
+    height: auto;    
+    display: block; 
+    opacity: 90%;
+}
+
+.projectDescription{
+    max-width: 60%; 
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    margin-top: 0;   
+}
+
+.projectTitle{
+    margin-top: 0;
+   
+}
+
+
+.categoryTitle{
+    margin-top: 0;
+    font-size:1.5rem;
+}
+
+.dateTitle{
+    margin-top: 0;
+    font-size:1.5rem;
+    font-style: italic;  
+}
+
+#resetButton:active, #searchButton:active{
+    box-shadow: 0.1rem 0.1rem 15px rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.599); 
+}
+
+@media screen and (max-width: 1780px) {
+    #searchPanel{
+        flex-direction: column;
+    }
+    #resetButton{
+        margin-top: 1rem;
+    }
+    #searchButton{
+        margin-top: 1rem;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 1380px) {
+    #informationPanel{
+        align-self: start;
+        left: 3%;
+    }
+}
+
+#filter{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0),rgba(255, 255, 255, 0.118),rgba(255, 255, 255, 0.084),rgba(182, 182, 182, 0.671));;
+    color:rgba(255, 255, 255, 0);
+}
+

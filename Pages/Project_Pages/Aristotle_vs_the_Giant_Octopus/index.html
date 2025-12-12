@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Aristotle vs the Giant Octopus</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions ="PLAYER1 LEFT: left arrow,   PLAYER1 RIGHT: right arrow, PLAYER1 JUMP: up arrow, PLAYER1 SWING: enter, PLAYER2 LEFT: A key, PLAYER2 RIGHT: D key, PLAYER2 JUMP: W key, PLAYER2 SWING: left shift"></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Intention</h3>
+      <p>To create a mini badminton game using vectors and p5.js.</p>
+
+      <h3>Process & Mechansim</h3>
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <image-gallery column="2" row="1" style="width:70%;" alt-prefix="Process & Mechansim">
+        page_asset/img1.jpg,
+        page_asset/img2.jpg
+      </image-gallery>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>I wanted to represent the swinging motion of a racquet using a circular motion. To create a circular motion using vectors, I first created two position vectors: an anchor point(center of the circular motion) and a point that rotates around the center(pos). To make a point rotate about the anchor, simply set the velocity to be a vector perpendicular to the vector of the rotating point minus the anchor point at every moment.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.webp" width="70%" alt="I wanted to represent the swinging motion of a racquet using a circular motion. To create a circular motion using vectors, I first create...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>I then made the anchor point the base of the handle of the racquet and the rotating point the center of the head of the racquet.</p>
+      <p>Then, I simply wrote a function that transfers the velocity of the head of the racquet to the ball when the two come in contact with each other.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.webp" width="70%" alt="Then, I simply wrote a function that transfers the velocity of the head of the racquet to the ball when the two come in contact with each...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img4.png" width="70%" alt="Then, I simply wrote a function that transfers the velocity of the head of the racquet to the ball when the two come in contact with each...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Next, I added some other basic properties of badminton(a net, a floor, two players facing opposite directions).Finally, I added a jump function, multiplayer controls and instructions, graphics and visual elements, and scores and an ending animation to make the game more complete and fun.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img5.webp"width="70%" alt="Next, I added some other basic properties of badminton(a net, a floor, two players facing opposite directions).Finally, I added a jump fu...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img6.png"width="70%" alt="Next, I added some other basic properties of badminton(a net, a floor, two players facing opposite directions).Finally, I added a jump fu...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img7.png"width="70%" alt="Next, I added some other basic properties of badminton(a net, a floor, two players facing opposite directions).Finally, I added a jump fu...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img8.png"width="70%" alt="Next, I added some other basic properties of badminton(a net, a floor, two players facing opposite directions).Finally, I added a jump fu...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Problems & Discoveries</h3>
+      <p>The biggest problem that I encountered is when I tried to make the racquet swing while a player is jumping. I am unable to synchronize the position vectors of the swinging motion with that of the jumping motion so that they coexist without influencing each other.
+While working on this project, however, I discovered ways to create circular motion using vectors and to use a hit function to transfer velocity from one object to another when two objects collide.
+</p>
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

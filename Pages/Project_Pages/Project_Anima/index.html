@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Project Anima</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+
+      <div id = "projectContainer">
+        <iframe style="width:100%; aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/S8NCYaxYPQM"
+          title="Project Anima" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Arduino Code + Circuit</h3>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <image-gallery column="2" row="1" alt-prefix="Arduino Code + Circuit">
+        page_asset/img1.png,
+        page_asset/img2.png
+      </image-gallery>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.jpg" alt="page_asset/img2.png">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Physical Components</h3>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <image-gallery column="3" row="1" alt-prefix="Physical Components">
+        page_asset/img4.jpg,
+        page_asset/img5.jpg,
+        page_asset/img6.jpg
+      </image-gallery>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>P5.JS Code</h3>
+      <p><a href="https://editor.p5js.org/Shawn_Qiu/sketches/eXzZyzIJf">Click link to view the code</a></p>
+      <h3>Inspiration</h3>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img7.png" alt="Inspiration">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <ul>
+        <li><p>The use of technology and digital media consumes our anima(or vitality): our ability to perceive the world through our own senses, as we rely so heavily on cameras to see and headphones to listen, instead of directly engaging in the world around us</p></li>
+        <li><p>The game is inspired by “Contract Anima,” prompting the player to use our physical senses(light sensor and the touch sensor) to combat all the digital information that our phone and devices are feeding us
+</p></li>
+      </ul>
+      <h3>Areas for Improvement</h3>
+      <ul>
+        <li>Add more sensors</li>
+         <li>Add sound effects </li>
+          <li>Make it into an arcade machine with its own screen and power source</li>
+           <li>Add new enemies, player abilities, and levels</li>
+            <li>Make the p5 code more efficient and organized</li>
+             <li>Add animations</li>
+              <li>Better organization of the wires</li>
+      </ul>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

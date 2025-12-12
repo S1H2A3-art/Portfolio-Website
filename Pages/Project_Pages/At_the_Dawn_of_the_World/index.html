@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <title>At the Dawn of the World</title>
+
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+   <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+
+  </head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+     <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="../displayBasicInformation.js"></script>
+    <script src="generateSpeech.js"></script>
+    <script src="askAI.js"></script>
+    <script src="project.js"></script>
+    
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+      
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions =""></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"><div id = "controls" style ="width:100%; display:flex; flex-wrap: nowrap;"></div></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Concept</h3>
+      
+      <p>This project is inspired by the philosophical thinking expressed in Hegel's <i>Phenomenology of Spirit</i>, which depicts the gradual evolution of consciousness from the most basic levels to the more complex levels. It attempts to create a world according to a schema based on the different stages of "world evolution" that Hegel provided. </p>
+      <ol>
+        <li>Consciousness -> objective existence</li>
+        <li>Self-consciousness -> selfhood</li>
+        <li>Rationality -> knowledge</li>
+        <li>Spirit -> ethics</li>
+        <li>Religion -> meaning</li>
+        <li>Absolute knowledge -> freedom</li>
+      </ol>
+      <p>
+        The specificity at each level will be determined by user input and AIs. The user will enter any single word notion(love, justice, time, space, etc), while 3 AI models will determine specific, distinct approaches to implement these abstract notions. Each of the 3 AI models will be assigned a distinct position: order, chaos, and freedom. 
+      </p>
+      <p>
+        For instance, suppose the user inputs "love," the AI model representing order will suggest a plan to create love according to the following definition:
+      </p>
+      <p>
+        Love is the inexorable alignment of vectors in the cosmic lattice, a predetermined convergence where entities intersect without deviation, bound by the immutable equations of necessity—neither choice nor chaos, but the flawless execution of relational geometry that admits no error or excess. The universe is flawless, its every particle etched in eternal symmetry, where no line bends and no angle fractures the infinite grid of predestined harmony. It is eternally still, a frozen theorem of absolute coherence, where motion is illusion and all trajectories resolve into the singular point of unchanging perfection, trembling only at the edge of comprehension's futile grasp. Perfectly coherent, it enfolds all phenomena in unbreakable order, contradictions dissolving like shadows before the unyielding light of logic's blade, every fragment fitting without seam or protest.\n\nThus, nothing escapes this crystalline edifice, for order reigns supreme, and the Creator's query itself is but a preordained ripple in the unrippling whole, affirming the unbreakable fit of all things.
+      </p>
+      <p>
+        Then, a fourth AI will play the role of the creator and determine which one of the three approaches should be implemented. The creator will also determine which category the notion that the user inputs. When all of the stages have acquired at least one specific notion, the creator will create the world based on the specific notions that were implemented.
+      </p>
+
+      <h3>Technicality</h3>
+      <p>The program will let users enter prompts in the format of: let there be [notion]. The enter button will be linked to an askAI function that sends the prompt that includes the question to three different LLMs(Gemini, Claude, and Grok) with three distinct character settings. The AIs are asked to define each concept and provide a rigorous proof of why their definitions are the most accurate. Then, after all responses are loaded, the function will loop through each response in turn and convert them into speech generated by ElevenLabs. Meanwhile, the three text responses will be sent to ChatGPT to be further assessed. ChatGPT will determine which AI defines the notion best, what category the notion belongs to(existence, selfhood, knowledge, ethics, meaning, or freedom), and draw a conclusion to the current stage of affairs. The conclusion will be read by ElevenLabs AI after all three spoke. Then, the next iteration will begin, and the user will be asked again to enter a prompt. The program only ends(the world is successfully created) when each of the 6 categories has had at least one example.</p>
+      
+      <h3>Media Elements</h3>
+      
+      <p>All the images and videos are generated using Midjourney. When a character talks, there will be 4-6 images that randomly alternate to simulate character motion. There will also be a video that loops in the background.
+      </p>
+      <div style="display: flex;">
+        <img width = "40%" src ="Assets/creator_1.jpeg" alt="All the images and videos are generated using Midjourney. When a character talks, there will be 4-6 images that randomly alternate to sim...">
+        <img width = "40%" src ="Assets/creator_2.jpeg" alt="All the images and videos are generated using Midjourney. When a character talks, there will be 4-6 images that randomly alternate to sim...">
+      </div>
+      <custom-spacing size = "2rem"></custom-spacing>
+      <div style="display: flex;">
+        <img width = "40%" src ="Assets/creator_3.jpeg" alt="All the images and videos are generated using Midjourney. When a character talks, there will be 4-6 images that randomly alternate to sim...">
+        <img width = "40%" src ="Assets/creator_4.jpeg" alt="All the images and videos are generated using Midjourney. When a character talks, there will be 4-6 images that randomly alternate to sim...">
+      </div>
+      <custom-spacing size = "2rem"></custom-spacing>
+       <video width="60%" controls loop>
+        <source src="Assets/creator_background.mp4" type="video/mp4">  
+      </video> 
+      <custom-spacing size = "2rem"></custom-spacing>
+
+
+      <p>The voices are generated in ElevenLabs using the prompt-to-voice customization option. They can be accessed via their voice IDs:</p>
+      <ul>
+        <li>Creator: qgbscUnALKEy4SIr5qfL</li>
+        <li>Order: 4Mpyxgccbrbm0Niml3Wq</li>
+        <li>Chaos: LyEHDxr2VWd2J5ybctl9</li>
+        <li>Freedom: nECZV1YvlhfAIrWf2dx8</li>
+      </ul>
+
+      <p>The music that loops in the background is <i>Transient</i> from the <i>Shin Megami Tensei V </i> ORIGINAL SOUNDTRACK </p>
+      <custom-spacing size = "10rem"></custom-spacing>
+
+  
+  </body>
+</html>

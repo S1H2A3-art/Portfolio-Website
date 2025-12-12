@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../Assets/icon.jpeg" type="image/x-icon">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Navigator</title>
+
+    <link rel="stylesheet" type="text/css" href="../../style.css">
+    <link rel="stylesheet" type="text/css" href="Explorer.css">
+
+    <script src="../../libraries/p5.min.js"></script>
+    <script src="../../libraries/p5.sound.min.js"></script>
+  </head>
+
+  <body class="noselect">
+    <script src="../showConceptsInformation.js" defer></script>
+    <script src="../../AIAssistant.js" defer></script><!--user doesn't select anything when dragging the mouse to move the camera-->
+      <script src="../processProjects.js"></script>
+    
+      <script src="../menuBar.js"></script>
+      <script src="camera.js"></script>
+      <script src="suggestedSearch.js"></script>
+      <div id="filter"> placeholder </div>
+      <div id="conceptMap">
+        <script src="conceptMap.js"></script>
+      </div>
+    
+      <script src="showProjects.js"></script>
+    
+      <!-- menubar logic from menuBar.js -->
+      <div id="menuBar">
+        <div class="menuItems">
+          <div class="menuItem" id="Explorer_Page">
+            <a href="Explorer.html">Explorer</a>
+          </div>
+          <div class="menuItem" id="Archive_Page">
+            <a href="../Archive_Page/Archive.html">Archive</a>
+          </div>
+          <div class="menuItem" id="About_Page">
+            <a href="../About_Page/About.html">About</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menuButton">
+        <div class="menuIcon" onclick="toggleMenu()"><!-- ->menuBar.js -->
+          placeholder
+        </div>
+        <div id="menuName"onclick="toggleMenu()"><!-- ->menuBar.js -->
+          Shawn Qiu
+        </div>
+      </div>
+
+      <!-- menu in the bottom left corner -->
+      <div id="informationPanel">
+        <h1 ><strong style ="font-size:5.5rem; background-image: radial-gradient(ellipse at center, rgb(31, 31, 31),rgb(0, 0, 0));
+    background-clip: text;
+    -webkit-text-fill-color: transparent; ">Concept Explorer</strong></h1>
+        <div id="searchAlert">
+          *please enter valid concept name
+        </div>
+        <div id="searchPanel">
+          <div id="searchBar">
+            <input id="searchConcept" type="text" placeholder="Enter concept"/>
+            <div id="searchAssist" style="max-height: 20rem; overflow: auto;">
+              <!-- innerHTML code from suggestedSearch.js -->
+            </div>
+          </div>
+
+        <div style="display: flex; flex-wrap: nowrap;">
+          <!-- ->conceptMap.js -->
+          <button id="searchButton" onclick="conceptFinder()">search</button>
+          <!-- ->conceptMap.js -->
+          <button id="resetButton" onclick="resetCamera()">reset</button>
+       </div> 
+      </div>
+      
+      <div id="suggestedSearch">
+        </div>
+          <!-- innerHTML code from suggestedSearch.js -->
+        </div>
+
+        <!-- bar on the right -->
+        <div id="sidebar">
+          <div id="projectsInformation">
+            <!-- innerHTML code from showProjects.js -->
+          </div>
+        </div>
+      </div>
+
+  </body>
+  
+</html>

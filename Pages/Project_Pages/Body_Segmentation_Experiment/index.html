@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <script src="../../../libraries/ml5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Body Segmentation Experiment</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="Bead.js"></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+      <control-instruction instructions =""></control-instruction>
+
+      <custom-spacing size = "5rem"></custom-spacing>
+
+      <div id = "projectContainer"></div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+      <h3>Process</h3>
+      <p>Building on last week’s code, I aimed to recreate the grid of pixel objects in 3D space and incorporate body segmentation. The first step is easy, as I used the WebGL library and assigned each pixel object a z-position property.</p>
+      <p>I referred to the <a href="https://editor.p5js.org/ml5/sketches/h6TN8umP5">code example</a> to help me implement the body segmentation code. Initially, I was unsure what kind of data body segmentation outputs, as it is not explicitly mentionedon the ML5 reference site. I used the following piece of code: <a href="https://editor.p5js.org/Shawn_Qiu/sketches/jPdIGdb2h">link</a> to help me test and understand what kind of raw data it stores in the data array. It turns out that the data arrays store a variable ranging from 0 to 255, which represents the confidence level (not 100% certain) of each pixel in the video being part of the human body. To know this, I drew the data array by mapping the confidence value of each pixel to the R value.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img1.png" alt="I referred to the code example to help me implement the body segmentation code. Initially, I was unsure what kind of data body segmentati...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>After determining what data is stored in the data array, I mapped the confidence level of each pixel to the z-position of the respective pixel object.</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img2.png" alt="After determining what data is stored in the data array, I mapped the confidence level of each pixel to the z-position of the respective ...">
+      <custom-spacing size = "3rem"></custom-spacing>
+      <p>Finally, I experimented with different visual effects. I decided to keep the drawLine() function, which randomly draws lines between two pixel objects when they are far apart in the z dimension and close to each other in terms of the x and y dimensions. I liked this effect because it creates a transition from the foreground (which is the background in real life) to the background (which is the person).</p>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src="page_asset/img3.png" alt="Finally, I experimented with different visual effects. I decided to keep the drawLine() function, which randomly draws lines between two ...">
+      
+      <custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>
