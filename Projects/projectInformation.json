@@ -181,7 +181,7 @@
     {
         "title": "Zero Gravity Theatre: The Brothers Karamazov",
         "secondary_title": "The Nature of Code Final Project",
-        "category":"p5.js",
+        "category":"p5.js, animation",
         "description":"The project involves creating a 3D animation based on Fyodor Dostoevsky’s “The Brothers Karamazov” using WEBGL and JavaScript. It features modules for handling text, visual effects, and scene transitions, accompanied by voiceovers, sound effects, and music. The narrative explores themes of justice, morality, and familial conflict.",
         "date":"May 7, 2025",
         "concepts":["judgement","freedom","devil","God","particles"],
@@ -286,6 +286,18 @@
         "mini_icon":"Projects/Project_Icons/The Thinker.png",
         "large_icon":"",
         "page":"The_Thinker/index.html"
+    },
+    {
+        "title": "Electric Guitar",
+        "secondary_title": "Physical Computing Week 1",
+        "category":"Arduino",
+        "description":"This project explores using guitar strings as conductive switches that send electrical signals to an Arduino when pressed against wired frets, allowing the computer to detect played notes. After testing conductivity, the creator improved contact areas with aluminum foil, designed a conductive guitar pick for smoother power transfer, and ultimately connected LEDs to indicate when certain frets were activated due to a no-coding constraint. Future plans include adding code for richer audiovisual effects, refining the electrical design, tracking individual strings, and replacing the broken string.",
+        "date":"February 1, 2026",
+        "concepts":["music","power","interaction"],
+        "mini_icon":"Projects/Project_Icons/Electric Guitar.png",
+        "large_icon":"",
+        "page":"Electric_Guitar/index.html"
     }
+
     
 ]

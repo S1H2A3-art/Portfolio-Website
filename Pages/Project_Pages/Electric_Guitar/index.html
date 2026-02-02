@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Electric Guitar</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+
+      <div id = "projectContainer">
+        <video width="100%" controls>
+<source src="video.mp4" type="video/mp4">
+
+</video>
+      </div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+     
+      <h3>Ideation</h3>
+      <p>I started by brainstorming some potentially conductive materials that I can use for the two sides of the switch:</p>
+     <ul>
+      <li>Water</li>
+      <li>Guitar Strings</li>
+     </ul>
+     <p>The guitar strings idea immediately arose as my guitar was sitting right beside me when I was brainstorming. I decided to stick with this idea because the guitar strings are consistently conductive (as I’ve tested with my multimeter) and could produce great results that combine sound and music with physical computing. I then designed a more detailed logic for the switch that is depicted in the diagram below:
+</p>
+<custom-spacing size = "3rem"></custom-spacing>
+<img src = "page_asset/d1.jpg" alt = "ideation diagram">
+<custom-spacing size = "3rem"></custom-spacing>
+<ol>
+    <li>A power source transmits electricity to each guitar string when strumming.</li>
+    <li>The guitar strings will carry the electricity to the frets.</li>
+    <li>When a string is pressed down on each fret, the wires underneath will carry the current from the guitar strings to the digital ports of an Arduino board. The computer will be able to know which fret the note is played on.
+</li>
+<li>The computer could visualise and add sound effects to the note played using the data.</li>
+</ol>
+<h3>Process and Challenges</h3>
+<custom-spacing size = "5rem"></custom-spacing>
+<text-and-image>
+    The first challenge I faced was figuring out how to transmit electricity from the guitar strings to the Arduino board. I decided to solder thin wires underneath each fret that would connect to the digital ports of the Arduino board. When a string is pressed down on a fret, the electricity would be able to flow from the guitar string to the wire underneath the fret, and then to the Arduino board.,,
+    page_asset/img1.jpeg
+</text-and-image>
+<custom-spacing size = "5rem"></custom-spacing>
+
+<p>
+   I expanded the contact area for each fret by wrapping aluminium foil around the wires. The effects of the change were apparent. Yet, the first 3 strings still had a difficult time coming into contact with the wires when pressed down because they are too tight. I had to loosen these wires, which made the guitar out of tune, for the lack of a better solution(I also broke the 1st string accidentally while tuning). Another issue is that sometimes pressing on the 1st fret will push the string to contact the wire on the 2nd fret. This was unavoidable with my current design, so I moved the wire to the 3rd fret to widen the gap between them. This mitigated the issue for the last 3 strings. Yet, the first two strings still encountered the same issue, though in a less significant manner. 
+</p>
+<custom-spacing size = "3rem"></custom-spacing>
+<img src = "page_asset/img8.jpeg" alt = "guitar wiring" width="70%">
+<custom-spacing size = "5rem"></custom-spacing>
+
+<text-and-image>
+Next, I wanted to optimise the way power is transferred to the guitar strings for smoother strumming(I was testing with simply a cut wire before). I ended up wrapping aluminium foil around my pre-existing guitar pick so that the entirety of the pick is conductive. A wire is then hot-glued to the pick that connects to a 3.3v Arduino Uno R4 port. This worked perfectly, and I went on to design what happens after electricity is passed onto the wires underneath the strings.
+,,   page_asset/img7.jpeg
+</text-and-image>
+<custom-spacing size = "5rem"></custom-spacing>
+
+<p>When I was reviewing the homework instructions, I noticed that I wasn’t allowed to write any code. I realised that it would make it impossible to create a very complicated logic around visualising the sound or adding sound effects. Consequently, I decided to simply connect LEDs to each of the frets to signal when strumming on the 1st or 3rd fret. The diagram below shows the specifics of how it works:
+</p>
+<custom-spacing size = "3rem"></custom-spacing>
+<img src = "page_asset/d2.jpeg" alt = "ideation diagram 2">
+<custom-spacing size = "3rem"></custom-spacing>
+<p>Finally, I taped the breadboard that connects the LEDs and the Arduino board to the guitar so that they are removable.
+</p>
+<custom-spacing size = "3rem"></custom-spacing>
+<image-gallery column="3" row="1">
+    page_asset/img4.JPG,
+    page_asset/img5.JPG,
+    page_asset/img6.jpeg
+</image-gallery>
+
+<h3>Next Steps</h3>
+<ul>
+    <li>Implement computer codes to allow for more interesting and complex effects.</li>
+    <li>Improve the logic of transmitting electricity from the guitar strings to the frets.</li>
+    <li>Connect the end of each string to digital ports so that the computer also knows which string is played. This makes it possible to coordinate the exact note that is played.</li>
+    <li>Get a new guitar string.</li>
+</ul>
+<custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>
