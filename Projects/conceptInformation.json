@@ -615,7 +615,8 @@
         "relatedProjects": [
             "Snap and Play!",
             "Automatic Blessing Apparatus",
-            "The Thinker"
+            "The Thinker",
+            "Electric Guitar"
         ],
         "relatedConcepts": [
             "externalization (relatedness: 1.00)",
@@ -623,13 +624,15 @@
             "cycle (relatedness: 1.00)",
             "experimentation (relatedness: 1.00)",
             "distortion (relatedness: 1.00)",
-            "interaction (relatedness: 3.00)",
+            "interaction (relatedness: 4.00)",
             "consciousness (relatedness: 1.00)",
             "God (relatedness: 1.00)",
+            "power (relatedness: 1.00)",
             "bless (relatedness: 1.00)",
             "sickness (relatedness: 1.00)",
             "automation (relatedness: 1.00)",
-            "escape (relatedness: 1.00)"
+            "escape (relatedness: 1.00)",
+            "music (relatedness: 1.00)"
         ]
     },
     {
@@ -789,18 +792,21 @@
         "conceptName": "power",
         "relatedProjects": [
             "Teachable Machine Experiment",
-            "At the Dawn of the World"
+            "At the Dawn of the World",
+            "Electric Guitar"
         ],
         "relatedConcepts": [
             "creation (relatedness: 1.00)",
             "experimentation (relatedness: 1.00)",
             "particles (relatedness: 1.00)",
             "distortion (relatedness: 1.00)",
+            "interaction (relatedness: 1.00)",
             "judgement (relatedness: 1.00)",
             "freedom (relatedness: 1.00)",
             "God (relatedness: 1.00)",
-            "power (relatedness: 2.00)",
-            "body (relatedness: 1.00)"
+            "power (relatedness: 3.00)",
+            "body (relatedness: 1.00)",
+            "music (relatedness: 1.00)"
         ]
     },
     {
@@ -918,6 +924,17 @@
             "interaction (relatedness: 1.00)",
             "consciousness (relatedness: 1.00)",
             "escape (relatedness: 1.00)"
+        ]
+    },
+    {
+        "conceptName": "music",
+        "relatedProjects": [
+            "Electric Guitar"
+        ],
+        "relatedConcepts": [
+            "interaction (relatedness: 1.00)",
+            "power (relatedness: 1.00)",
+            "music (relatedness: 1.00)"
         ]
     }
 ]
