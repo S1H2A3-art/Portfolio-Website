@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Electric Guitar</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+
+      <div id = "projectContainer">
+        <video width="100%" controls>
+<source src="video.mp4" type="video/mp4">
+
+</video>
+      </div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2>Documentation</h2>
+     <p>The intention of this project is to create a simple calculator that is able to compute the sum of two single-digit numbers. We started by first building it on a simulation program online to make sure that the logic was correct.</p>
+     <custom-spacing size = "3rem"></custom-spacing>
+     <img src = "page_asset/img1.png" alt = "calculator logic simulation">
+     <custom-spacing size = "3rem"></custom-spacing>
+     <img src = "page_asset/img2.png" alt = "schematic of the calculator">
+        <custom-spacing size = "3rem"></custom-spacing>
+        <p>After we were able to successfully build the calculator on the simulation program, we then moved on to building the physical version. Finally, we implemented the following code:</p>
+        <pre>
+        <code>
+
+int tensDigitPin = 5; 
+int onesDigitPin = 6;
+int firstInputPin = 2;
+int secondInputPin = 3;
+int calculatePin = 4;
+
+int firstNumber = 0;
+int secondNumber = 0;
+
+int firstButtonPreviousState = LOW;
+int secondButtonPreviousState = LOW;
+int calculateButtonPreviousState = LOW;
+
+
+void setup(){                                                
+    pinMode(tensDigitPin, OUTPUT);
+    pinMode(onesDigitPin, OUTPUT);
+    pinMode(firstInputPin, INPUT);
+    pinMode(secondInputPin, INPUT);
+    pinMode(calculatePin, INPUT);
+    
+    Serial.begin(9600);
+}
+
+    int firstButtonState;
+    int secondButtonState;
+    int calculateButtonState;
+
+void loop(){
+    firstButtonState = digitalRead(firstInputPin);
+    secondButtonState = digitalRead(secondInputPin);
+    calculateButtonState = digitalRead(calculatePin);
+    
+    if(firstButtonState != firstButtonPreviousState && firstButtonState == HIGH){
+        firstNumber = (firstNumber + 1) % 10;
+    }
+    
+    if(secondButtonState != secondButtonPreviousState && secondButtonState == HIGH){
+        secondNumber = (secondNumber + 1) % 10;
+    }
+    
+    if(calculateButtonState != calculateButtonPreviousState && calculateButtonState == HIGH){
+        int result = firstNumber + secondNumber;
+        Serial.print(result);
+        int tensDigit = result / 10;
+        int onesDigit = result % 10;
+        
+        for(int i = 0; i &lt; tensDigit; i++){
+        digitalWrite(tensDigitPin, HIGH);
+        delay(500);
+        digitalWrite(tensDigitPin, LOW);
+        delay(500);
+        }
+        
+        for(int i = 0; i &lt; onesDigit; i++){
+        digitalWrite(onesDigitPin, HIGH);
+        delay(500);
+        digitalWrite(onesDigitPin, LOW);
+        delay(500);
+        }
+        
+        firstNumber = 0;
+        secondNumber = 0;
+    }
+    
+    secondButtonPreviousState = secondButtonState;
+    firstButtonPreviousState = firstButtonState;
+    calculateButtonPreviousState = calculateButtonState;
+    delay(50);
+    
+    
+}
+
+        </code>
+        </pre>
+    
+
+
+<custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>

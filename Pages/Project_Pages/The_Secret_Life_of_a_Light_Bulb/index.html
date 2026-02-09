@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    
+    <meta charset="utf-8" />
+
+    <title>Electric Guitar</title>
+</head>
+  <body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+    
+    <!-- content -->
+    <div id = "mainDisplay">
+    <div id = "pageBody">
+
+      <!-- project -->
+      <custom-spacing size = "2rem"></custom-spacing>
+
+      <custom-seperator></custom-seperator>
+
+      <custom-spacing size = "3rem"></custom-spacing>
+
+
+      <div id = "projectContainer">
+      
+      </div>
+
+      <custom-spacing size = "10rem"></custom-spacing>
+      <custom-seperator></custom-seperator>
+      <custom-spacing size = "1rem"></custom-spacing>
+
+      <!-- documentation -->
+      <h2><i>2026.2.8 Ideation</i></h2>
+      <custom-spacing size = "3rem"></custom-spacing>
+      <img src = "page_asset/img1.png" alt = "ideation diagram">  
+      <custom-spacing size = "3rem"></custom-spacing>
+      <h3>Description</h3>
+      <p>We want to give personality to a light bulb by using different sensors. The user’s interaction with these sensors will impact how the light bulb reacts. For example, the user can talk to the light bulb through a microphone. They can touch (pressure sensor) the light bulb, or maybe the temperature or will influence how the light bulb reacts, etc. The light bulb will express different emotions such as joy, anger, nervousness, etc. through change in color and change in brightness. 
+</p>
+    <h3>Inspiration</h3>
+    <p>
+        We took inspiration from: 
+What if buttons have personality (<a href ="https://www.hhayeon.com/Expressive-Tactile-Controls">Hayeon Hwang’ Expressive Controls</a>)?
+What if your button is indecisive (<a href="https://dav1dyang.notion.site/Physical-Computing-c28aa7b8de984a899981dc78010ca532?p=f1ae734e075446fabf8d9821dfd58538&pm=c">David Yang’s Indecisive Button</a>)?
+
+We are inspired by the idea to give light bulb personalities and life. We want to program a programmable light bulb to express its feelings based on user interactions. 
+
+    </p>
+    <h3>Material List(tentative)</h3>
+    <ul>
+  <li>1 Arduino chip</li>      
+        <li>1 Programmable light bulb</li>
+        <li>Wires</li>
+        <li>1 Breadboard</li>
+        <li>1 Light sensor</li>
+        <li>1 Pressure sensor</li>
+        <li>1 Temperature sensor</li>
+        <li>1 Humidity sensor</li>
+        <li>Other sensors</li>
+    </ul>
+
+    <h3>Timeline</h3>
+    <p>
+        <strong>Week 1 </strong><br>
+        Step 1: buy Sensors and a programmable light bulb<br>
+        Step 2: design an algorithm for determining different emotions of the light bulb based on sensor inputs<br><br>
+
+        <strong>Week 2</strong><br>
+        Step 3: Animate the light bulb<br>
+        Step 4: finalize the physical design(wiring, physical mechanism, material, etc)
+
+    </p>
+<custom-spacing size = "10rem"></custom-spacing>
+
+    </div>
+    </div>
+    
+  </body>
+</html>
