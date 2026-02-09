@@ -298,17 +298,7 @@
         "large_icon":"",
         "page":"Electric_Guitar/index.html"
     },
-    {
-        "title": "Calculator Exercise",
-        "secondary_title": "Physical Computing Week 2",
-        "category":"Arduino",
-        "description":"This project builds a simple calculator using Arduino components. The calculator allows users to input 2 single-digit numbers and perform addition operations, with the output displayed using 2 LEDs.",
-        "date":"February 8, 2026",
-        "concepts":["calculation"],
-        "mini_icon":"Projects/Project_Icons/Calculator Exercise.png",
-        "large_icon":"",
-        "page":"Calculator_Exercise/index.html"
-    },
+    
     {
         "title": "The Secret Life of a Light Bulb",
         "secondary_title": "Physical Computing Midterm Project",
