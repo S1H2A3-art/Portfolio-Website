@@ -198,82 +198,89 @@ function setDuration(duration) {
   }
 }
 
-function pattern1Diag(randomness) {
+function pattern1Diag() {
   let changedLed = [];
 
   for (let leds of ledBoard) {
     for (let led of leds) {
       if (led.status) {
         for (let surroundLed of led.diag()) {
-          if (surroundLed && random() > randomness){
+        
             changedLed.push([surroundLed, led]);
            
-          }
+         
         }
       }
     }
   }
 
   for (let led of changedLed) {
+    if(!led[0]) continue;
     led[0].turnOn();
+    const colorDifference = led[1].targetColor.map((c, i) => c - led[0].ledColor[i]);
      led[0].setTargetColor(
-              wrapHue(led[1].targetColor[0] + 0.2*random(-noise, noise)),
-              clamp(led[1].targetColor[1] + 0.2*random(-noise, noise), 0, S_MAX),
-              clamp(led[1].targetColor[2] + random(-noise, noise), 0, B_MAX)
+              wrapHue(led[0].ledColor[0] + 0.7*colorDifference[0] + 0.2*random(-noise, noise)),
+              clamp(led[0].ledColor[1] + 0.7*colorDifference[1] + 0.2*random(-noise, noise), 0, S_MAX),
+              clamp(led[0].ledColor[2] + 0.7*colorDifference[2] + random(-noise, noise), 0, B_MAX)
             );
   }
 }
 
 let noise = 0; 
 
-function pattern1Cross(randomness) {
+function pattern1Cross() {
   let changedLed = [];
 
   for (let leds of ledBoard) {
     for (let led of leds) {
       if (led.status) {
         for (let surroundLed of led.cross()) {
-          if (surroundLed && random() > randomness){
+          
             changedLed.push([surroundLed, led]);   
-          }
+          
         }
       }
     }
   }
 
   for (let led of changedLed) {
+    if(!led[0]) continue;
     led[0].turnOn();
+    const colorDifference = led[1].targetColor.map((c, i) => c - led[0].ledColor[i]);
     led[0].setTargetColor(
-              wrapHue(led[1].targetColor[0] + 0.2*random(-noise, noise)),
-              clamp(led[1].targetColor[1] + 0.2*random(-noise, noise), 0, S_MAX),
-              clamp(led[1].targetColor[2] + random(-noise, noise), 0, B_MAX)
+                wrapHue(led[0].ledColor[0] + 0.7*colorDifference[0] + 0.2*random(-noise, noise)),
+                clamp(led[0].ledColor[1] + 0.7*colorDifference[1] + 0.2*random(-noise, noise), 0, S_MAX),
+                clamp(led[0].ledColor[2] + 0.7*colorDifference[2] + random(-noise, noise), 0, B_MAX)
             );
    
   }
 }
 
-function pattern1Neighbor(randomness) {
+function pattern1Neighbor() {
   let changedLed = [];
 
   for (let leds of ledBoard) {
     for (let led of leds) {
       if (led.status) {
         for (let surroundLed of led.neighbor()) {
-          if (surroundLed && random() > randomness){
+         
             changedLed.push([surroundLed, led]);
             
-          }
+          
         }
       }
     }
   }
 
   for (let led of changedLed) {
+    if(!led[0]) continue;
     led[0].turnOn();
+    const colorDifference = led[1].targetColor.map((c, i) => c - led[0].ledColor[i]);
+    
     led[0].setTargetColor(
-              wrapHue(led[1].targetColor[0] + 0.2*random(-noise, noise)),
-              clamp(led[1].targetColor[1] + 0.2*random(-noise, noise), 0, S_MAX),
-              clamp(led[1].targetColor[2] + random(-noise, noise), 0, B_MAX)
+              wrapHue(led[0].ledColor[0] + 0.7*colorDifference[0] + 0.2*random(-noise, noise)),
+              clamp(led[0].ledColor[1] + 0.7*colorDifference[1] + 0.2*random(-noise, noise), 0, S_MAX),
+              clamp(led[0].ledColor[2] + 0.7*colorDifference[2] + random(-noise, noise), 0, B_MAX)
             );
    
   }
@@ -281,21 +288,30 @@ function pattern1Neighbor(randomness) {
 
 function randomTurnOn(randomness) {
   if (random() > randomness) {
-    let x = floor(random(16));
-    let y = floor(random(16));
+    let x = floor(random(1,15));
+    let y = floor(random(1,15));
     ledBoard[x][y].turnOn();
+    ledBoard[x][y].duration = 900 + millis();
+    ledBoard[x+1][y].turnOn();
+    ledBoard[x][y+1].turnOn();
+    ledBoard[x-1][y].turnOn();
+    ledBoard[x][y-1].turnOn();
     const [h, s, b] = ledColor;
     ledBoard[x][y].setTargetColor(h, s, b);
+    ledBoard[x][y-1].setTargetColor(h, s, b);
+    ledBoard[x+1][y].setTargetColor(h, s, b);
+    ledBoard[x][y+1].setTargetColor(h, s, b);
+    ledBoard[x-1][y].setTargetColor(h, s, b);
   }
 }
 
 let ledColor = [0,0,0];
 let colorPicker;
 
-let colorChangeSpeed = 0.03;
+let colorChangeSpeed = 0.7;
 
 let canvas;
-let pattern = ["diag"];
+let pattern = ["cross"];
 let randomness = 0.3;
 
 function processColorInput(mode) {
@@ -394,7 +410,7 @@ function setup() {
   let colorChangeSpeedControlTitle = createElement("p", "change the speed of the color change(low to high):");
   colorChangeSpeedControlTitle.parent("colorChangeSpeedControl");
 
-  let colorChangeSpeedSlider = createSlider(0.1, 0.7, 0.4, 0.01);
+  let colorChangeSpeedSlider = createSlider(0.1, 0.7, 0.7, 0.01);
   colorChangeSpeedSlider.parent("colorChangeSpeedControl");
   colorChangeSpeedSlider.style("width", "30rem");
   colorChangeSpeedSlider.input(()=>{
@@ -429,7 +445,7 @@ function setup() {
     patternDiag.style("justify-content", "center");
 
 
-  patternDiagPicker = createCheckbox("", true);
+  patternDiagPicker = createCheckbox("", false);
   patternDiagPicker.id("patternDiagPicker");
   patternDiagPicker.style("transform-origin", "center");
   patternDiagPicker.style("transform", "scale(3)");
@@ -461,7 +477,7 @@ function setup() {
     
 
 
-  patternCrossPicker = createCheckbox("", false);
+  patternCrossPicker = createCheckbox("", true);
   patternCrossPicker.id("patternCrossPicker");
   patternCrossPicker.style("transform-origin", "center");
   patternCrossPicker.style("transform", "scale(3)");
@@ -570,11 +586,13 @@ function draw() {
   frameRate(8);
   background(0);
 
-  randomTurnOn(randomness);
+ 
   
-  if(pattern.includes("diag")) pattern1Diag(0);
-  if(pattern.includes("cross")) pattern1Cross(0);
-  if(pattern.includes("surround")) pattern1Neighbor(0);
+  if(pattern.includes("diag")) pattern1Diag();
+  if(pattern.includes("cross")) pattern1Cross();
+  if(pattern.includes("surround")) pattern1Neighbor();
+
+   randomTurnOn(randomness);
   
   setDuration(450);
 
