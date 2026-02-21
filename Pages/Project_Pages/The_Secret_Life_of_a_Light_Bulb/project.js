@@ -1,5 +1,5 @@
-function preload() {
-    displayBasicInformation();
+async function preload1() {
+    await displayBasicInformation();
 }
 
 class led {
@@ -346,8 +346,8 @@ function processColorInput(mode) {
 let warmthControlSlider;
 let brightnessControlSlider;
 
-async function setup() {
-    await new Promise(resolve => setTimeout(resolve, 100));
+async function setup1() {
+    await preload1();
     canvas = createCanvas(1000, 1000);
     canvas.parent("ledBoardSimulation");
     colorMode(HSB, H_MAX, S_MAX, B_MAX, ALPHA_MAX);
@@ -584,6 +584,10 @@ async function setup() {
 }
 
 async function draw() {
+  if(frameCount==1){
+    await setup1();
+    return;
+  }
     await new Promise(resolve => setTimeout(resolve, 100));
     frameRate(8);
     background(0);
