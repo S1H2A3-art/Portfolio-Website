@@ -8,7 +8,8 @@
         "concepts":["identity", "fluidity", "externalization","internalization","vessal"],
         "mini_icon":"Projects/Project_Icons/Self_Portrait.png",
         "large_icon":"Projects/Project_Large_Icons/Self_Portrait.png",
-        "page":"Self_Portrait/index.html"
+        "page":"Self_Portrait/index.html",
+        "status":"completed"
     },
 
     {
@@ -20,7 +21,8 @@
         "concepts":["outer space","simulation","sphere"],
         "mini_icon":"Projects/Project_Icons/Solar System.png",
         "large_icon":"Projects/Project_Large_Icons/Solar System.png",
-        "page":"Solar_System/index.html"
+        "page":"Solar_System/index.html",
+        "status":"completed"
     },
 
     {
@@ -32,7 +34,8 @@
         "concepts":["outer space","simulation","destruction","randomness"],
         "mini_icon":"Projects/Project_Icons/Random Planet Destruction Simulator.png",
         "large_icon":"Projects/Project_Large_Icons/Random Planet Destruction Simulator.png",
-        "page":"Random_Planet_Destruction_Simulator/index.html"
+        "page":"Random_Planet_Destruction_Simulator/index.html",
+        "status":"completed"
     },
     {
         "title": "Project Anima",
@@ -43,7 +46,8 @@
         "concepts":["eyeball","sensation","game","alienation","dasein"],
         "mini_icon":"Projects/Project_Icons/Project Anima.png",
         "large_icon":"Projects/Project_Large_Icons/Project Anima.png",
-        "page":"Project_Anima/index.html"
+        "page":"Project_Anima/index.html",
+        "status":"completed"
     },
     {
         "title": "Eye, Heart, and Knowledge",
@@ -54,7 +58,8 @@
         "concepts":["eyeball", "destruction", "creation","history","human"],
         "mini_icon":"Projects/Project_Icons/Eye, Heart, and Knowledge.png",
         "large_icon":"Projects/Project_Large_Icons/Eye, Heart, and Knowledge.png",
-        "page":"Eye,_Heart,_and_Knowledge/index.html"
+        "page":"Eye,_Heart,_and_Knowledge/index.html",
+        "status":"completed"
     },
     {
         "title": "Shhhh!!!",
@@ -65,7 +70,8 @@
         "concepts":["horror","sensation","game","immersion","silence"],
         "mini_icon":"Projects/Project_Icons/Shhhh!!!.png",
         "large_icon":"",
-        "page":"Shhhh!!!/index.html"
+        "page":"Shhhh!!!/index.html",
+        "status":"completed"
     },
     {
         "title": "Ecosystem",
@@ -76,7 +82,8 @@
         "concepts":["simulation","randomness","life","cycle"],
         "mini_icon":"Projects/Project_Icons/Ecosystem.png",
         "large_icon":"",
-        "page":"Ecosystem/index.html"
+        "page":"Ecosystem/index.html",
+        "status":"completed"
     },
     {
         "title": "Water…",
@@ -87,7 +94,8 @@
         "concepts":["experimentation","fluidity","cycle","process","flow"],
         "mini_icon":"Projects/Project_Icons/Water….png",
         "large_icon":"",
-        "page":"Water…/index.html"
+        "page":"Water…/index.html",
+        "status":"completed"
     },
     {
         "title": "Aristotle vs the Giant Octopus",
@@ -98,7 +106,8 @@
         "concepts":["game","Aristotle","ocean creatures", "competition"],
         "mini_icon":"Projects/Project_Icons/Aristotle vs the Giant Octopus.png",
         "large_icon":"",
-        "page":"Aristotle_vs_the_Giant_Octopus/index.html"
+        "page":"Aristotle_vs_the_Giant_Octopus/index.html",
+        "status":"completed"
     },
     {
         "title": "Cosmic Tunes",
@@ -109,7 +118,8 @@
         "concepts":["flow","outer space","tunes","cosmos"],
         "mini_icon":"Projects/Project_Icons/Cosmic Tunes.png",
         "large_icon":"",
-        "page":"Cosmic_Tunes/index.html"
+        "page":"Cosmic_Tunes/index.html",
+        "status":"completed"
     },
     {
         "title": "Animated Images Experiment",
@@ -120,7 +130,8 @@
         "concepts":["particles","distortion","experimentation"],
         "mini_icon":"Projects/Project_Icons/Animated Images Experiment.png",
         "large_icon":"",
-        "page":"Animated_Images_Experiment/index.html"
+        "page":"Animated_Images_Experiment/index.html",
+        "status":"completed"
     },
     {
         "title": "Snap and Play!",
@@ -131,7 +142,8 @@
         "concepts":["distortion","experimentation","interaction","externalization"],
         "mini_icon":"Projects/Project_Icons/Snap and Play!.png",
         "large_icon":"",
-        "page":"Snap_and_Play!/index.html"
+        "page":"Snap_and_Play!/index.html",
+        "status":"completed"
     },
     {
         "title": "Animated Images Experiment 3D",
@@ -142,7 +154,8 @@
         "concepts":["cosmos","experimentation","distortion","particles","process"],
         "mini_icon":"Projects/Project_Icons/Animated Images Experiment 3D.png",
         "large_icon":"",
-        "page":"Animated_Images_Experiment_3D/index.html"
+        "page":"Animated_Images_Experiment_3D/index.html",
+        "status":"completed"
     }
     ,
     {
@@ -154,7 +167,8 @@
         "concepts":["flow","numbers","vessal","simulation"],
         "mini_icon":"Projects/Project_Icons/Matrix.png",
         "large_icon":"",
-        "page":"Matrix/index.html"
+        "page":"Matrix/index.html",
+        "status":"completed"
     },
     {
         "title": "AR 3D-ize Experiment",
@@ -165,7 +179,8 @@
         "concepts":["eyeball","illusion","alienation","experimentation","mask"],
         "mini_icon":"Projects/Project_Icons/AR 3D-ize Experiment.png",
         "large_icon":"",
-        "page":"AR_3D-ize_Experiment/index.html"
+        "page":"AR_3D-ize_Experiment/index.html",
+        "status":"completed"
     },
     {
         "title": "The Guidebook for the Conscious Book",
@@ -176,7 +191,8 @@
         "concepts":["consciousness","intelligence","vessal","life","internalization"],
         "mini_icon":"Projects/Project_Icons/The Guidebook for the Conscious Book.png",
         "large_icon":"",
-        "page":"The_Guidebook_for_the_Conscious_Book/index.html"
+        "page":"The_Guidebook_for_the_Conscious_Book/index.html",
+        "status":"completed"
     },
     {
         "title": "Zero Gravity Theatre: The Brothers Karamazov",
@@ -187,7 +203,8 @@
         "concepts":["judgement","freedom","devil","God","particles"],
         "mini_icon":"Projects/Project_Icons/Zero Gravity Theatre - The Brothers Karamazov.png",
         "large_icon":"",
-        "page":"Zero_Gravity_Theatre:_The_Brothers_Karamazov/index.html"
+        "page":"Zero_Gravity_Theatre:_The_Brothers_Karamazov/index.html",
+        "status":"completed"
     },
     {
         "title": "Teachable Machine Experiment",
@@ -198,7 +215,8 @@
         "concepts":["distortion","experimentation","particles","power","body"],
         "mini_icon":"Projects/Project_Icons/Teachable Machine Experiment.png",
         "large_icon":"",
-        "page":"Teachable_Machine_Experiment/index.html"
+        "page":"Teachable_Machine_Experiment/index.html",
+        "status":"completed"
     },
     {
         "title": "Body Segmentation Experiment",
@@ -209,7 +227,8 @@
         "concepts":["body","particles","experimentation","connection","randomness"],
         "mini_icon":"Projects/Project_Icons/Body Segmentation Experiment.png",
         "large_icon":"",
-        "page":"Body_Segmentation_Experiment/index.html"
+        "page":"Body_Segmentation_Experiment/index.html",
+        "status":"completed"
     },
     {
         "title": "Self Portrait 2.0",
@@ -220,7 +239,8 @@
         "concepts":["randomness","mask","identity","externalization"],
         "mini_icon":"Projects/Project_Icons/Self Portrait 2.0.png",
         "large_icon":"",
-        "page":"Self_Portrait_2.0/index.html"
+        "page":"Self_Portrait_2.0/index.html",
+        "status":"completed"
     },
     {
         "title": "Automatic Blessing Apparatus",
@@ -231,7 +251,8 @@
         "concepts":["bless","sickness","automation","God","interaction"],
         "mini_icon":"Projects/Project_Icons/Automatic Blessing Apparatus.png",
         "large_icon":"",
-        "page":"Automatic_Blessing_Apparatus/index.html"
+        "page":"Automatic_Blessing_Apparatus/index.html",
+        "status":"completed"
     },
     {
         "title": "Aristotle vs Giant Robot Octopuses",
@@ -242,7 +263,8 @@
         "concepts":["Aristotle","consciousness","cycle","ocean creatures","game"],
         "mini_icon":"Projects/Project_Icons/Aristotle vs Giant Robot Octopuses.png",
         "large_icon":"",
-        "page":"Aristotle_vs_Giant_Robot_Octopuses/index.html"
+        "page":"Aristotle_vs_Giant_Robot_Octopuses/index.html",
+        "status":"completed"
     }, {
         "title": "One Thousand Years Dawn",
         "secondary_title": "An Analysis of John Gerrard's Digital Installations",
@@ -252,7 +274,8 @@
         "concepts":["history","judgement","universality","automation","alienation"],
         "mini_icon":"Projects/Project_Icons/One Thousand Years Dawn.png",
         "large_icon":"",
-        "page":"One_Thousand_Years_Dawn/index.html"
+        "page":"One_Thousand_Years_Dawn/index.html",
+        "status":"completed"
     },
     {
         "title": "At the Dawn of the World",
@@ -263,7 +286,8 @@
         "concepts":["creation","judgement","power","freedom","God"],
         "mini_icon":"Projects/Project_Icons/At the Dawn of the World.png",
         "large_icon":"",
-        "page":"At_the_Dawn_of_the_World/index.html"
+        "page":"At_the_Dawn_of_the_World/index.html",
+        "status":"completed"
     },
     {
         "title": "Portfolio Website",
@@ -274,7 +298,8 @@
         "concepts":["connection","creation","consciousness","concept","identity"],
         "mini_icon":"Projects/Project_Icons/Portfolio Website.png",
         "large_icon":"",
-        "page":"Portfolio_Website/index.html"
+        "page":"Portfolio_Website/index.html",
+        "status":"completed"
     },
     {
         "title": "The Thinker",
@@ -285,7 +310,8 @@
         "concepts":["simulation", "cycle", "consciousness", "interaction", "escape"],
         "mini_icon":"Projects/Project_Icons/The Thinker.png",
         "large_icon":"",
-        "page":"The_Thinker/index.html"
+        "page":"The_Thinker/index.html",
+        "status":"completed"
     },
     {
         "title": "Electric Guitar",
@@ -296,7 +322,8 @@
         "concepts":["music","power","interaction"],
         "mini_icon":"Projects/Project_Icons/Electric Guitar.png",
         "large_icon":"",
-        "page":"Electric_Guitar/index.html"
+        "page":"Electric_Guitar/index.html",
+        "status":"completed"
     },
     
     {
@@ -308,7 +335,8 @@
         "concepts":["light","life","interaction","sensation"],
         "mini_icon":"Projects/Project_Icons/The Secret Life of a Light Bulb.png",
         "large_icon":"",
-        "page":"The_Secret_Life_of_a_Light_Bulb/index.html"
+        "page":"The_Secret_Life_of_a_Light_Bulb/index.html",
+        "status":"in progress"
     }
 
     

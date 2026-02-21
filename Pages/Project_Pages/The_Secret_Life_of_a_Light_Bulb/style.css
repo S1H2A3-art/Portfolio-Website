@@ -1,0 +1,15 @@
+#ledBoardSimulation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+
+#simulationControl {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    justify-content: flex-start;
+    gap: 1rem;
+}
