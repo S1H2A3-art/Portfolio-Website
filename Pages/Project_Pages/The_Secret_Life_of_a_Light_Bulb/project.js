@@ -28,110 +28,110 @@ async function preload1() {
 
     ledBoardModePicker.input(() => {
         mode = ledBoardModePicker.value();
-            if (mode == "Feeling") {
-                turnOffAll();
-                
-                randomness = randomTurnOnPicker.value();
-                noise = colorSpreadNoiseSlider.value();
-                colorPicker.value(color(0,100,100));
-                ledColor = hexToHsb(colorPicker.value());
-                warmthControlSlider.value(map(ledColor[0], 0, H_MAX - 140, 0, 100));
-                if(patternDiagPicker.checked() && !pattern.includes("diag")){
-                    pattern.push("diag");
-                }else if(!patternDiagPicker.checked() && pattern.includes("diag")){
-                    pattern = pattern.filter(p => p !== "diag");
-                }
-                if(patternCrossPicker.checked() && !pattern.includes("cross")){
-                    pattern.push("cross");
-                }else if(!patternCrossPicker.checked() && pattern.includes("cross")){
-                    pattern = pattern.filter(p => p !== "cross");
-                }
-                if(patternSurroundPicker.checked() && !pattern.includes("surround")){
-                    pattern.push("surround");
+        if (mode == "Feeling") {
+            turnOffAll();
 
-                }else if(!patternSurroundPicker.checked() && pattern.includes("surround")){
-                    pattern = pattern.filter(p => p !== "surround");
-                }
+            randomness = randomTurnOnPicker.value();
+            noise = colorSpreadNoiseSlider.value();
+            colorPicker.value(color(0, 100, 100));
+            ledColor = hexToHsb(colorPicker.value());
+            warmthControlSlider.value(map(ledColor[0], 0, H_MAX - 140, 0, 100));
+            if (patternDiagPicker.checked() && !pattern.includes("diag")) {
+                pattern.push("diag");
+            } else if (!patternDiagPicker.checked() && pattern.includes("diag")) {
+                pattern = pattern.filter(p => p !== "diag");
+            }
+            if (patternCrossPicker.checked() && !pattern.includes("cross")) {
+                pattern.push("cross");
+            } else if (!patternCrossPicker.checked() && pattern.includes("cross")) {
+                pattern = pattern.filter(p => p !== "cross");
+            }
+            if (patternSurroundPicker.checked() && !pattern.includes("surround")) {
+                pattern.push("surround");
 
-                colorControl.style("display", "flex");
-                warmthControl.style("display", "flex");
-                brightnessControl.style("display", "flex");
-                patternControl.style("display", "flex");
-                randomTurnOnControl.style("display", "flex");
-                colorSpreadNoiseControl.style("display", "flex");
-                colorChangeSpeedControl.style("display", "flex");
-                
-            } else if(mode == "Temperature"){
-                turnOffAll();
-                ledBoard[7][7].turnOn();
-                ledBoard[7][8].turnOn();
-                ledBoard[8][7].turnOn();
-                ledBoard[8][8].turnOn();
-                
-                ledBoard[7][7].duration = 999999;
-                ledBoard[7][8].duration = 999999;   
-                ledBoard[8][7].duration = 999999;
-                ledBoard[8][8].duration = 999999;
-                pattern = ["surround"];
-                noise = 5;
-                randomness = 1;
-                colorControl.style("display", "none");
-                warmthControl.style("display", "flex");
-                brightnessControl.style("display", "none");
-                patternControl.style("display", "none");
-                randomTurnOnControl.style("display", "none");
-                colorSpreadNoiseControl.style("display", "none");
-                colorChangeSpeedControl.style("display", "none");
-            }else if(mode == "Brightness"){
-                turnOffAll();
-                ledBoard[7][7].turnOn();
-                ledBoard[7][8].turnOn();
-                ledBoard[8][7].turnOn();
-                ledBoard[8][8].turnOn();
-                
-                ledBoard[7][7].duration = 999999;
-                ledBoard[7][8].duration = 999999;   
-                ledBoard[8][7].duration = 999999;
-                ledBoard[8][8].duration = 999999;
-                pattern = ["surround"];
-                noise = 1;
-                randomness = 1;
-                colorControl.style("display", "none");
-                warmthControl.style("display", "none");
-                brightnessControl.style("display", "flex");
-                patternControl.style("display", "none");
-                randomTurnOnControl.style("display", "none");
-                colorSpreadNoiseControl.style("display", "none");
-                colorChangeSpeedControl.style("display", "none");
-            }else if(mode == "Humidity"){
-                turnOffAll();
-                turnOnAll();
-                randomness = 1;
-                pattern = ["cross"];
-                colorControl.style("display", "none");
-                warmthControl.style("display", "none");
-                brightnessControl.style("display", "none");
-                patternControl.style("display", "none");
-                randomTurnOnControl.style("display", "none");
-                colorSpreadNoiseControl.style("display", "flex");
-                colorChangeSpeedControl.style("display", "none");
-
-            }else if(mode == "Noise"){
-                turnOffAll();
-                pattern = [];
-                randomness = randomTurnOnPicker.value();
-                noise = 1;
-                colorControl.style("display", "none");
-                warmthControl.style("display", "none");
-                brightnessControl.style("display", "none");
-                patternControl.style("display", "none");
-                randomTurnOnControl.style("display", "flex");
-                colorSpreadNoiseControl.style("display", "none");
-                colorChangeSpeedControl.style("display", "none");
+            } else if (!patternSurroundPicker.checked() && pattern.includes("surround")) {
+                pattern = pattern.filter(p => p !== "surround");
             }
 
+            colorControl.style("display", "flex");
+            warmthControl.style("display", "flex");
+            brightnessControl.style("display", "flex");
+            patternControl.style("display", "flex");
+            randomTurnOnControl.style("display", "flex");
+            colorSpreadNoiseControl.style("display", "flex");
+            colorChangeSpeedControl.style("display", "flex");
+
+        } else if (mode == "Temperature") {
+            turnOffAll();
+            ledBoard[7][7].turnOn();
+            ledBoard[7][8].turnOn();
+            ledBoard[8][7].turnOn();
+            ledBoard[8][8].turnOn();
+
+            ledBoard[7][7].duration = 999999;
+            ledBoard[7][8].duration = 999999;
+            ledBoard[8][7].duration = 999999;
+            ledBoard[8][8].duration = 999999;
+            pattern = ["surround"];
+            noise = 5;
+            randomness = 1;
+            colorControl.style("display", "none");
+            warmthControl.style("display", "flex");
+            brightnessControl.style("display", "none");
+            patternControl.style("display", "none");
+            randomTurnOnControl.style("display", "none");
+            colorSpreadNoiseControl.style("display", "none");
+            colorChangeSpeedControl.style("display", "none");
+        } else if (mode == "Brightness") {
+            turnOffAll();
+            ledBoard[7][7].turnOn();
+            ledBoard[7][8].turnOn();
+            ledBoard[8][7].turnOn();
+            ledBoard[8][8].turnOn();
+
+            ledBoard[7][7].duration = 999999;
+            ledBoard[7][8].duration = 999999;
+            ledBoard[8][7].duration = 999999;
+            ledBoard[8][8].duration = 999999;
+            pattern = ["surround"];
+            noise = 1;
+            randomness = 1;
+            colorControl.style("display", "none");
+            warmthControl.style("display", "none");
+            brightnessControl.style("display", "flex");
+            patternControl.style("display", "none");
+            randomTurnOnControl.style("display", "none");
+            colorSpreadNoiseControl.style("display", "none");
+            colorChangeSpeedControl.style("display", "none");
+        } else if (mode == "Humidity") {
+            turnOffAll();
+            turnOnAll();
+            randomness = 1;
+            pattern = ["cross"];
+            colorControl.style("display", "none");
+            warmthControl.style("display", "none");
+            brightnessControl.style("display", "none");
+            patternControl.style("display", "none");
+            randomTurnOnControl.style("display", "none");
+            colorSpreadNoiseControl.style("display", "flex");
+            colorChangeSpeedControl.style("display", "none");
+
+        } else if (mode == "Noise") {
+            turnOffAll();
+            pattern = [];
+            randomness = randomTurnOnPicker.value();
+            noise = 1;
+            colorControl.style("display", "none");
+            warmthControl.style("display", "none");
+            brightnessControl.style("display", "none");
+            patternControl.style("display", "none");
+            randomTurnOnControl.style("display", "flex");
+            colorSpreadNoiseControl.style("display", "none");
+            colorChangeSpeedControl.style("display", "none");
+        }
+
     });
-   
+
 
     let colorControl = createDiv();
     colorControl.parent("simulationControl");
@@ -617,10 +617,10 @@ function pattern1Neighbor() {
         for (let led of leds) {
             if (led.status) {
                 for (let surroundLed of led.neighbor()) {
-                    if(mode == "Temperature" && surroundLed && surroundLed.position[0] >= 7 && surroundLed.position[0] <= 8 && surroundLed.position[1] >= 7 && surroundLed.position[1] <= 8){
+                    if (mode == "Temperature" && surroundLed && surroundLed.position[0] >= 7 && surroundLed.position[0] <= 8 && surroundLed.position[1] >= 7 && surroundLed.position[1] <= 8) {
 
-                    }else{
-                    changedLed.push([surroundLed, led]);
+                    } else {
+                        changedLed.push([surroundLed, led]);
                     }
 
 
@@ -709,7 +709,7 @@ async function setup1() {
     canvas.parent("ledBoardSimulation");
     colorMode(HSB, H_MAX, S_MAX, B_MAX, ALPHA_MAX);
 
-    
+
 
     ellipseMode(CORNER);
     textAlign(CENTER, CENTER);
@@ -724,17 +724,17 @@ async function setup1() {
     }
 
     turnOffAll();
-    
+
 
 }
 
 async function draw() {
-  if(frameCount==1){
-    await setup1();
-    return;
-  }
+    if (frameCount == 1) {
+        await setup1();
+        return;
+    }
 
-   
+
     frameRate(8);
     background(0);
 
@@ -742,20 +742,20 @@ async function draw() {
     if (pattern.includes("cross")) pattern1Cross();
     if (pattern.includes("surround")) pattern1Neighbor();
 
-    if(mode == "Temperature"){
-    ledBoard[7][7].setTargetColor(map(warmthControlSlider.value(), 0, 100, 0, H_MAX - 140), 100, 100);
-                ledBoard[7][8].setTargetColor(map(warmthControlSlider.value(), 0, 100, 0, H_MAX - 140), 100, 100);
-                ledBoard[8][7].setTargetColor(map(warmthControlSlider.value(), 0, 100, 0, H_MAX - 140), 100, 100);
-                ledBoard[8][8].setTargetColor(map(warmthControlSlider.value(), 0, 100, 0, H_MAX - 140), 100, 100);
-   }else if(mode == "Brightness"){
-    ledBoard[7][7].setTargetColor(ledColor[0], 100, map(brightnessControlSlider.value(), 0, 100, 10, B_MAX));
-    ledBoard[7][8].setTargetColor(ledColor[0], 100, map(brightnessControlSlider.value(), 0, 100, 10, B_MAX));
-    ledBoard[8][7].setTargetColor(ledColor[0], 100, map(brightnessControlSlider.value(), 0, 100, 10, B_MAX));
-    ledBoard[8][8].setTargetColor(ledColor[0], 100, map(brightnessControlSlider.value(), 0, 100, 10, B_MAX));
-   }else if(mode == "Noise"){
-    randomTurnOn(randomness);
-    randomColor();
-   }
+    if (mode == "Temperature") {
+        ledBoard[7][7].setTargetColor(map(warmthControlSlider.value(), 0, 100, 0, H_MAX - 140), 100, 100);
+        ledBoard[7][8].setTargetColor(map(warmthControlSlider.value(), 0, 100, 0, H_MAX - 140), 100, 100);
+        ledBoard[8][7].setTargetColor(map(warmthControlSlider.value(), 0, 100, 0, H_MAX - 140), 100, 100);
+        ledBoard[8][8].setTargetColor(map(warmthControlSlider.value(), 0, 100, 0, H_MAX - 140), 100, 100);
+    } else if (mode == "Brightness") {
+        ledBoard[7][7].setTargetColor(ledColor[0], 100, map(brightnessControlSlider.value(), 0, 100, 10, B_MAX));
+        ledBoard[7][8].setTargetColor(ledColor[0], 100, map(brightnessControlSlider.value(), 0, 100, 10, B_MAX));
+        ledBoard[8][7].setTargetColor(ledColor[0], 100, map(brightnessControlSlider.value(), 0, 100, 10, B_MAX));
+        ledBoard[8][8].setTargetColor(ledColor[0], 100, map(brightnessControlSlider.value(), 0, 100, 10, B_MAX));
+    } else if (mode == "Noise") {
+        randomTurnOn(randomness);
+        randomColor();
+    }
 
     randomTurnOn(randomness);
 

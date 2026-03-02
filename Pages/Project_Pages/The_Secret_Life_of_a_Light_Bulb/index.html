@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
     <script src="../../../libraries/p5.min.js"></script>
     <script src="../../../libraries/p5.sound.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../../style.css">
     <link rel="stylesheet" type="text/css" href="../style.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    
+
     <meta charset="utf-8" />
 
     <title>The Secret Life of a Light Bulb</title>
 </head>
-  <body>
+<body>
     <script src="../../../AIAssistant.js" defer></script>
     <!-- setup -->
     <script src="../DOM.js"></script>
@@ -22,66 +22,806 @@
     <script src="project.js"></script>
     <script src="../displayBasicInformation.js"></script>
     <button id = "returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
-    
+
     <!-- content -->
     <div id = "mainDisplay">
     <div id = "pageBody">
 
-      <!-- project -->
+            <!-- project -->
       <custom-spacing size = "2rem"></custom-spacing>
 
-      <custom-seperator></custom-seperator>
+            <custom-seperator></custom-seperator>
 
       <custom-spacing size = "3rem"></custom-spacing>
 
 
       <div id = "projectContainer" >
-         <iframe style="width:100%; aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/aIYcbYQlS0k"
-          title="The Secret Life of a Light Bulb" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen>
-        </iframe>
+          <iframe style="width:100%; aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/47h6ZldSlYA"
+                    title="The Secret Life of a Light Bulb" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
         
-      </div>
 
-      <custom-spacing size = "10rem"></custom-spacing>
-      <custom-seperator></custom-seperator>
-      <custom-spacing size = "1rem"></custom-spacing>
+            </div>
 
-      <!-- documentation -->
-        <h2><i>2026.2.23 Final Presentation</i></h2>
-      <h3>Ideation</h3>
-      <p>Minnie and I started looking for potential sensors that can be used as the organism's sensory inputs. What we discovered was an AI voice sensor that is responsive to custom audio commands and a DHT11 temperature and humidity sensor. We also decided to use the noise and light sensors that we already have. After testing each sensor and making sure that they work as expected, we thought about ways to convert these quantifiable sensory inputs into abstract emotions. </p>
-      <custom-spacing size = "3rem"></custom-spacing>
-      <img src = "page_asset/img4.png" alt = "sensors">
-      <custom-spacing size = "3rem"></custom-spacing>
-      <p>We came up with two possible approaches:</p>
-      <ol>
-        <li>Map each sensor reading to a distinct physical property or an LED or multiple LEDs(color, brightness, shape, number, etc.). </li>
-        <li>Come up with a complex algorithm that creates patterns that are based on, but not directly reflected by, the sensor readings.</li>
-    </ol>
-    <p>We decided to stick with the second approach because it feels more organic and autonomous, rather than mechanical. Since, as humans, for example, we are not directly influenced by our environment. Our emotions may be negatively affected by something like bad weather, but the relationship is not absolute and necessary. Similarly, we wanted an internal logic that correlates the sensor readings to the LED display in a more implicit manner. To allow for the expression of complex patterns that offer more space to play with, we purchased a NeoPixel 16x16 LED strip, which provides 256 coloured LEDs. </p>
-    <custom-spacing size = "3rem"></custom-spacing>
-    <img src = "page_asset/img5.jpeg" width="50%"alt = "led board">
-    <custom-spacing size = "10rem"></custom-spacing>
-    <h3 style="width:100%; text-align:left;">Led Board Simulation & The Game of Life</h2>
-        <div id = "ledBoardSimulation">
+            <custom-spacing size="10rem"></custom-spacing>
+            <custom-seperator></custom-seperator>
+            <custom-spacing size="1rem"></custom-spacing>
 
-        </div>
-          <custom-spacing size = "10rem"></custom-spacing>
-    <p>We considered creating a Game of Life pattern where the constants are based on sensor readings. First, we made a simulation of the LED strip where each of the 256 LEDs is an object in p5.js. Next, we established and implemented some rules for this game:</p>
-        <ol>
-            <li>Initially, all LEDs are turned off. </li>
-            <li>The program will turn on random LEDs and their neighbors(the spawn rate is determined by the amount of sound in the environment). These LEDs will come with an initial color whose warmth is determined by the temperature reading(the coolor the cooler the color and vice versa) and whose brightness is determined by the light sensor reading(the brighter the brighter the LED)</li>
-            <li>A turned-on LED will turn on its neighboring LED in each iteration of the loop, passing its own LED value to them. However, random noise will be applied each time it happens. The amount of noise is determined by the humidity reading(the more humid the more noise)</li>
-            <li>Each LED will have a lifespan and deactivate after a certain amount of time(400 milliseconds in most cases).</li>
-        </ol>
-        <p>We also added 4 other versions of the simulation to showcase each property individually. Each version follows roughly the same idea, but with the other properties constant and only itself affected by the environment. For example, the temperature mode keeps the amount of noise, random spawn rate, and the brightness static while having the warmth of the light responsive to temperature. In the p5 version, we kept the sensory input values as variables that are controlled by sliders for easier testing. </p>
-        
-        <h3>Challenges</h3>
-        <p>Originally, we thought of using the AI voice sensor as a way to make the LED board switch between different modes. For instance, a "how are you feeling" command will ask for it to display all its senses in the complete game of life. A "what are you seeing" command will ask for it to switch to brightness mode, etc. Yet, we found out in the documentation of the AI voice detection sensor that only a detection of its default commands can be signalled to an Arduino microcontroller. Customized commands, on the other hand, are only allowed to have an instantaneous audio response. Thus, we decided to switch to using a simple button to alternate between the different modes for the time being. </p> 
-        <p>Next, we had to translate the game of life, written in JavaScript, to C++ code that an Arduino understands. We used ChatGPT to assist with translating the code. The ChatGPT response had many errors, such as not recognizing what values to remain static in certain modes, not resetting the LEDs when it switches to a new mode, etc. It was helpful, however, in introducing us to the way data structures are customizable in C++, how to write our own functions, etc. Building upon the code that it generated, we were able to translate the JavaScript program to Arduino. </p>
-        <pre>
+            <!-- documentation -->
+            <h2><i>2026.3.1 Update</i></h2>
+
+            <p>I was really surprised by how well-fabricated some of my classmates’ projects are. I haven’t done or thought much about 3D printing, but seeing how it helps polish and present one’s work last week makes me want to give it a try. It also reminded me of the importance of the physical presentation of my own project. Since last week, there have been a couple of adjustments that I wanted to make to the physical design. The extra time that we got made these changes possible before the final presentation.</p>
+            <p>These changes mostly involve rearranging the position of the electrical components on the hoodie. The most notable change that Minnie and I made was moving the LED board to the position of the manikin’s face to more clearly establish the idea of a living humanoid robot. We also rewired everything, sometimes intentionally making it appear messy for aesthetic purposes.</p>
+             <p>Another major change was also inspired by other people’s projects. We noticed how some groups had very engaging interactions, including blowing into the sensor and using a distance sensor. We figured using a button would be a boring interaction during the presentation that also doesn’t fit the narrative. Thus, we returned to using an AI voice sensor to change between different modes, despite the fact that we had to use the default commands: hello, execute action one, execute action two, and so on. Now, the interaction is more engaging and fits the idea of a communicable organism, rather than merely an LED board connected to a bunch of sensors. A challenge that we faced was that both the temperature and humidity sensor and the AI voice sensor relied on I2C to transmit data. We did some research and figured that we can connect the sensors in parallel to the SDA and SCL pins as long as the Arduino chip can identify their addresses, which we found to be 0x70 and 0x34, respectively.</p>
+            <p>Some other changes involve fixing some of the bugs from last time.The updated code can be found below:</p>
+            <pre>
+                <code>
+
+#include &lt;Arduino.h&gt;
+#include &lt;Adafruit_NeoPixel.h&gt;
+#include &lt;Wire.h&gt;
+#include &quot;Adafruit_SHTC3.h&quot;
+
+// ---------------------------
+// Global variables
+// ---------------------------
+#define LED_PIN 5
+#define BUTTON_PIN 13
+#define NOISE_SENSOR_PIN A1
+#define TEMPERATURE_SENSOR_PIN 2
+#define LIGHT_SENSOR_PIN A0
+#define LED_COUNT 256
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+#define WONDER_ADDR 0x34 
+
+// ---------------------------
+// Custom data structures
+// ---------------------------
+struct RgbColor {
+  uint8_t r;
+  uint8_t g;
+  uint8_t b;
+};
+
+struct LedCell {
+  float h, s, v;     // current HSV
+  float th, ts, tv;  // target HSV
+  bool on;
+  long deadline;  // -1 means not started
+};
+
+// ---------------------------
+// Board + constants
+// ---------------------------
+static const uint8_t WIDTH = 16;
+static const uint8_t HEIGHT = 16;
+
+static const int H_MAX = 360;
+static const int S_MAX = 100;
+static const int B_MAX = 100;
+
+static const uint16_t FRAME_MS = 125;  // ~8 fps
+
+LedCell board[WIDTH][HEIGHT];
+
+// ---------------------------
+// Inputs
+// ---------------------------
+enum Mode : uint8_t { MODE_NONE,MODE_FEELING,
+                      MODE_TEMPERATURE,
+                      MODE_HUMIDITY,
+                      MODE_BRIGHTNESS,
+                      MODE_NOISE,
+                      MODE_COUNT };
+Mode mode = MODE_NONE;
+
+bool PATTERN_DIAG = false;
+bool PATTERN_CROSS = true;
+bool PATTERN_SURROUND = false;
+
+int ledColorH = 0;
+int ledColorS = 100;
+int ledColorV = 100;
+
+float randomness = 0.3f;
+int noiseAmount = 15;
+float colorChangeSpeed = 0.8f;
+
+int warmthSlider = 50;      // 0..100
+int brightnessSlider = 50;  // 0..100
+
+// ---------------------------
+// Function prototypes
+// ---------------------------
+int clampi(int v, int lo, int hi);
+int wrapHue(int h);
+int mapInt(long x, long in_min, long in_max, long out_min, long out_max);
+float rand01();
+int randNoise(int n);
+int shortestHueDiff(int from, int to);
+
+uint16_t xyToId(uint8_t x, uint8_t y);
+bool inBounds(int x, int y);
+
+RgbColor hsvToRgb(int h, int s, int v);
+
+void turnOffAll();
+void turnOnAll();
+void setDuration(uint16_t durationMs);
+void changeColorTowardTarget(LedCell &amp;c, float speed);
+
+void applySpreadTo(int sx, int sy, int ox, int oy);
+void patternDiag();
+void patternCross();
+void patternNeighbor();
+
+void randomColorAll();
+void randomTurnOn(float randomnessVal);
+
+void setMode(Mode newMode);
+void renderToStrip();
+
+// ---------------------------
+// Helper functions
+// ---------------------------
+int clampi(int v, int lo, int hi) {
+  return (v &lt; lo) ? lo : (v &gt; hi) ? hi
+                                  : v;
+}
+
+int wrapHue(int h) {
+  h %= H_MAX;
+  if (h &lt; 0) h += H_MAX;
+  return h;
+}
+
+int mapInt(long x, long in_min, long in_max, long out_min, long out_max) {
+  if (in_max == in_min) return (int)out_min;
+  return (int)((x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min);
+}
+
+float rand01() {
+  return (float)random(0, 10000) / 10000.0f;
+}
+
+int randNoise(int n) {
+  if (n &lt;= 0) return 0;
+  return random(-n, n + 1);
+}
+
+int shortestHueDiff(int from, int to) {
+  int diff = wrapHue(to) - wrapHue(from);
+  if (diff &gt; H_MAX / 2) diff -= H_MAX;
+  if (diff &lt; -H_MAX / 2) diff += H_MAX;
+  return diff;
+}
+
+// ---------------------------
+// Mapping
+// ---------------------------
+uint16_t xyToId(uint8_t x, uint8_t y) {
+  if (y % 2 == 0) return (uint16_t)x + (uint16_t)y * WIDTH;
+  return (uint16_t)(WIDTH - 1 - x) + (uint16_t)y * WIDTH;
+}
+
+bool inBounds(int x, int y) {
+  return x &gt;= 0 &amp;&amp; x &lt; (int)WIDTH &amp;&amp; y &gt;= 0 &amp;&amp; y &lt; (int)HEIGHT;
+}
+
+// ---------------------------
+// HSV -&gt; RGB
+// ---------------------------
+RgbColor hsvToRgb(int h, int s, int v) {
+  float hf = (float)wrapHue(h) / 60.0f;
+  float sf = clampi(s, 0, 100) / 100.0f;
+  float vf = clampi(v, 0, 100) / 100.0f;
+
+  int i = (int)floor(hf);
+  float f = hf - i;
+
+  float p = vf * (1.0f - sf);
+  float q = vf * (1.0f - sf * f);
+  float t = vf * (1.0f - sf * (1.0f - f));
+
+  float r = 0, g = 0, b = 0;
+  switch (i % 6) {
+    case 0:
+      r = vf;
+      g = t;
+      b = p;
+      break;
+    case 1:
+      r = q;
+      g = vf;
+      b = p;
+      break;
+    case 2:
+      r = p;
+      g = vf;
+      b = t;
+      break;
+    case 3:
+      r = p;
+      g = q;
+      b = vf;
+      break;
+    case 4:
+      r = t;
+      g = p;
+      b = vf;
+      break;
+    case 5:
+      r = vf;
+      g = p;
+      b = q;
+      break;
+  }
+
+  RgbColor out;
+  out.r = (uint8_t)clampi((int)lround(r * 255.0f), 0, 255);
+  out.g = (uint8_t)clampi((int)lround(g * 255.0f), 0, 255);
+  out.b = (uint8_t)clampi((int)lround(b * 255.0f), 0, 255);
+  return out;
+}
+
+// ---------------------------
+// Core behavior
+// ---------------------------
+void turnOffAll() {
+  for (uint8_t x = 0; x &lt; WIDTH; x++)
+    for (uint8_t y = 0; y &lt; HEIGHT; y++) {
+      board[x][y].on = false;
+      board[x][y].th = 0;
+      board[x][y].ts = 100;
+      board[x][y].tv = 0;
+      board[x][y].deadline = -1;
+    }
+}
+
+void turnOnAll() {
+  for (uint8_t x = 0; x &lt; WIDTH; x++)
+    for (uint8_t y = 0; y &lt; HEIGHT; y++) {
+      board[x][y].on = true;
+      board[x][y].deadline = 999999999L;
+    }
+}
+
+void setDuration(uint16_t durationMs) {
+  unsigned long now = millis();
+
+  for (uint8_t x = 0; x &lt; WIDTH; x++)
+    for (uint8_t y = 0; y &lt; HEIGHT; y++) {
+      LedCell &amp;c = board[x][y];
+
+      if (c.on) {
+        //refresh deadline every frame while it&#39;s on
+        c.deadline = (long)(now + durationMs);
+      } else if (c.deadline &gt; 0 &amp;&amp; c.deadline &lt;= (long)now) {
+        c.deadline = -1;
+      }
+    }
+
+  // second pass: turn off expired
+  for (uint8_t x = 0; x &lt; WIDTH; x++)
+    for (uint8_t y = 0; y &lt; HEIGHT; y++) {
+      LedCell &amp;c = board[x][y];
+      if (c.deadline &gt; 0 &amp;&amp; c.deadline &lt;= (long)now) c.on = false;
+    }
+}
+
+void changeColorTowardTarget(LedCell &amp;c, float speed) {
+  int dh = shortestHueDiff((int)c.h, (int)c.th);
+  c.h += (float)dh * speed;
+  c.s += (c.ts - c.s) * speed;
+  c.v += (c.tv - c.v) * speed;
+
+  c.h = (float)wrapHue((int)lround(c.h));
+  c.s = clampi((int)lround(c.s), 0, S_MAX);
+  c.v = clampi((int)lround(c.v), 0, B_MAX);
+}
+
+void applySpreadTo(int sx, int sy, int ox, int oy) {
+  if (!inBounds(sx, sy) || !inBounds(ox, oy)) return;
+
+  if (mode == MODE_TEMPERATURE) {
+    if (sx &gt;= 7 &amp;&amp; sx &lt;= 8 &amp;&amp; sy &gt;= 7 &amp;&amp; sy &lt;= 8) return;
+  }
+
+  LedCell &amp;sur = board[sx][sy];
+  LedCell &amp;org = board[ox][oy];
+
+  sur.on = true;
+
+  float dh = (org.th - sur.h);
+  float ds = (org.ts - sur.s);
+  float dv = (org.tv - sur.v);
+
+  int newH = wrapHue((int)lround(sur.h + 0.7f * dh + 0.2f * randNoise(noiseAmount)));
+  int newS = clampi((int)lround(sur.s + 0.7f * ds + 0.2f * randNoise(noiseAmount)), 0, S_MAX);
+  int newV = clampi((int)lround(sur.v + 0.7f * dv + 1.0f * randNoise(noiseAmount)), 0, B_MAX);
+
+  sur.th = newH;
+  sur.ts = newS;
+  sur.tv = newV;
+}
+
+void patternDiag() {
+  for (int x = 0; x &lt; (int)WIDTH; x++)
+    for (int y = 0; y &lt; (int)HEIGHT; y++) {
+      if (!board[x][y].on) continue;
+      applySpreadTo(x - 1, y - 1, x, y);
+      applySpreadTo(x - 1, y + 1, x, y);
+      applySpreadTo(x + 1, y - 1, x, y);
+      applySpreadTo(x + 1, y + 1, x, y);
+    }
+}
+
+void patternCross() {
+  for (int x = 0; x &lt; (int)WIDTH; x++)
+    for (int y = 0; y &lt; (int)HEIGHT; y++) {
+      if (!board[x][y].on) continue;
+      applySpreadTo(x - 1, y, x, y);
+      applySpreadTo(x + 1, y, x, y);
+      applySpreadTo(x, y - 1, x, y);
+      applySpreadTo(x, y + 1, x, y);
+    }
+}
+
+void patternNeighbor() {
+  for (int x = 0; x &lt; (int)WIDTH; x++)
+    for (int y = 0; y &lt; (int)HEIGHT; y++) {
+      if (!board[x][y].on) continue;
+
+      applySpreadTo(x - 1, y, x, y);
+      applySpreadTo(x + 1, y, x, y);
+      applySpreadTo(x, y - 1, x, y);
+      applySpreadTo(x, y + 1, x, y);
+
+      applySpreadTo(x - 1, y - 1, x, y);
+      applySpreadTo(x - 1, y + 1, x, y);
+      applySpreadTo(x + 1, y - 1, x, y);
+      applySpreadTo(x + 1, y + 1, x, y);
+    }
+}
+
+void randomColorAll() {
+  for (uint8_t x = 0; x &lt; WIDTH; x++)
+    for (uint8_t y = 0; y &lt; HEIGHT; y++) {
+      board[x][y].h = random(0, H_MAX);
+      board[x][y].s = random(0, S_MAX + 1);
+      board[x][y].v = random(0, B_MAX + 1);
+    }
+}
+
+void randomTurnOn(float randomnessVal) {
+  if (rand01() &gt; randomnessVal) {
+    int x = random(1, 15);
+    int y = random(1, 15);
+
+    board[x][y].on = true;
+    board[x][y].deadline = (long)(millis() + 900);
+
+    board[x + 1][y].on = true;
+    board[x - 1][y].on = true;
+    board[x][y + 1].on = true;
+    board[x][y - 1].on = true;
+
+    int h = ledColorH, s = ledColorS, v = ledColorV;
+    board[x][y].th = h;
+    board[x][y].ts = s;
+    board[x][y].tv = v;
+    board[x + 1][y].th = h;
+    board[x + 1][y].ts = s;
+    board[x + 1][y].tv = v;
+    board[x - 1][y].th = h;
+    board[x - 1][y].ts = s;
+    board[x - 1][y].tv = v;
+    board[x][y + 1].th = h;
+    board[x][y + 1].ts = s;
+    board[x][y + 1].tv = v;
+    board[x][y - 1].th = h;
+    board[x][y - 1].ts = s;
+    board[x][y - 1].tv = v;
+  }
+}
+int duration = 400;
+void setMode(Mode newMode) {
+  mode = newMode;
+
+  if (mode == MODE_FEELING) {
+    turnOffAll();
+    duration = 400;
+    PATTERN_DIAG = false;
+    PATTERN_CROSS = true;
+    PATTERN_SURROUND = false;
+
+  } else if (mode == MODE_TEMPERATURE) {
+    turnOffAll();
+    board[7][7].on = board[7][8].on = board[8][7].on = board[8][8].on = true;
+    board[7][7].deadline = board[7][8].deadline = board[8][7].deadline = board[8][8].deadline = 999999999L;
+
+    brightnessSlider = 50;
+    randomness = 1;
+    noiseAmount = 10;
+    PATTERN_DIAG = false;
+    PATTERN_CROSS = false;
+    PATTERN_SURROUND = true;
+
+
+  } else if (mode == MODE_BRIGHTNESS) {
+    turnOffAll();
+    board[7][7].on = board[7][8].on = board[8][7].on = board[8][8].on = true;
+    board[7][7].deadline = board[7][8].deadline = board[8][7].deadline = board[8][8].deadline = 999999999L;
+    warmthSlider = 50;
+    randomness = 1;
+    noiseAmount = 10;
+    PATTERN_DIAG = false;
+    PATTERN_CROSS = false;
+    PATTERN_SURROUND = true;
+
+
+  } else if (mode == MODE_HUMIDITY) {
+    turnOffAll();
+    turnOnAll();
+
+    warmthSlider = 50;
+    brightnessSlider = 50;
+    randomness = 1;
+
+    PATTERN_DIAG = false;
+    PATTERN_CROSS = true;
+    PATTERN_SURROUND = false;
+
+  } else if (mode == MODE_NOISE) {
+    turnOffAll();
+    duration = 10;
+    warmthSlider = 50;
+    noiseAmount = 10;
+    brightnessSlider = 50;
+    PATTERN_DIAG = false;
+    PATTERN_CROSS = false;
+    PATTERN_SURROUND = false;
+  }
+}
+
+void renderToStrip() {
+  const uint8_t offGray = 30;
+
+  for (uint8_t x = 0; x &lt; WIDTH; x++) {
+    for (uint8_t y = 0; y &lt; HEIGHT; y++) {
+      uint16_t id = xyToId(x, y);
+      LedCell &amp;c = board[x][y];
+
+      if (!c.on) {
+        strip.setPixelColor(id, offGray, offGray, offGray);
+      } else {
+        RgbColor rgb = hsvToRgb((int)c.h, (int)c.s, (int)c.v);
+        strip.setPixelColor(id, rgb.r, rgb.g, rgb.b);
+      }
+    }
+  }
+  strip.show();
+}
+
+// ---------------------------
+// Arduino timing
+// ---------------------------
+unsigned long lastFrame = 0;
+
+Adafruit_SHTC3 shtc3 = Adafruit_SHTC3();
+
+void setup() {
+  
+  randomSeed(analogRead(A0));
+  pinMode(BUTTON_PIN, INPUT);
+  pinMode(TEMPERATURE_SENSOR_PIN, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(NOISE_SENSOR_PIN, INPUT);
+  Wire.begin(); 
+  Serial.begin(9600);
+  if (!shtc3.begin()) {
+    Serial.println(&quot;Couldn&#39;t find SHTC3 sensor!&quot;);
+    while (1) delay(10);
+  }
+
+  strip.begin();
+  strip.setBrightness(7);
+  strip.clear();
+  strip.show();
+
+  // init cell defaults
+  for (uint8_t x = 0; x &lt; WIDTH; x++)
+    for (uint8_t y = 0; y &lt; HEIGHT; y++) {
+      board[x][y].h = board[x][y].s = board[x][y].v = 0;
+      board[x][y].th = board[x][y].ts = board[x][y].tv = 0;
+      board[x][y].on = false;
+      board[x][y].deadline = -1;
+    }
+
+
+  lastFrame = millis();
+ 
+}
+
+float temperature;
+float humidity1;
+int noise;
+int buttonState;
+int brightness;
+int previousButtonState = LOW;
+int previousMillis = 2000;
+
+void getTemperatureAndHumidity() {
+  sensors_event_t humidity, temp;
+
+  shtc3.getEvent(&amp;humidity, &amp;temp);
+
+  temperature = temp.temperature;
+  humidity1 = humidity.relative_humidity;
+
+  Serial.print(&quot;Humidity: &quot;);
+  Serial.println(humidity1);
+
+  delay(200);
+}
+
+uint8_t commandID = 0;
+uint8_t lastCommand = 0;
+
+
+void detectVoiceCommand(){
+ 
+  Wire.requestFrom(WONDER_ADDR, 1);
+  
+  if (Wire.available()) {
+    
+    commandID = Wire.read();
+    Serial.print(commandID);
+    if (commandID != 0 &amp;&amp; commandID != lastCommand) {
+      lastCommand = commandID;
+      Serial.print(&quot;Recognized Command ID: &quot;);
+      Serial.println(commandID, HEX);
+      triggerLED(commandID); // Trigger LED pattern only on new command
+    }
+  }
+
+}
+
+void triggerLED(uint8_t id) {
+  
+  switch (id) {
+    case 0x1A:  // Hello
+      Serial.println(&quot;Hi&quot;);
+      setMode(MODE_FEELING);
+      break;
+
+    case 0x80:  //Execute-action-one
+      Serial.println(&quot;Execute-action-one&quot;);
+      setMode(MODE_TEMPERATURE);
+      break;
+
+    case 0x81:  // Execute-action-two
+      Serial.println(&quot;Execute-action-two&quot;);
+       setMode(MODE_HUMIDITY);
+      break;
+
+    case 0x82:  // Execute-action-three
+      Serial.println(&quot;Execute-action-three&quot;);
+       setMode(MODE_BRIGHTNESS);
+      break;
+
+    case 0x83:  // Execute-action four
+      Serial.println(&quot;Execute-action four&quot;);
+       setMode(MODE_NOISE);
+      break;
+
+
+    default:
+      Serial.print(&quot;Unrecognized ID: &quot;);
+      Serial.println(id, HEX);
+      break;
+  }
+
+  strip.show(); 
+ 
+}
+
+int v;
+void loop() {
+  detectVoiceCommand();
+  buttonState = digitalRead(BUTTON_PIN);
+  if (previousMillis - millis() &gt;= 1000) {
+    brightness = analogRead(A1);
+    //0 - 40 temp
+    //0 - 50 humidity
+    getTemperatureAndHumidity();
+    Serial.print(&quot;brightness: &quot;);
+    //10 - 40
+    Serial.println(brightness);
+    noise = analogRead(NOISE_SENSOR_PIN);
+    Serial.print(&quot;noise: &quot;);
+    Serial.println(noise);
+    if (mode == MODE_FEELING) {
+      noiseAmount = map(humidity1, 0, 50, 3, 15);
+      warmthSlider = map(temperature, 0, 30, 0, 100);
+      brightnessSlider = map(brightness, 10, 40, 0, 100);
+      randomness = map(noise, 0, 50, 0.9f, 0.3f);
+    } else if (mode == MODE_TEMPERATURE) {
+      warmthSlider = map(temperature, 0, 30, 0, 100);
+
+    } else if (mode == MODE_HUMIDITY) {
+      noiseAmount = map(humidity1, 0, 50, 3, 15);
+
+    } else if (mode == MODE_BRIGHTNESS) {
+      brightnessSlider = map(brightness, 10, 40, 0, 100);
+
+    } else {
+
+      randomness = map(noise, 0, 900, 0.9f, 0.3f);
+    }
+    previousMillis = millis() + 1000;
+  }
+
+
+  if (previousButtonState != buttonState) {
+    if (buttonState == HIGH) {
+      mode = static_cast&lt;Mode&gt;((mode + 1) % MODE_COUNT);
+      turnOffAll();
+      setMode(mode);
+    }
+    previousButtonState = buttonState;
+  }
+
+  unsigned long now = millis();
+  if (now - lastFrame &lt; FRAME_MS) return;
+  lastFrame = now;
+
+  if (PATTERN_DIAG) patternDiag();
+  if (PATTERN_CROSS) patternCross();
+  if (PATTERN_SURROUND) patternNeighbor();
+
+  if (mode == MODE_FEELING) {
+    ledColorH = mapInt(warmthSlider, 0, 100, 0, H_MAX - 140);
+    v = mapInt(brightnessSlider, 0, 100, 10, B_MAX);
+
+
+  } else if (mode == MODE_TEMPERATURE) {
+    ledColorH = mapInt(warmthSlider, 0, 100, 0, H_MAX - 140);
+    board[7][7].th = ledColorH;
+    board[7][7].ts = 100;
+    board[7][7].tv = 100;
+    board[7][8].th = ledColorH;
+    board[7][8].ts = 100;
+    board[7][8].tv = 100;
+    board[8][7].th = ledColorH;
+    board[8][7].ts = 100;
+    board[8][7].tv = 100;
+    board[8][8].th = ledColorH;
+    board[8][8].ts = 100;
+    board[8][8].tv = 100;
+
+  } else if (mode == MODE_BRIGHTNESS) {
+    int v = mapInt(brightnessSlider, 0, 100, 10, B_MAX);
+    board[7][7].th = ledColorH;
+    board[7][7].ts = 100;
+    board[7][7].tv = v;
+    board[7][8].th = ledColorH;
+    board[7][8].ts = 100;
+    board[7][8].tv = v;
+    board[8][7].th = ledColorH;
+    board[8][7].ts = 100;
+    board[8][7].tv = v;
+    board[8][8].th = ledColorH;
+    board[8][8].ts = 100;
+    board[8][8].tv = v;
+
+  } else if (mode == MODE_NOISE) {
+    turnOffAll();
+    randomTurnOn(randomness);
+    randomColorAll();
+  }
+
+ 
+    randomTurnOn(randomness);
+  setDuration(duration);
+    
+  
+  
+
+  for (uint8_t x = 0; x &lt; WIDTH; x++)
+    for (uint8_t y = 0; y &lt; HEIGHT; y++)
+      changeColorTowardTarget(board[x][y], colorChangeSpeed);
+
+  renderToStrip();
+}
+
+                </code>
+            </pre>
+
+             <custom-spacing size="5rem"></custom-spacing>
+                <custom-seperator></custom-seperator>
+                <custom-spacing size="5rem"></custom-spacing>
+
+            <h2><i>2026.2.23 Final Presentation</i></h2>
+
+            <h3>Demo Video</h3>
+
+              <iframe style="width:100%; aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/aIYcbYQlS0k"
+                    title="The Secret Life of a Light Bulb" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+            <h3>Ideation</h3>
+            <p>Minnie and I started looking for potential sensors that can be used as the organism's sensory inputs.
+                What we discovered was an AI voice sensor that is responsive to custom audio commands and a DHT11
+                temperature and humidity sensor. We also decided to use the noise and light sensors that we already
+                have. After testing each sensor and making sure that they work as expected, we thought about ways to
+                convert these quantifiable sensory inputs into abstract emotions. </p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/img4.png" alt="sensors">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>We came up with two possible approaches:</p>
+            <ol>
+                <li>Map each sensor reading to a distinct physical property or an LED or multiple LEDs(color,
+                    brightness, shape, number, etc.). </li>
+                <li>Come up with a complex algorithm that creates patterns that are based on, but not directly reflected
+                    by, the sensor readings.</li>
+            </ol>
+            <p>We decided to stick with the second approach because it feels more organic and autonomous, rather than
+                mechanical. Since, as humans, for example, we are not directly influenced by our environment. Our
+                emotions may be negatively affected by something like bad weather, but the relationship is not absolute
+                and necessary. Similarly, we wanted an internal logic that correlates the sensor readings to the LED
+                display in a more implicit manner. To allow for the expression of complex patterns that offer more space
+                to play with, we purchased a NeoPixel 16x16 LED strip, which provides 256 coloured LEDs. </p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/img5.jpeg" width="50%" alt="led board">
+            <custom-spacing size="10rem"></custom-spacing>
+            <h3 style="width:100%; text-align:left;">Led Board Simulation & The Game of Life</h2>
+                <div id="ledBoardSimulation">
+
+                </div>
+                <custom-spacing size="10rem"></custom-spacing>
+                <p>We considered creating a Game of Life pattern where the constants are based on sensor readings.
+                    First, we made a simulation of the LED strip where each of the 256 LEDs is an object in p5.js. Next,
+                    we established and implemented some rules for this game:</p>
+                <ol>
+                    <li>Initially, all LEDs are turned off. </li>
+                    <li>The program will turn on random LEDs and their neighbors(the spawn rate is determined by the
+                        amount of sound in the environment). These LEDs will come with an initial color whose warmth is
+                        determined by the temperature reading(the coolor the cooler the color and vice versa) and whose
+                        brightness is determined by the light sensor reading(the brighter the brighter the LED)</li>
+                    <li>A turned-on LED will turn on its neighboring LED in each iteration of the loop, passing its own
+                        LED value to them. However, random noise will be applied each time it happens. The amount of
+                        noise is determined by the humidity reading(the more humid the more noise)</li>
+                    <li>Each LED will have a lifespan and deactivate after a certain amount of time(400 milliseconds in
+                        most cases).</li>
+                </ol>
+                <p>We also added 4 other versions of the simulation to showcase each property individually. Each version
+                    follows roughly the same idea, but with the other properties constant and only itself affected by
+                    the environment. For example, the temperature mode keeps the amount of noise, random spawn rate, and
+                    the brightness static while having the warmth of the light responsive to temperature. In the p5
+                    version, we kept the sensory input values as variables that are controlled by sliders for easier
+                    testing. </p>
+
+                <h3>Challenges</h3>
+                <p>Originally, we thought of using the AI voice sensor as a way to make the LED board switch between
+                    different modes. For instance, a "how are you feeling" command will ask for it to display all its
+                    senses in the complete game of life. A "what are you seeing" command will ask for it to switch to
+                    brightness mode, etc. Yet, we found out in the documentation of the AI voice detection sensor that
+                    only a detection of its default commands can be signalled to an Arduino microcontroller. Customized
+                    commands, on the other hand, are only allowed to have an instantaneous audio response. Thus, we
+                    decided to switch to using a simple button to alternate between the different modes for the time
+                    being. </p>
+                <p>Next, we had to translate the game of life, written in JavaScript, to C++ code that an Arduino
+                    understands. We used ChatGPT to assist with translating the code. The ChatGPT response had many
+                    errors, such as not recognizing what values to remain static in certain modes, not resetting the
+                    LEDs when it switches to a new mode, etc. It was helpful, however, in introducing us to the way data
+                    structures are customizable in C++, how to write our own functions, etc. Building upon the code that
+                    it generated, we were able to translate the JavaScript program to Arduino. </p>
+                <pre>
             <code>
 #include &lt;Arduino.h&gt;
 #include &lt;Adafruit_NeoPixel.h&gt;
@@ -685,45 +1425,52 @@ void loop() {
 }
             </code>
         </pre>
-        <h3>Physical Implementation</h3>
-    <p>Finally, we connected an Arduino microcontroller to the sensors that mapped the sensor readings to their corresponding values in the game of life simulation. We decided to stick it to my sweater using hot glue to resemble a living humanoid robot. The wires represent its veins, while the sensors are its sensory organs. The ledboard represents its expressive organs that reflect its inner state, which is the program that runs on the hardware.</p>
-    <custom-spacing size = "3rem"></custom-spacing>
-        <img src = "page_asset/img7.jpeg" width="80%" alt = "physical implementation of the sensors schematically">
-        <custom-spacing size = "3rem"></custom-spacing>
-    
-    <custom-spacing size = "3rem"></custom-spacing>
-    <img src = "page_asset/img6.jpeg" width="80%" alt = "physical implementation of the led board">
-    <custom-spacing size = "3rem"></custom-spacing>
-        
-      <h3>Future Improvements</h3>
-      <ul>
-        <li>Use the AI voice sensor to switch between modes instead of a button.</li>
-        <li>Create more complex algorithms and patterns.</li>
-        <li>Use more sensors to allow for more input variables.</li>
-        <li>Improve the physical design by making it more organized and resemble a humanoid robot.</li>
-        <li>Attach the led display to the face of the humanoid robot.</li>
-        <li>Incorporate AI to the system to allow for more complex interactions and expressions.</li>
-      </ul>
+                <h3>Physical Implementation</h3>
+                <p>Finally, we connected an Arduino microcontroller to the sensors that mapped the sensor readings to
+                    their corresponding values in the game of life simulation. We decided to stick it to my sweater
+                    using hot glue to resemble a living humanoid robot. The wires represent its veins, while the sensors
+                    are its sensory organs. The ledboard represents its expressive organs that reflect its inner state,
+                    which is the program that runs on the hardware.</p>
+                <custom-spacing size="3rem"></custom-spacing>
+                <img src="page_asset/img7.jpeg" width="80%" alt="physical implementation of the sensors schematically">
+                <custom-spacing size="3rem"></custom-spacing>
 
-      <custom-spacing size = "5rem"></custom-spacing>
-      <custom-seperator></custom-seperator>
-      <custom-spacing size = "5rem"></custom-spacing>
+                <custom-spacing size="3rem"></custom-spacing>
+                <img src="page_asset/img6.jpeg" width="80%" alt="physical implementation of the led board">
+                <custom-spacing size="3rem"></custom-spacing>
 
-       <h2><i>2026.2.8 Stepping Stone Exercise</i></h2>
-       <custom-spacing size = "3rem"></custom-spacing>
-        <video width="100%" controls>
-<source src="page_asset/video.mp4" type="video/mp4">
+                <h3>Future Improvements</h3>
+                <ul>
+                    <li>Use the AI voice sensor to switch between modes instead of a button.</li>
+                    <li>Create more complex algorithms and patterns.</li>
+                    <li>Use more sensors to allow for more input variables.</li>
+                    <li>Improve the physical design by making it more organized and resemble a humanoid robot.</li>
+                    <li>Attach the led display to the face of the humanoid robot.</li>
+                    <li>Incorporate AI to the system to allow for more complex interactions and expressions.</li>
+                </ul>
 
-</video>
-<custom-spacing size = "3rem"></custom-spacing>
-        <p>The intention of this project is to create a simple calculator that is able to compute the sum of two single-digit numbers. We started by first building it on a simulation program online to make sure that the logic was correct.</p>
-     <custom-spacing size = "3rem"></custom-spacing>
-     <img src = "page_asset/img2.png" alt = "calculator logic simulation">
-     <custom-spacing size = "3rem"></custom-spacing>
-     <img src = "page_asset/img3.png" alt = "schematic of the calculator">
-        <custom-spacing size = "3rem"></custom-spacing>
-        <p>After we were able to successfully build the calculator on the simulation program, we then moved on to building the physical version. Finally, we implemented the following code:</p>
-        <pre>
+                <custom-spacing size="5rem"></custom-spacing>
+                <custom-seperator></custom-seperator>
+                <custom-spacing size="5rem"></custom-spacing>
+
+                <h2><i>2026.2.8 Stepping Stone Exercise</i></h2>
+                <custom-spacing size="3rem"></custom-spacing>
+                <video width="100%" controls>
+                    <source src="page_asset/video.mp4" type="video/mp4">
+
+                </video>
+                <custom-spacing size="3rem"></custom-spacing>
+                <p>The intention of this project is to create a simple calculator that is able to compute the sum of two
+                    single-digit numbers. We started by first building it on a simulation program online to make sure
+                    that the logic was correct.</p>
+                <custom-spacing size="3rem"></custom-spacing>
+                <img src="page_asset/img2.png" alt="calculator logic simulation">
+                <custom-spacing size="3rem"></custom-spacing>
+                <img src="page_asset/img3.png" alt="schematic of the calculator">
+                <custom-spacing size="3rem"></custom-spacing>
+                <p>After we were able to successfully build the calculator on the simulation program, we then moved on
+                    to building the physical version. Finally, we implemented the following code:</p>
+                <pre>
         <code>
 
 int tensDigitPin = 5; 
@@ -801,55 +1548,66 @@ void loop(){
         </code>
         </pre>
 
-    
-       <custom-spacing size = "5rem"></custom-spacing>
-      <custom-seperator></custom-seperator>
-      <custom-spacing size = "5rem"></custom-spacing>
 
-      <h2><i>2026.2.8 Ideation</i></h2>
-      <custom-spacing size = "3rem"></custom-spacing>
-      <img src = "page_asset/img1.png" alt = "ideation diagram">  
-      <custom-spacing size = "3rem"></custom-spacing>
-      <h3>Description</h3>
-      <p>We want to give personality to a light bulb by using different sensors. The user’s interaction with these sensors will impact how the light bulb reacts. For example, the user can talk to the light bulb through a microphone. They can touch (pressure sensor) the light bulb, or maybe the temperature or will influence how the light bulb reacts, etc. The light bulb will express different emotions such as joy, anger, nervousness, etc. through change in color and change in brightness. 
-</p>
-    <h3>Inspiration</h3>
-    <p>
-        We took inspiration from: 
-What if buttons have personality (<a href ="https://www.hhayeon.com/Expressive-Tactile-Controls">Hayeon Hwang’ Expressive Controls</a>)?
-What if your button is indecisive (<a href="https://dav1dyang.notion.site/Physical-Computing-c28aa7b8de984a899981dc78010ca532?p=f1ae734e075446fabf8d9821dfd58538&pm=c">David Yang’s Indecisive Button</a>)?
+                <custom-spacing size="5rem"></custom-spacing>
+                <custom-seperator></custom-seperator>
+                <custom-spacing size="5rem"></custom-spacing>
 
-We are inspired by the idea to give light bulb personalities and life. We want to program a programmable light bulb to express its feelings based on user interactions. 
+                <h2><i>2026.2.8 Ideation</i></h2>
+                <custom-spacing size="3rem"></custom-spacing>
+                <img src="page_asset/img1.png" alt="ideation diagram">
+                <custom-spacing size="3rem"></custom-spacing>
+                <h3>Description</h3>
+                <p>We want to give personality to a light bulb by using different sensors. The user’s interaction with
+                    these sensors will impact how the light bulb reacts. For example, the user can talk to the light
+                    bulb through a microphone. They can touch (pressure sensor) the light bulb, or maybe the temperature
+                    or will influence how the light bulb reacts, etc. The light bulb will express different emotions
+                    such as joy, anger, nervousness, etc. through change in color and change in brightness.
+                </p>
+                <h3>Inspiration</h3>
+                <p>
+                    We took inspiration from:
+                    What if buttons have personality (<a
+                        href="https://www.hhayeon.com/Expressive-Tactile-Controls">Hayeon Hwang’ Expressive
+                        Controls</a>)?
+                    What if your button is indecisive (<a
+                        href="https://dav1dyang.notion.site/Physical-Computing-c28aa7b8de984a899981dc78010ca532?p=f1ae734e075446fabf8d9821dfd58538&pm=c">David
+                        Yang’s Indecisive Button</a>)?
 
-    </p>
-    <h3>Material List(tentative)</h3>
-    <ul>
-  <li>1 Arduino chip</li>      
-        <li>1 Programmable light bulb</li>
-        <li>Wires</li>
-        <li>1 Breadboard</li>
-        <li>1 Light sensor</li>
-        <li>1 Pressure sensor</li>
-        <li>1 Temperature sensor</li>
-        <li>1 Humidity sensor</li>
-        <li>Other sensors</li>
-    </ul>
+                    We are inspired by the idea to give light bulb personalities and life. We want to program a
+                    programmable light bulb to express its feelings based on user interactions.
 
-    <h3>Timeline</h3>
-    <p>
-        <strong>Week 1 </strong><br>
-        Step 1: buy Sensors and a programmable light bulb<br>
-        Step 2: design an algorithm for determining different emotions of the light bulb based on sensor inputs<br><br>
+                </p>
+                <h3>Material List(tentative)</h3>
+                <ul>
+                    <li>1 Arduino chip</li>
+                    <li>1 Programmable light bulb</li>
+                    <li>Wires</li>
+                    <li>1 Breadboard</li>
+                    <li>1 Light sensor</li>
+                    <li>1 Pressure sensor</li>
+                    <li>1 Temperature sensor</li>
+                    <li>1 Humidity sensor</li>
+                    <li>Other sensors</li>
+                </ul>
 
-        <strong>Week 2</strong><br>
-        Step 3: Animate the light bulb<br>
-        Step 4: finalize the physical design(wiring, physical mechanism, material, etc)
+                <h3>Timeline</h3>
+                <p>
+                    <strong>Week 1 </strong><br>
+                    Step 1: buy Sensors and a programmable light bulb<br>
+                    Step 2: design an algorithm for determining different emotions of the light bulb based on sensor
+                    inputs<br><br>
 
-    </p>
-<custom-spacing size = "10rem"></custom-spacing>
+                    <strong>Week 2</strong><br>
+                    Step 3: Animate the light bulb<br>
+                    Step 4: finalize the physical design(wiring, physical mechanism, material, etc)
 
+                </p>
+                <custom-spacing size="10rem"></custom-spacing>
+
+        </div>
     </div>
-    </div>
-    
-  </body>
+
+</body>
+
 </html>
