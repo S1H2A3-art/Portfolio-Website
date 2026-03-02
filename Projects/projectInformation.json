@@ -327,15 +327,15 @@
     },
     
     {
-        "title": "The Secret Life of a Light Bulb",
+        "title": "LED MAN",
         "secondary_title": "Physical Computing Midterm Project",
         "category":"Arduino",
-        "description":"",
+        "description":"This project is a wearable LED display that simulates the life of a light bulb. It uses an Arduino to control a grid of LEDs that respond to various sensors, creating an interactive experience that explores themes of life, consciousness, and interaction.",
         "date":"February 8, 2026",
         "concepts":["light","life","interaction","sensation"],
-        "mini_icon":"Projects/Project_Icons/The Secret Life of a Light Bulb.png",
+        "mini_icon":"Projects/Project_Icons/LED MAN.png",
         "large_icon":"",
-        "page":"The_Secret_Life_of_a_Light_Bulb/index.html",
+        "page":"LED_MAN/index.html",
         "status":"in progress"
     }
 
