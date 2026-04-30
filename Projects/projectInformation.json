@@ -336,6 +336,17 @@
         "mini_icon":"Projects/Project_Icons/LED MAN.png",
         "large_icon":"",
         "page":"LED_MAN/index.html",
+        "status":"completed"
+    },{
+        "title": "Sonny's Blues",
+        "secondary_title": "Non-Linear Storytelling Final",
+        "category":"Renpy",
+        "description":"This project is a visual novel adaptation of Sonny’s Blues structured around three key scenes that follow a traditional three-act arc, highlighting the protagonist’s growth in his relationship with Sonny. It combines a main wave structure with smaller “wavelet” tensions through player choices that oscillate between two opposing values—authoritative/protective and enlightened/understanding—shaping both the narrative and the character’s development. Through a coherency system and multiple endings, the game emphasizes how past decisions define future identity, allowing players to experience growth as an interactive and evolving process.",
+        "date":"April 29, 2026",
+        "concepts":["story","game","choices"],
+        "mini_icon":"Projects/Project_Icons/Sonny's Blues.png",
+        "large_icon":"",
+        "page":"Sonny's_Blues/index.html",
         "status":"in progress"
     }
 

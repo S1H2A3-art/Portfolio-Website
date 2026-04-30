@@ -142,7 +142,6 @@ let Thinker = {
 
         return prompt;
     },
-
     // retrieve response from LLM based on the LLM prompt
     async generateLLMThought(prompt) {
         try {
@@ -161,8 +160,6 @@ let Thinker = {
             return null;
         }
     },
-
-    
     buildImagePrompt() {
         const range = this.pressureRange;
 
