@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="../../../Assets/icon.jpeg" type="image/x-icon">
+    <script src="../../../libraries/p5.min.js"></script>
+    <script src="../../../libraries/p5.sound.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../../style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <meta charset="utf-8" />
+
+    <title>Spirit is a Bone</title>
+</head>
+
+<body>
+    <script src="../../../AIAssistant.js" defer></script>
+    <!-- setup -->
+    <script src="../DOM.js"></script>
+    <script src="../goBack.js"></script>
+    <script src="../../processProjects.js"></script>
+    <script src="../toggleShow.js" defer></script>
+    <script src="project.js"></script>
+    <script src="../displayBasicInformation.js"></script>
+    <button id="returnButton" onclick="goBackOrHome()"><a href="javascript:void(0);">&lt; Shawn Qiu</a></button>
+
+    <!-- content -->
+    <div id="mainDisplay">
+        <div id="pageBody">
+
+
+            <!-- project -->
+            <custom-spacing size="2rem"></custom-spacing>
+
+            <custom-seperator></custom-seperator>
+
+            <custom-spacing size="2rem"></custom-spacing>
+
+
+            <div id="projectContainer">
+                <iframe style="width:100%; aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/aksdjf;a"
+                    title="Spirit is a Bone" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <custom-spacing size="10rem"></custom-spacing>
+            <custom-seperator></custom-seperator>
+            <custom-spacing size="1rem"></custom-spacing>
+
+            <h2>Documentation</h2>
+            <h3><i>2026.5.4 Final Presentation</i></h3>
+            <h3>Overview</h3>
+            <p>For the final week, I finished the physical design and implementation of the project, including the four buttons that control the skull’s modes and unlock its functions.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <image-gallery column="3" row="1">
+                page_asset/i5.jpg,
+                page_asset/i6.jpg,
+                page_asset/i7.jpg,
+            </image-gallery>
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>I also created a code sheet that the user can reference, as well as a skull monitor to enhance the atmosphere of experimentation.</p>
+                <custom-spacing size="3rem"></custom-spacing>
+                <image-gallery column="2" row="1">
+                    page_asset/sk8.png,
+                    page_asset/sk9.png
+                </image-gallery>
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>The last thing I did was connect everything together and ensure that serial communication was working properly between the JavaScript interface and the Arduino code that controls the skull’s circuitry.</p>
+            <h3>Circuit Schematic</h3>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/d3.png" alt="circuit schematic" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <h3>Arduino Code</h3>
+<pre><code>
+#include &lt;Servo.h&gt;
+#include "StringSplitter.h"
+#include &lt;string&gt;
+#include &lt;cstring&gt;
+
+//initializes pin
+int servoPin = 6;
+Servo myservo;
+
+int servoPos = 0;
+
+const int yellowBttnPin = 4;
+const int redBttnPin = 5;
+const int blueBttnPin = 7;
+const int greenBttnPin = 8;
+
+//morse class
+class Morse {
+public:
+  char letter;
+  const char* code;
+};
+
+//table that assigns morse value to each letter
+Morse morseTable[26] = {
+  { 'a', "_" },
+  { 'b', "._-" },
+  { 'c', "..." },
+  { 'd', "_." },
+  { 'e', "." },
+  { 'f', ".._" },
+  { 'g', ".--" },
+  { 'h', "--" },
+  { 'i', ".-" },
+  { 'j', "-.-" },
+  { 'k', "-.." },
+  { 'l', "_-" },
+  { 'm', "..-" },
+  { 'n', "._" },
+  { 'o', ".." },
+  { 'p', "._." },
+  { 'q', "--." },
+  { 'r', "-_" },
+  { 's', "-." },
+  { 't', "-" },
+  { 'u', "__" },
+  { 'v', ".__" },
+  { 'w', ".-." },
+  { 'x', "-._" },
+  { 'y', ".-_" },
+  { 'z', "---" }
+};
+
+//controls mouth opening/closing of skull
+void mouthOpenClose(int velocity, int pause, int angle) {
+
+  for (servoPos = 180; servoPos &gt;= 180 - angle; servoPos -= velocity) {
+    myservo.write(servoPos);
+    delay(pause);
+  }
+
+  for (servoPos = 180 - angle; servoPos &lt;= 180; servoPos += velocity) {
+    myservo.write(servoPos);
+    delay(pause);
+  }
+}
+
+//three different modes for jaw movement
+void wide() {
+  mouthOpenClose(1, 15, 180);
+  //Serial.print(".");
+}
+
+void small() {
+  mouthOpenClose(3, 15, 130);
+  //Serial.print("-");
+}
+
+void middle() {
+  mouthOpenClose(2, 15, 155);
+  //Serial.print("-");
+}
+
+//speaks letter based on corresponding morse value
+void speakLetter(char letter) {
+
+  int index = letter - 'a';
+
+  const char* letterCode = morseTable[index].code;
+
+  for (int i = 0; letterCode[i] != '\0'; i++) {
+
+    if (letterCode[i] == '.') {
+
+      small();
+
+    } else if (letterCode[i] == '-') {
+
+      middle();
+
+    } else if (letterCode[i] == '_') {
+
+      wide();
+    }
+  }
+
+  //Serial.print("/");
+}
+
+int letterInterval = 2000;
+int wordInterval = 5000;
+
+//speaks word by saying each of its letters
+void speakWord(char* word, int wordLength) {
+
+  for (int i = 0; word[i] != '\0'; i++) {
+
+    speakLetter(word[i]);
+
+    if (i &lt; wordLength - 1) {
+
+      delay(letterInterval);
+
+    } else {
+
+      delay(wordInterval);
+    }
+  }
+
+  //Serial.println();
+}
+
+//checks if the skull is speaking
+bool isSpeaking = false;
+
+//speaks sentence by saying each of its word
+void speakSentence(String sentence) {
+
+  isSpeaking = true;
+
+  Serial.println("start speaking");
+
+  StringSplitter* splitter =
+    new StringSplitter(sentence, ' ', 999);
+
+  int itemCount = splitter-&gt;getItemCount();
+
+  for (int i = 0; i &lt; itemCount; i++) {
+
+    String wordString = splitter-&gt;getItemAtIndex(i);
+
+    char* word = new char[wordString.length() + 1];
+
+    strcpy(word, wordString.c_str());
+
+    speakWord(word, wordString.length());
+  }
+
+  isSpeaking = false;
+
+  Serial.println("stop speaking");
+}
+
+void setup() {
+
+  myservo.attach(servoPin);
+
+  pinMode(yellowBttnPin, INPUT);
+  pinMode(redBttnPin, INPUT);
+  pinMode(blueBttnPin, INPUT);
+  pinMode(greenBttnPin, INPUT);
+
+  Serial.begin(9600);
+}
+
+//initializes the 4 buttons inside the skull
+bool yellowBttnState = false;
+bool redBttnState = false;
+bool blueBttnState = false;
+bool greenBttnState = false;
+
+bool yellowBttnStateP = false;
+bool redBttnStateP = false;
+bool blueBttnStateP = false;
+bool greenBttnStateP = false;
+
+//keeps track of the last 4 button inputs
+int arr[4] = { -1, -1, -1, -1 };
+
+void loop() {
+
+  delay(20);
+
+  //speak sentence from javascript sketch
+  if (Serial.available() &gt; 0) {
+
+    while (!isSpeaking) {
+
+      String incomingMessage =
+        Serial.readStringUntil('\n');
+
+      incomingMessage.trim();
+
+      if (!incomingMessage.equals("")) {
+
+        speakSentence(incomingMessage);
+      }
+    }
+  }
+
+  //check if buttons are pressed to switch to new faculty
+  if (!isSpeaking) {
+
+    const int SIZE = 4;
+
+    yellowBttnState = digitalRead(yellowBttnPin);
+    redBttnState = digitalRead(redBttnPin);
+    greenBttnState = digitalRead(greenBttnPin);
+    blueBttnState = digitalRead(blueBttnPin);
+
+    //check if a button is pressed
+    if ((yellowBttnState != yellowBttnStateP) &amp;&amp; yellowBttnState) {
+
+      for (int i = 0; i &lt; SIZE - 1; i++) {
+        arr[i] = arr[i + 1];
+      }
+
+      // Put new value at the end
+      arr[SIZE - 1] = 0;
+    }
+
+    if ((redBttnState != redBttnStateP) &amp;&amp; redBttnState) {
+
+      for (int i = 0; i &lt; SIZE - 1; i++) {
+        arr[i] = arr[i + 1];
+      }
+
+      arr[SIZE - 1] = 1;
+    }
+
+    if ((blueBttnState != blueBttnStateP) &amp;&amp; blueBttnState) {
+
+      for (int i = 0; i &lt; SIZE - 1; i++) {
+        arr[i] = arr[i + 1];
+      }
+
+      arr[SIZE - 1] = 2;
+    }
+
+    if ((greenBttnState != greenBttnStateP) &amp;&amp; greenBttnState) {
+
+      for (int i = 0; i &lt; SIZE - 1; i++) {
+        arr[i] = arr[i + 1];
+      }
+
+      arr[SIZE - 1] = 3;
+    }
+
+    //If last 4 button inputs matches a combination
+    // 0 -&gt; down
+    // 1 -&gt; up
+    // 2 -&gt; right
+    // 3 -&gt; left
+
+    //left,left,down,right
+    if (
+      arr[0] == 3 &amp;&amp;
+      arr[1] == 3 &amp;&amp;
+      arr[2] == 0 &amp;&amp;
+      arr[3] == 2
+    ) {
+
+      Serial.println("faculty:1");
+    }
+
+    //right,left,down,right
+    if (
+      arr[0] == 2 &amp;&amp;
+      arr[1] == 3 &amp;&amp;
+      arr[2] == 0 &amp;&amp;
+      arr[3] == 2
+    ) {
+
+      Serial.println("faculty:2");
+    }
+
+    //down,down,right,right
+    if (
+      arr[0] == 0 &amp;&amp;
+      arr[1] == 0 &amp;&amp;
+      arr[2] == 2 &amp;&amp;
+      arr[3] == 2
+    ) {
+
+      Serial.println("faculty:3");
+    }
+
+    yellowBttnStateP = yellowBttnState;
+    redBttnStateP = redBttnState;
+    greenBttnStateP = greenBttnState;
+    blueBttnStateP = blueBttnState;
+  }
+
+  delay(20);
+}
+</code></pre>
+
+<h3>index.html</h3>
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+
+&lt;head&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/p5-webserial@0.1.1/build/p5.webserial.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/addons/p5.sound.min.js"&gt;&lt;/script&gt;
+  &lt;link rel="stylesheet" type="text/css" href="style.css"&gt;
+  &lt;meta charset="utf-8" /&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;menu&gt;
+
+  &lt;/menu&gt;
+  &lt;div id="mode0Content" style="display:flex; width:100%; height:100%;"&gt;
+    &lt;video width="100%" height="100%" autoplay muted playsinline loop&gt;
+      &lt;source src="Assets/rest_scene.mov"&gt;
+    &lt;/video&gt;
+    &lt;div id="startTitle" onclick="skullConsciousness.modeChange(0.5)"&gt;
+      &lt;p id="startTitleText"&gt;→ OPEN CASE FILE&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="clock"&gt;
+      &lt;p id="clockText"&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div id="logo" style="display:none"&gt;
+      &lt;img src="Assets/logo.png" width="250em"&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div id="mode0.5Content" style="display:none; justify-content: center"&gt;
+    &lt;div id="bureauLetter"&gt;
+      &lt;h3 id="bureauLetterTitle"&gt;
+        IMPORTANT MESSAGE
+      &lt;/h3&gt;
+
+      &lt;p id="bureauLetterText"&gt;
+        The Administration thanks you for your participation in this experiment.
+        You have been informed of the recent unearthing of a skull structure from
+        the meeting on date 20022111:101:001, which certain factions within the
+        Party have proposed as
+        &lt;span class="highlighted"&gt;
+          evidence for the existence of the so-called “Humans,”
+        &lt;/span&gt;
+        referenced only in the elder scripture of the Humanist Sect as a highly
+        intelligent species active before the transitional epoch.
+
+        This claim has begun to influence discussions on secularization and the
+        allocation of resources toward scientific and military sectors in support
+        of the ongoing war effort, and will be raised again in the upcoming
+        council session, where your assessment will be decisive.
+
+        In response, our laboratory has constructed a
+        &lt;span class="highlighted"&gt;
+          simulation designed to demonstrate the difficulty that such a primitive
+          biological structure could give rise to complex consciousness
+        &lt;/span&gt;,
+        in order to assist the judgment of party members.
+
+        Please confirm your participation by selecting the checkbox below.
+        All procedures within this laboratory are confidential; dissemination
+        of this information is strictly prohibited.
+      &lt;/p&gt;
+
+    &lt;/div&gt;
+
+    &lt;div id="agreements"&gt;
+      &lt;input type="checkbox" id="agreementCheck" value="Value1" disabled&gt;
+
+      &lt;label id="agreementLabel"&gt;
+        By selecting you confirm acceptance of all terms,
+        conditions, and confidentiality requirements.
+      &lt;/label&gt;
+    &lt;/div&gt;
+
+    &lt;div id="logo2"&gt;
+      &lt;img src="Assets/logo.png" width="250em"&gt;
+    &lt;/div&gt;
+
+    &lt;div id="signature"&gt;
+      &lt;img src="Assets/signature.png" width="250em"&gt;
+      &lt;div id="underline"&gt;
+        Head of the Administration of Cognitive Integrity
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;a id="proceedButton"
+       style="display:none"
+       onclick="skullConsciousness.modeChange(1)"&gt;
+      →PROCEED
+    &lt;/a&gt;
+
+  &lt;/div&gt;
+
+  &lt;div id="mode1Content" style="display:none"&gt;
+
+    &lt;video id="speakVideo"
+           height="1200rem"
+           autoplay
+           muted
+           playsinline
+           loop&gt;
+
+      &lt;source src="Assets/speak_scene.mov"&gt;
+    &lt;/video&gt;
+
+    &lt;div id="speakingIntroduction"&gt;
+
+      &lt;h3 id="speakingIntroductionTitle"&gt;
+        1_SPEECH
+      &lt;/h3&gt;
+
+      &lt;p id="speakingIntroductionText"&gt;
+        The research group hypothesizes that the jaw served as the
+        primary mechanism of communication among humans, producing
+        sounds that encoded a structured language system.
+
+        This simulation reconstructs that process by reducing jaw
+        motion into three symbolic states: wide, medium, and small opening.
+
+        These states are combined and mapped to letters in our alphabet
+        to generate meaningful sentences.
+
+        Press the button below to produce a sample output, then attempt
+        to translate it using the code sheet provided.
+      &lt;/p&gt;
+
+      &lt;div id="sampleButtonContainer"&gt;
+
+        &lt;button class="kave-btn"
+                id="sampleButton"
+                disabled="true"
+                onclick="sendMessage('fast')"&gt;
+
+          &lt;span class="kave-line"&gt;&lt;/span&gt;
+          PRODUCE SAMPLE OUTPUT
+        &lt;/button&gt;
+
+      &lt;/div&gt;
+
+      &lt;div&gt;
+
+        &lt;p id="sampleReminderText"&gt;
+          Enter your translation of the Skull's speech into English:
+        &lt;/p&gt;
+
+        &lt;div id="sampleInputContainer"&gt;
+
+          &lt;input id="sampleInput" type="text"&gt;
+
+          &lt;button id="sampleSubmitButton"
+                  onclick="skullConsciousness.mode1CheckInput()"&gt;
+
+            SUBMIT
+          &lt;/button&gt;
+
+        &lt;/div&gt;
+
+        &lt;p id="suggestionText" style="display:none"&gt;
+          please try again...
+        &lt;/p&gt;
+
+      &lt;/div&gt;
+
+      &lt;p id="suggestionText2" style="display:none"&gt;
+        correct
+      &lt;/p&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div id="modeLockScreen" style="display:none"&gt;
+
+    &lt;div id="modeLockMessage"&gt;
+
+      &lt;h3 id="modeLockMessageTitle"&gt;
+        FACULTY LOCKED
+      &lt;/h3&gt;
+
+      &lt;p id="modeLockMessageText"&gt;
+        The skull’s faculties are hypothesized to reside within
+        its internal cavity.
+
+        Distinct functions are activated through variation in
+        specific parameters.
+
+        To access a given function, adjust the values according
+        to the specifications provided below.
+      &lt;/p&gt;
+
+      &lt;div id="modeLockCodes"&gt;
+        &lt;div id="modeLockCode1"&gt;←&lt;/div&gt;
+        &lt;div id="modeLockCode2"&gt;→&lt;/div&gt;
+        &lt;div id="modeLockCode3"&gt;↑&lt;/div&gt;
+        &lt;div id="modeLockCode4"&gt;↓&lt;/div&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div id="mode2Content" style="display:none"&gt;
+
+    &lt;video width="100%"
+           height="100%"
+           autoplay
+           muted
+           playsinline
+           loop&gt;
+
+      &lt;source src="Assets/communication_scene.mov"&gt;
+    &lt;/video&gt;
+
+    &lt;div id="speechInterface"&gt;
+
+      &lt;h3 id="speechInterfaceTitle"&gt;
+        2_COMMUNICATION
+      &lt;/h3&gt;
+
+      &lt;p id="speechInterfaceText"&gt;
+        Communication Mode enables interaction with the cranial system.
+
+        Enter a message to initiate a response.
+
+        The skull will reply through encoded jaw movements.
+
+        Use the code sheet to interpret the output.
+      &lt;/p&gt;
+
+      &lt;input type="text"
+             id="mode2Input"
+             placeholder="Enter a sentence to communicate..."&gt;
+
+      &lt;button id="mode2SubmitButton"
+              class="kave-btn"
+              onclick="skullConsciousness.mode2CommunicationSubmit()"
+              disabled&gt;
+
+        &lt;span class="kave-line"&gt;&lt;/span&gt;
+        SEND
+
+      &lt;/button&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div id="mode3Content" style="display:none"&gt;
+
+    &lt;div id="memoryInterface"&gt;
+
+      &lt;h3 id="memoryInterfaceTitle"&gt;
+        3_MEMORY
+      &lt;/h3&gt;
+
+      &lt;p id="memoryInterfaceText"&gt;
+        The memory faculty enables access to the stored contents
+        of the skull’s memory.
+      &lt;/p&gt;
+
+      &lt;div id="memoryContent"&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div id="mode4Content" style="display:none"&gt;
+
+    &lt;div id="impressionContainer"&gt;
+
+      &lt;h3 id="impressionContainerTitle"&gt;
+        4_IMPRESSIONS
+      &lt;/h3&gt;
+
+      &lt;p id="impressionContainerText"&gt;
+        The impression faculty is based on the hypothesis that humans
+        were capable of first-person experiential states.
+
+        It produces internally generated imagery intended to illuminate
+        underlying cognitive processes.
+
+        These impressions are theorized to arise from specific patterns
+        of skull activity, though the existence of such a faculty remains
+        highly controversial.
+      &lt;/p&gt;
+
+      &lt;div id="impressionGridContainer"&gt;
+      &lt;/div&gt;
+
+      &lt;button id="mode4SubmitButton"
+              class="kave-btn"
+              onclick="skullConsciousness.mode4Submit()"
+              disabled&gt;
+
+        &lt;span class="kave-line"&gt;&lt;/span&gt;
+        Proceed to Final Assessment(Cannot Revert)
+
+      &lt;/button&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;button id="nextStageButton"
+          style="display:none"
+          onclick="skullConsciousness.nextStage()"
+          disabled&gt;
+
+    &gt;
+
+  &lt;/button&gt;
+
+  &lt;button id="previousStageButton"
+          style="display:none"
+          onclick="skullConsciousness.previousStage()"
+          disabled&gt;
+
+    &amp;lt;
+
+  &lt;/button&gt;
+
+  &lt;div id="pageDirectories" style="display:none"&gt;
+
+    &lt;div id="page1Directory" class="pageDirectory"&gt;
+      a
+    &lt;/div&gt;
+
+    &lt;div id="page2Directory" class="pageDirectory"&gt;
+      a
+    &lt;/div&gt;
+
+    &lt;div id="page3Directory" class="pageDirectory"&gt;
+      a
+    &lt;/div&gt;
+
+    &lt;div id="page4Directory" class="pageDirectory"&gt;
+      a
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;div id="finalAssessment" style="display:none"&gt;
+
+    &lt;h3 id="finalAssessmentTitle"&gt;
+      FINAL ASSESSMENT
+    &lt;/h3&gt;
+
+    &lt;p id="finalAssessmentText"&gt;
+      Scan the code below to access the survey for the final assessment.
+
+      Your responses will be critical in determining the outcome of this
+      simulation, and by extension, the fate of the Party’s stance on the
+      existence of Humans.
+
+      Please answer thoughtfully and thoroughly.
+    &lt;/p&gt;
+
+    &lt;img id="finalAssessmentQR"
+         src="Assets/QRcode.png"
+         width="300em"&gt;
+
+    &lt;button id="finalSubmitButton"
+            class="kave-btn"
+            onclick="location.reload();"&gt;
+
+      &lt;span class="kave-line"&gt;&lt;/span&gt;
+      TERMINATE SIMULATION
+
+    &lt;/button&gt;
+
+  &lt;/div&gt;
+
+  &lt;main&gt;
+  &lt;/main&gt;
+
+  &lt;script src="Text.js"&gt;&lt;/script&gt;
+  &lt;script src="Grid.js"&gt;&lt;/script&gt;
+  &lt;script src="serialCommunication.js"&gt;&lt;/script&gt;
+  &lt;script src="consciousness.js"&gt;&lt;/script&gt;
+  &lt;script src="sketch.js"&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<h3>Text.js</h3>
+<pre><code>
+/* ============================================================
+   The Text Class are individual "text pixels" of the pixelate+text-ize effect
+   ============================================================ */
+
+class Text {
+
+  constructor({ x, y, rgb, letter } = {}) {
+    this.size = 4; 
+    this.position = createVector(x, y);
+    this.rgb = createVector(rgb[0], rgb[1], rgb[2]);
+    this.targetRgb = undefined;
+    this.appear = true;
+    this.activate = false;
+  }
+
+  get x() {
+    return this.position.x;
+  }
+
+  get y() {
+    return this.position.y;
+  }
+
+  resetColorText() {
+    this.appear = true;
+    this.activate = false;
+    this.targetRgb = undefined;
+    this.rgb = createVector(0, 0, 0);
+  }
+
+  //function to spread the color of the text pixels to create a spreading effect, will also randomly activate neighboring pixels based on the spread value
+  spreadInText(v, sv, cross) {
+    if (!this.appear) {
+      this.changeColor(10, 50, 50, 50);
+      this.activated = true;
+    }
+
+    if (this.activate) {
+      if (this.rgb != undefined &amp;&amp; this.targetRgb != undefined) {
+        if (!p5.Vector.equals(this.targetRgb, this.rgb)) {
+          let direction = p5.Vector.sub(this.targetRgb, this.rgb);
+          direction.setMag(this.targetRgb.dist(this.rgb));
+          direction.limit(v);
+          this.rgb.add(direction);
+        }
+      } else {
+        this.changeColor(10, 50, 50, 50);
+      }
+
+      if (random() &gt; sv / 100) {
+        cross[0].activate = true;
+      }
+      if (random() &gt; sv / 100) {
+        cross[1].activate = true;
+      }
+      if (random() &gt; sv / 100) {
+        cross[2].activate = true;
+      }
+      if (random() &gt; sv / 100) {
+        cross[3].activate = true;
+      }
+    }
+  }
+
+  //function to set and reset the color of the text pixels, will also set the target color for the spreading effect
+  setTargetColor(r, g, b) {
+    this.targetRgb = createVector(r, g, b);
+  }
+
+  changeColor(v, r, g, b) {
+    let target = createVector(r, g, b);
+
+    if (!p5.Vector.equals(target, this.rgb)) {
+      let direction = p5.Vector.sub(target, this.rgb);
+      direction.setMag(target.dist(this.rgb));
+      direction.limit(v);
+      this.rgb.add(direction);
+    }
+  }
+
+  //function to display the text pixels, will also randomly change the opacity of the pixels to create a flickering effect
+  show() {
+    push();
+    textSize(this.size);
+    translate(this.x, this.y);
+
+    if (this.rgb.x != undefined) {
+      if (random(1) &lt; 0.999) {
+        stroke(this.rgb.x, this.rgb.y, this.rgb.z, this.opacity);
+      } else {
+        stroke(this.rgb.x, this.rgb.y, this.rgb.z, random(0, 60));
+      }
+
+      strokeWeight(this.size);
+      point(0, 0, 0);
+    }
+
+    pop();
+  }
+
+  //set color target of text object based on img
+  setPicText(img) {
+    const pixelX = round(this.x / 2 + img.width / 2);
+    const pixelY = round(this.y / 2 + img.height / 2);
+    const pixelNum = calculatePixel(pixelX, pixelY, img.width);
+
+    if (img.pixels[pixelNum] != undefined) {
+      const r = img.pixels[pixelNum];
+      const g = img.pixels[pixelNum + 1];
+      const b = img.pixels[pixelNum + 2];
+      this.setTargetColor(r, g, b);
+    }
+  }
+}
+</code></pre>
+
+<h3>Grid.js</h3>
+<pre><code>
+/* ============================================================
+   The Grid Class applies pixelated + text-ize effects to images
+   ============================================================ */
+
+
+// space between text
+const XSPACING = 8;
+const YSPACING = 8;
+
+// size of new image
+const GRIDWIDTH = 70 * 1.2;
+const GRIDHEIGHT = 70 * 1.2;
+
+class Grid {
+  constructor(rowNum, columnNum) {
+
+    // initializes 2D array of text objects
+    this.rowNum = parseInt(rowNum);
+    this.columnNum = parseInt(columnNum);
+    this.grids = new Array(this.rowNum);
+
+    for (let i = 0; i &lt; this.rowNum; i++) {
+      this.grids[i] = new Array(this.columnNum);
+
+      for (let j = 0; j &lt; this.columnNum; j++) {
+        this.grids[i][j] = new Text({
+          x: XSPACING * (j - this.columnNum / 2),
+          y: YSPACING * (i - this.rowNum / 2),
+          rgb: [0, 0, 0]
+        });
+      }
+    }
+  }
+
+  // traverses through 2D array of text objects
+  forEach(func) {
+    for (let i = 0; i &lt; this.rowNum; i++) {
+      for (let j = 0; j &lt; this.columnNum; j++) {
+        func(i, j);
+      }
+    }
+  }
+
+  reverseForEach(func) {
+    for (let i = this.rowNum - 1; i &gt;= 0; i--) {
+      for (let j = this.columnNum - 1; j &gt;= 0; j--) {
+        func(i, j);
+      }
+    }
+  }
+
+  at(i, j) {
+    if (i &lt; 0) {
+      i = this.grids.length - 1;
+    }
+
+    if (i &gt;= this.grids.length) {
+      i = 0;
+    }
+
+    if (j &lt; 0) {
+      j = this.grids[0].length - 1;
+    }
+
+    if (j &gt;= this.grids[0].length) {
+      j = 0;
+    }
+
+    return this.grids[i][j];
+  }
+
+  top(i, j) {
+    return this.at(i - 1, j);
+  }
+
+  bottom(i, j) {
+    return this.at(i + 1, j);
+  }
+
+  left(i, j) {
+    return this.at(i, j - 1);
+  }
+
+  right(i, j) {
+    return this.at(i, j + 1);
+  }
+
+  cross(i, j) {
+    return [
+      this.top(i, j),
+      this.right(i, j),
+      this.bottom(i, j),
+      this.left(i, j),
+    ];
+  }
+
+  resetColor() {
+    this.forEach((i, j) =&gt; {
+      this.grids[i][j].resetColorText();
+    });
+  }
+
+  //function to trigger the spreading effect of the text pixels, will also activate the center pixel to start the effect
+  spreadIn(appearVelocity, spreadVelocity, rowNum, columnNum) {
+    this.grids[rowNum][columnNum].activate = true;
+
+    this.forEach((i, j) =&gt; {
+      this.grids[i][j].spreadInText(
+        appearVelocity,
+        spreadVelocity,
+        this.cross(i, j)
+      );
+    });
+
+    this.reverseForEach((i, j) =&gt; {
+      this.grids[i][j].spreadInText(
+        appearVelocity,
+        spreadVelocity,
+        this.cross(i, j)
+      );
+    });
+  }
+
+  // set 2D array of text objects to the colors of the img
+  setPic(img) {
+    img.pixelDensity(1);
+    img.loadPixels();
+
+    this.forEach((i, j) =&gt; {
+      this.grids[i][j].setPicText(img);
+    });
+  }
+}
+
+// calculate index in pixels array of an image based on an (x,y) position
+function calculatePixel(x, y, w) {
+  return (y - 1) * w * 4 + x * 4 - 4;
+}
+</code></pre>
+
+<h3>serialCommunication.js</h3>
+<pre><code>
+// read any incoming data as a string
+// (assumes a newline at the end of it):
+function serialEvent() {
+  let data = serial.readLine();
+
+  if (data) {
+    data = data.trim().toLowerCase();
+
+    if (data.length &gt; 0) {
+
+      //check if the data is a command to start or stop speaking, or if it's a command to unlock a faculty, and update the skull consciousness accordingly
+      if (data === "start speaking") {
+        skullConsciousness.isSpeaking = true;
+      } else if (data === "stop speaking") {
+        skullConsciousness.isSpeaking = false;
+      } else if (data.startsWith("faculty")) {
+        console.log("Received faculty data: " + data);
+
+        let facultyArray = data.split(":");
+        let facultyNum = parseInt(facultyArray[1]);
+
+        if (facultyNum &amp;&amp; facultyNum &gt; 0) {
+          skullConsciousness.facultyUnlocked = facultyNum;
+        }
+      }
+    }
+  }
+}
+
+const serial = new p5.WebSerial();
+
+// port chooser button:
+let portButton;
+
+function serialSetup() {
+  // check to see if serial is available:
+  if (!navigator.serial) {
+    alert("WebSerial is not supported in this browser. Try Chrome or MS Edge.");
+  } else {
+    alert("WebSerial is supported. Enjoy!");
+  }
+
+  // check for any ports that are available:
+  serial.getPorts();
+
+  // if there's no port chosen, choose one:
+  serial.on("noport", makePortButton);
+
+  // open whatever port is available:
+  serial.on("portavailable", openPort);
+
+  // handle serial errors:
+  serial.on("requesterror", portError);
+
+  // handle any incoming serial data:
+  serial.on("data", serialEvent);
+  serial.on("close", makePortButton);
+
+  // add serial connect/disconnect listeners from WebSerial API:
+  navigator.serial.addEventListener("connect", portConnect);
+  navigator.serial.addEventListener("disconnect", portDisconnect);
+}
+
+let input;
+let sendButton;
+
+function sendMessage(message) {
+  // skullConsciousness.think(input.value());
+  // input.value("");
+
+  skullConsciousness.isSpeaking = true;
+
+  if (message) {
+    serial.write(message + "\n");
+  }
+}
+
+// if there's no port selected,
+// make a port select button appear:
+function makePortButton() {
+  // create and position a port chooser button:
+  portButton = createButton("choose port");
+  portButton.position(10, 10);
+
+  // give the port button a mousepressed handler:
+  portButton.mousePressed(choosePort);
+}
+
+// make the port selector window appear:
+function choosePort() {
+  if (portButton) portButton.show();
+  serial.requestPort();
+}
+
+// open the selected port, and make the port
+// button invisible:
+function openPort() {
+  // wait for the serial.open promise to return,
+  // then call the initiateSerial function
+  serial.open({ baudRate: 9600 }).then(initiateSerial);
+
+  // once the port opens, let the user know:
+  function initiateSerial() {
+    console.log("port open");
+  }
+
+  // hide the port button once a port is chosen:
+  if (portButton) portButton.hide();
+}
+
+// pop up an alert if there's a port error:
+function portError(err) {
+  alert("Serial port error: " + err);
+}
+
+// try to connect if a new serial port
+// gets added (i.e. plugged in via USB):
+function portConnect() {
+  console.log("port connected");
+  serial.getPorts();
+}
+
+// if a port is disconnected:
+function portDisconnect() {
+  serial.close();
+  console.log("port disconnected");
+}
+
+function closePort() {
+  serial.close();
+}
+</code></pre>
+<h3>consciousness.js</h3>
+<pre><code>
+let randomLoc = [20, 20];
+
+let skullConsciousness = {
+    state: "neutral",
+
+    //stores llm response in this format: {speech: "response sentence", state: "state description"}
+    json: null,
+
+    //randomly generated id for each ai conversation session
+    memorySessionId: Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000,
+
+    // reference image for impression mode, other images will be generated based on this image for consistency
+    referenceImage: null,
+
+    //array of images generated by the image generation api
+    images: [],
+
+    LLMLink: "https://shawnqiu.app.n8n.cloud/webhook/0379c963-1ad4-4267-98ef-689ceb34253c",
+
+    imageGenerationLink: "https://shawnqiu.app.n8n.cloud/webhook/1b14c00b-9ecb-4ea3-9807-5d267f1a2edb",
+
+    //checks if the skull is speaking
+    isSpeaking: false,
+
+    //keeps trach of which faculty is currently unlocked
+    facultyUnlocked: -1,
+
+    //stores the current mode of the experience, starting at 0 for the introduction
+    mode: 0,
+
+    //stores the message log of the conversation for memory mode
+    messageLog: [],
+
+    //divs for each mode to easily change display when changing modes
+    mode0Div: document.getElementById("mode0Content"),
+    mode1Div: document.getElementById("mode1Content"),
+    mode2Div: document.getElementById("mode2Content"),
+    mode3Div: document.getElementById("mode3Content"),
+    mode4Div: document.getElementById("mode4Content"),
+
+    //stores currently playing audio for each mode
+    audio: null,
+
+    //stores the index of the currently showing image in impression mode
+    imageShowingIndex: 0,
+
+    //function to change modes, will change the mode variable and update the display accordingly
+    modeChange(newMode) {
+
+        const modes = [
+            this.mode0Div,
+            this.mode1Div,
+            this.mode2Div,
+            this.mode3Div,
+            this.mode4Div
+        ];
+
+        //hide mode lock screen
+        document.getElementById("modeLockScreen").style.display = "none";
+
+        let oldModeDirectoryName = "page" + this.mode + "Directory";
+        let oldModeDirectory = document.getElementById(oldModeDirectoryName);
+
+        if (oldModeDirectory) {
+            oldModeDirectory.style.backgroundColor = "rgb(100, 100, 100)";
+        }
+
+        let modeDirectoryName = "page" + newMode + "Directory";
+        let modeDirectory = document.getElementById(modeDirectoryName);
+
+        if (modeDirectory) {
+            document.getElementById("pageDirectories").style.display = "flex";
+            modeDirectory.style.backgroundColor = "white";
+        }
+
+        modes.forEach(div =&gt; {
+            if (div) {
+                div.style.display = "none";
+            }
+        });
+
+        document.getElementById("mode0.5Content").style.display = "none";
+
+        if (newMode == 0.5) {
+
+            this.mode = 0.5;
+
+            document.getElementById("mode0.5Content").style.display = "flex";
+
+            this.audio = new Audio("Assets/welcomeLetter.mp3");
+            this.audio.play();
+
+        } else {
+
+            let setMode = parseInt(newMode);
+
+            this.audio.pause();
+
+            if (modes[setMode]) {
+
+                this.mode = setMode;
+
+                modes[setMode].style.display = "flex";
+
+                if (setMode === 1) {
+
+                    document.getElementById("previousStageButton").style.display = "none";
+
+                    document.getElementById("nextStageButton").style.display = "block";
+
+                    document.getElementById("nextStageButton").disabled = true;
+
+                    if (document.getElementById("sampleInput").disabled == true) {
+
+                        document.getElementById("nextStageButton").style.display = "block";
+
+                        document.getElementById("nextStageButton").disabled = false;
+
+                    } else {
+
+                        this.audio.pause();
+
+                        this.audio = new Audio("Assets/speakingTutorial.mp3");
+                        this.audio.play();
+                    }
+
+                } else if (setMode === 2) {
+
+                    document.getElementById("modeLockCode1").innerText = "←";
+                    document.getElementById("modeLockCode2").innerText = "←";
+                    document.getElementById("modeLockCode3").innerText = "↓";
+                    document.getElementById("modeLockCode4").innerText = "→";
+
+                    if (mode2TimerStart == -1) {
+
+                        this.audio.pause();
+
+                        this.audio = new Audio("Assets/modeLock.mp3");
+                        this.audio.play();
+                    }
+
+                    document.getElementById("previousStageButton").style.display = "block";
+
+                    document.getElementById("previousStageButton").disabled = false;
+
+                    document.getElementById("nextStageButton").style.display = "block";
+
+                    document.getElementById("nextStageButton").disabled = true;
+
+                    if (mode2Clear) {
+                        document.getElementById("nextStageButton").disabled = false;
+                    }
+
+                } else if (setMode === 3) {
+
+                    document.getElementById("modeLockCode1").innerText = "→";
+                    document.getElementById("modeLockCode2").innerText = "←";
+                    document.getElementById("modeLockCode3").innerText = "↓";
+                    document.getElementById("modeLockCode4").innerText = "→";
+
+                    let memory = document.getElementById("memoryContent");
+
+                    memory.style.display = "flex";
+                    memory.innerHTML = "";
+
+                    for (let i = 0; i &lt; this.messageLog.length; i++) {
+
+                        let message = this.messageLog[i];
+
+                        if (message.role === "USER") {
+
+                            memory.innerHTML += `
+                            &lt;div class = "userMessage"&gt;
+                                &lt;div class="timeStamp"&gt;${message.time}&lt;/div&gt;
+                                &lt;span class = "messageLabel"&gt;USER:&lt;/span&gt;
+                                ${message.content}
+                            &lt;/div&gt;`;
+
+                        } else if (message.role === "SKULL") {
+
+                            memory.innerHTML += `
+                            &lt;div class = "skullMessage"&gt;
+                                &lt;div class="timeStamp"&gt;${message.time}&lt;/div&gt;
+                                &lt;span class = "messageLabel"&gt;SKULL:&lt;/span&gt;
+                                ${message.content}
+                            &lt;/div&gt;`;
+                        }
+                    }
+
+                    document.getElementById("nextStageButton").disabled = true;
+
+                    document.getElementById("previousStageButton").style.display = "block";
+
+                    document.getElementById("previousStageButton").disabled = false;
+
+                    document.getElementById("nextStageButton").style.display = "block";
+
+                    if (mode3Clear) {
+                        document.getElementById("nextStageButton").disabled = false;
+                    }
+
+                } else if (setMode === 4) {
+
+                    document.getElementById("modeLockCode1").innerText = "↓";
+                    document.getElementById("modeLockCode2").innerText = "↓";
+                    document.getElementById("modeLockCode3").innerText = "→";
+                    document.getElementById("modeLockCode4").innerText = "→";
+
+                    document.getElementById("previousStageButton").style.display = "block";
+
+                    document.getElementById("previousStageButton").disabled = false;
+
+                    document.getElementById("nextStageButton").style.display = "none";
+
+                    if (document.getElementById("impressionCanvas") == null) {
+
+                        let impressionCanvas = createCanvas(600, 600);
+
+                        impressionCanvas.parent(
+                            document.getElementById("impressionGridContainer")
+                        );
+
+                        impressionCanvas.id("impressionCanvas");
+                    }
+                }
+            }
+        }
+    },
+
+    //functions to change to next and previous stages
+    nextStage() {
+        if (this.mode &lt; 5) {
+            this.modeChange(parseInt(this.mode) + 1);
+        }
+    },
+
+    previousStage() {
+        if (this.mode &gt; 1) {
+            this.modeChange(this.mode - 1);
+        }
+    },
+
+    //function for mode 0 to show ternary time
+    mode0Resting() {
+        let timeDiv = document.getElementById("clockText");
+        timeDiv.innerText = getTernaryTime();
+    },
+
+    //function for mode 1 to check if the user input is correct
+    mode1CheckInput() {
+
+        let input = document.getElementById("sampleInput");
+
+        if (input.value.trim().toLowerCase() === "fast") {
+
+            document.getElementById("suggestionText").style.display = "none";
+
+            document.getElementById("suggestionText2").style.display = "block";
+
+            input.disabled = true;
+
+            document.getElementById("sampleSubmitButton").disabled = true;
+
+            document.getElementById("sampleButton").disabled = true;
+
+            document.getElementById("nextStageButton").disabled = false;
+
+            this.audio.pause();
+
+            this.audio = new Audio("Assets/speakingTutorial2.mp3");
+
+            this.audio.play();
+
+        } else {
+
+            document.getElementById("suggestionText").style.display = "block";
+
+            document.getElementById("suggestion2Text").style.display = "none";
+
+            input.value = '';
+        }
+    },
+
+    //function for mode 2 communication
+    mode2Communication() {
+
+        let input = document.getElementById("mode2Input");
+
+        let message = input.value.trim();
+
+        if (message.length &gt; 0) {
+
+            this.think(message);
+
+            input.value = '';
+        }
+    },
+
+    //submit communication and move on
+    mode2CommunicationSubmit() {
+
+        this.isSpeaking = true;
+
+        skullConsciousness.think(
+            document.getElementById('mode2Input').value
+        );
+
+        document.getElementById('mode2Input').value = '';
+
+        mode2Clear = true;
+
+        document.getElementById("nextStageButton").disabled = false;
+    },
+
+    //display impressions
+    mode4Impressions() {
+
+        background(0);
+
+        if (this.images[0] &amp;&amp; this.images[1] &amp;&amp; this.images[2]) {
+
+            grid.forEach((i, j) =&gt; {
+                grid.grids[i][j].show();
+            });
+
+            grid.spreadIn(20, 50, randomLoc[0], randomLoc[1]);
+        }
+    },
+
+    //move on to final assessment
+    mode4Submit() {
+
+        this.mode = -1;
+
+        document.getElementById("mode4Content").style.display = "none";
+
+        document.getElementById("previousStageButton").style.display = "none";
+
+        document.getElementById("nextStageButton").style.display = "none";
+
+        document.getElementById("modeLockScreen").style.display = "none";
+
+        document.getElementById("pageDirectories").style.display = "none";
+
+        this.audio.pause();
+
+        document.getElementById("finalAssessment").style.display = "flex";
+
+        this.audio.pause();
+
+        this.audio = new Audio("Assets/end.mp3");
+
+        this.audio.play();
+    },
+
+    //make skull say message returned from llm
+    act() {
+
+        console.log(this.json);
+
+        let message = this.json.speech;
+
+        this.messageLog.push({
+            time: getTernaryTime(),
+            role: "SKULL",
+            content: message
+        });
+
+        sendMessage(message);
+    },
+
+    //update skull state
+    async update() {
+
+        this.state = this.json.state;
+
+        let prompt = this.buildImagePrompt();
+
+        this.showImpressionLoading();
+
+        try {
+
+            await this.generateImages({
+                time: getTernaryTime(),
+                prompt: prompt,
+                imageSize: "square",
+                steps: 2,
+                imageNumbers: 3,
+                strength: 1
+            });
+
+        } finally {
+
+            this.hideImpressionLoading();
+        }
+    },
+
+    //main function when user sends a message
+    async think(userMessage) {
+
+        this.messageLog.push({
+            time: getTernaryTime(),
+            role: "USER",
+            content: userMessage
+        });
+
+        const response = await this.generateLLMThought(userMessage);
+
+        this.json = response;
+
+        this.act();
+
+        this.update();
+    },
+
+    //send prompt to llm
+    async generateLLMThought(prompt) {
+
+        try {
+
+            const res = await fetch(this.LLMLink, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    data: prompt,
+                    memorySessionId: this.memorySessionId
+                })
+            });
+
+            const data = await res.json();
+
+            return data.output;
+
+        } catch (err) {
+
+            console.error(err);
+
+            return null;
+        }
+    },
+
+    buildImagePrompt() {
+
+        let state = this.state;
+
+        return state + " surreal portrait, digital art";
+    },
+
+    showImpressionLoading() {
+
+        const container = document.getElementById("impressionContainer");
+
+        if (!container) return;
+
+        container.style.position = "relative";
+
+        let loader = document.getElementById("impressionLoading");
+
+        if (!loader) {
+
+            loader = document.createElement("div");
+
+            loader.id = "impressionLoading";
+
+            loader.innerText = "Loading impressions...";
+
+            loader.style.position = "absolute";
+            loader.style.top = "50%";
+            loader.style.left = "50%";
+            loader.style.transform = "translate(-50%, -50%)";
+            loader.style.padding = "1rem 1.5rem";
+            loader.style.color = "white";
+            loader.style.background = "rgba(0, 0, 0, 0.7)";
+            loader.style.borderRadius = "0.75rem";
+            loader.style.zIndex = "999";
+            loader.style.textAlign = "center";
+
+            container.appendChild(loader);
+        }
+
+        loader.style.display = "block";
+    },
+
+    hideImpressionLoading() {
+
+        const loader = document.getElementById("impressionLoading");
+
+        if (loader) {
+            loader.style.display = "none";
+        }
+    },
+
+    //retrieve images based on prompt
+    async generateImages({
+        prompt,
+        imageSize,
+        steps,
+        imageNumbers,
+        strength
+    }) {
+
+        const seed = Math.floor(
+            Math.random() * (999999 - 100000 + 1)
+        ) + 100000;
+
+        const res = await fetch(this.imageGenerationLink, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+
+            body: JSON.stringify({
+                data: {
+                    "prompt": prompt,
+                    "strength": strength,
+                    "image_size": imageSize,
+                    "num_inference_steps": steps,
+                    "num_images": imageNumbers,
+                    "seed": seed
+                }
+            })
+        });
+
+        const data = await res.json();
+
+        const dataFirst = data["0"];
+
+        console.log(dataFirst);
+
+        const urls = [
+            dataFirst.images["0"].url,
+            dataFirst.images["1"].url,
+            dataFirst.images["2"].url
+        ];
+
+        const loadedImages = await Promise.all(
+            urls.map(url =&gt; {
+                return new Promise((resolve, reject) =&gt; {
+                    loadImage(url,
+                        img =&gt; resolve(img),
+                        err =&gt; reject(err)
+                    );
+                });
+            })
+        );
+
+        this.images[0] = loadedImages[0];
+        this.images[1] = loadedImages[1];
+        this.images[2] = loadedImages[2];
+
+        setInterval(() =&gt; {
+
+            this.imageShowingIndex =
+                (this.imageShowingIndex + 1) % 3;
+
+            grid.resetColor();
+
+            grid.setPic(this.images[this.imageShowingIndex]);
+
+            randomLoc = [
+                round(random(20, 30)),
+                round(random(20, 30))
+            ];
+
+        }, 5000);
+    }
+}
+
+function toTernary(num) {
+    return num.toString(3).padStart(2, "0");
+}
+
+function getTernaryTime() {
+
+    const now = new Date();
+
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    // convert each into ternary
+    const tHours = toTernary(hours, 3);
+    const tMinutes = toTernary(minutes, 3);
+    const tSeconds = toTernary(seconds, 3);
+
+    return "20022111:101:0222:" +
+        tHours + ":" +
+        tMinutes + ":" +
+        tSeconds;
+}
+</code></pre>
+<h3>sketch.js</h3>
+<pre><code>
+let grid;
+
+function setup() {
+
+    serialSetup();
+
+    grid = new Grid(200, 200);
+
+    let menu = createSelect();
+
+    menu.position(10, 10);
+
+    menu.option("Mode 0: Resting");
+    menu.option("Mode 1: Sample Output");
+    menu.option("Mode 2: Communication");
+    menu.option("Mode 3: Memory");
+    menu.option("Mode 4: Impressions");
+
+    menu.changed(() =&gt; {
+
+        let selected = menu.value();
+
+        if (selected === "Mode 0: Resting") {
+
+            skullConsciousness.modeChange(0);
+
+        } else if (selected === "Mode 1: Sample Output") {
+
+            skullConsciousness.modeChange(1);
+
+        } else if (selected === "Mode 2: Communication") {
+
+            skullConsciousness.modeChange(2);
+
+        } else if (selected === "Mode 3: Memory") {
+
+            skullConsciousness.modeChange(3);
+
+        } else if (selected === "Mode 4: Impressions") {
+
+            skullConsciousness.modeChange(4);
+        }
+    });
+
+    menu2 = createSelect();
+
+    menu2.position(10, 40);
+
+    menu2.option("Faculty 0: Basic Awareness");
+    menu2.option("Faculty 1: Language Production");
+    menu2.option("Faculty 2: Communication");
+    menu2.option("Faculty 3: Memory");
+    menu2.option("Faculty 4: Impressions");
+
+    menu2.changed(() =&gt; {
+
+        let selected = menu2.value();
+
+        if (selected === "Faculty 0: Basic Awareness") {
+
+            skullConsciousness.facultyUnlocked = -1;
+
+        } else if (selected === "Faculty 1: Language Production") {
+
+            skullConsciousness.facultyUnlocked = -1;
+
+        } else if (selected === "Faculty 1: Language Production") {
+
+            skullConsciousness.facultyUnlocked = -1;
+
+        } else if (selected === "Faculty 2: Communication") {
+
+            skullConsciousness.facultyUnlocked = 1;
+
+        } else if (selected === "Faculty 3: Memory") {
+
+            skullConsciousness.facultyUnlocked = 2;
+
+        } else if (selected === "Faculty 4: Impressions") {
+
+            skullConsciousness.facultyUnlocked = 3;
+        }
+    });
+}
+
+//timers for each mode
+let mode0TimerStart = -1;
+let mode1TimerStart = -1;
+let mode2TimerStart = -1;
+let mode3TimerStart = -1;
+let mode4TimerStart = -1;
+
+//flags to check if the user has cleared certain requirements
+let mode2Clear = false;
+let mode3Clear = false;
+
+function draw() {
+
+    serialEvent();
+
+    //main function to check the current mode
+    if (skullConsciousness.mode == 0) {
+
+        skullConsciousness.mode0Resting();
+
+    } else if (skullConsciousness.mode == 0.5) {
+
+        let checkBox = document.getElementById("agreementCheck");
+
+        if (mode0TimerStart == -1) {
+
+            mode0TimerStart = millis();
+        }
+
+        if (
+            mode0TimerStart &gt; 0 &amp;&amp;
+            millis() - mode0TimerStart &gt;= 5000
+        ) {
+
+            checkBox.disabled = false;
+
+            document.getElementById("agreementLabel").style.color = "red";
+
+            mode0TimerStart = -2;
+        }
+
+        if (checkBox.checked) {
+
+            document.getElementById("proceedButton").style.display = "block";
+
+        } else {
+
+            document.getElementById("proceedButton").style.display = "none";
+        }
+
+    } else if (skullConsciousness.mode == 1) {
+
+        if (mode1TimerStart == -1) {
+
+            mode1TimerStart = millis();
+
+            document.getElementById("sampleButton").disabled = true;
+
+        } else if (
+            document.getElementById("sampleButton").disabled == true &amp;&amp;
+            mode1TimerStart &gt; 0 &amp;&amp;
+            millis() - mode1TimerStart &gt;= 5000
+        ) {
+
+            document.getElementById("sampleButton").innerText =
+                "PRODUCE SAMPLE OUTPUT";
+
+            document.getElementById("sampleButton").disabled = false;
+        }
+
+        if (skullConsciousness.isSpeaking) {
+
+            document.getElementById("sampleButton").innerText =
+                "IS SPEAKING...";
+
+            document.getElementById("sampleButton").disabled = true;
+
+            document.getElementById("nextStageButton").disabled = true;
+
+        } else if (
+            document.getElementById("sampleSubmitButton").disabled == true
+        ) {
+
+            document.getElementById("nextStageButton").disabled = false;
+        }
+
+    } else if (skullConsciousness.mode == 2) {
+
+        if (skullConsciousness.facultyUnlocked == 1) {
+
+            document.getElementById("speechInterface").style.display = "flex";
+
+            document.getElementById("modeLockScreen").style.display = "none";
+
+            if (mode2TimerStart == -1) {
+
+                skullConsciousness.audio.pause();
+
+                skullConsciousness.audio =
+                    new Audio("Assets/communicationTutorial.mp3");
+
+                skullConsciousness.audio.play();
+
+                mode2TimerStart = millis();
+
+                document.getElementById("mode2SubmitButton").disabled = true;
+
+            } else if (
+                mode2TimerStart &gt; 0 &amp;&amp;
+                millis() - mode2TimerStart &lt;= 3000
+            ) {
+
+            } else if (skullConsciousness.isSpeaking) {
+
+                document.getElementById("mode2SubmitButton").disabled = true;
+
+                document.getElementById("mode2SubmitButton").innerText =
+                    "SPEAKING";
+
+                document.getElementById("nextStageButton").disabled = true;
+
+                document.getElementById("previousStageButton").disabled = true;
+
+            } else {
+
+                document.getElementById("mode2SubmitButton").innerText =
+                    "SEND";
+
+                document.getElementById("mode2SubmitButton").disabled = false;
+
+                if (mode2Clear) {
+
+                    document.getElementById("nextStageButton").disabled = false;
+
+                    document.getElementById("previousStageButton").disabled = false;
+                }
+            }
+
+        } else {
+
+            document.getElementById("speechInterface").style.display = "none";
+
+            document.getElementById("modeLockScreen").style.display = "flex";
+        }
+
+    } else if (skullConsciousness.mode == 3) {
+
+        if (skullConsciousness.facultyUnlocked == 2) {
+
+            document.getElementById("mode3Content").style.display = "flex";
+
+            document.getElementById("modeLockScreen").style.display = "none";
+
+            if (mode3TimerStart == -1) {
+
+                mode3TimerStart = millis();
+
+                skullConsciousness.audio.pause();
+
+                skullConsciousness.audio =
+                    new Audio("Assets/memoryTutorial.mp3");
+
+                skullConsciousness.audio.play();
+
+            } else if (
+                mode3TimerStart &gt; 0 &amp;&amp;
+                millis() - mode3TimerStart &gt;= 3000
+            ) {
+
+                mode3Clear = true;
+
+                document.getElementById("nextStageButton").disabled = false;
+            }
+
+        } else {
+
+            document.getElementById("mode3Content").style.display = "none";
+
+            document.getElementById("modeLockScreen").style.display = "flex";
+        }
+
+    } else if (skullConsciousness.mode == 4) {
+
+        if (skullConsciousness.facultyUnlocked == 3) {
+
+            document.getElementById("mode4Content").style.display = "flex";
+
+            document.getElementById("modeLockScreen").style.display = "none";
+
+            skullConsciousness.mode4Impressions();
+
+            if (mode4TimerStart == -1) {
+
+                mode4TimerStart = millis();
+
+                skullConsciousness.audio.pause();
+
+                skullConsciousness.audio =
+                    new Audio("Assets/impressionTutorial.mp3");
+
+                skullConsciousness.audio.play();
+
+            } else if (
+                mode4TimerStart &gt; 0 &amp;&amp;
+                millis() - mode4TimerStart &gt;= 25000
+            ) {
+
+                skullConsciousness.audio.pause();
+
+                skullConsciousness.audio =
+                    new Audio("Assets/final.mp3");
+
+                skullConsciousness.audio.play();
+
+            } else if (
+                mode4TimerStart &gt; 0 &amp;&amp;
+                millis() - mode4TimerStart &gt;= 3000
+            ) {
+
+                document.getElementById("mode4SubmitButton").disabled = false;
+            }
+
+        } else {
+
+            document.getElementById("mode4Content").style.display = "none";
+
+            document.getElementById("modeLockScreen").style.display = "flex";
+        }
+    }
+}
+</code></pre>
+            <h3>Challenges/Happy Moments</h3>
+            <p>One challenge was the physical design. Because of my lack of experience with fabrication, I mostly had to rely on materials that were already available to me. I spent a lot of time looking for something that would keep the skull balanced, give it some decent weight, prevent it from falling, and also not get in the way of the skull’s jaw motion. I experimented with a tripod, an iPhone stand, cardboard prototypes, and even my phone stand. I finally decided to use a kitchen paper towel stand to hold the skull because it is metallic and heavy enough. It is also connected to the skull by a single stick, so it does not affect the jaw movement. I also had trouble initially pulling the jaw using a servo motor, which took me hours to figure out. I had to find the right position for the motor and decide on the proper strength of the string.</p>
+            <p>Another big challenge was serial communication, which sometimes only worked when I reset my Arduino chip. This was annoying because it seemed to work inconsistently, and I could not figure out a clear reason for it except that my Arduino chip might be faulty. Perhaps I will check my code again to see if there is a reason why it is so glitchy.</p>
+            <p>I had the most fun designing the story and the user interface because those are the areas I am most comfortable with. I did not really encounter many issues during that process and was satisfied with the final result. The only thing I might change is the code itself, because its structure is pretty confusing and chaotic. However, I am also not planning to expand the code further, so I am satisfied as long as it is fully functional, which I believe it is.</p>
+            <h3>Next Steps</h3>
+            <p>There are a lot of things that I want to change after the final user testing. First, I want to make the interaction more intuitive and easier to use. I think some of the feedback that I received is very valid. For example, I could add visual or audio cues between each letter and word that the skull speaks to indicate the pause between each element. I could also attach a different audio output for each of the three jaw states to create a clearer distinction between them.</p>
+
+<p>Another aspect is that I noticed people were confused about where to look in order to unlock the faculties through the buttons and the code sheet. A more intuitive design would be to have the narrator explicitly state where the user should look. I am also thinking about simplifying the entire experience so that the mode unlock mechanism only occurs once when unlocking all the faculties for the first time.</p>
+
+<p>I should also minimize the use of words and rely more on images. Another change I would make is improving the fabrication and physical design, which I could make look much more polished if I had more time.</p>
+            <custom-spacing size="5rem"></custom-spacing>
+            <custom-seperator></custom-seperator>
+            <custom-spacing size="5rem"></custom-spacing>
+            <h3><i>2026.4.27</i></h3>
+
+            <h3>Story Development</h3>
+            <p>The first thing that I did this week was come up with a background story for this interaction that I can later base my tutorial and user interface around. Initially, I wanted to stick with the idea of: what if a skull were conscious, and how would it be able to perform cognitive functions based on its physical form? I decided to incorporate the perspective that the skull is not inherently conscious, but that the user plays as an alien, determining whether the skull is conscious.</p>
+            <p>This idea is inspired by a cognitive science class that I am taking and the discussions around whether consciousness can be created in materials that are not neurons or biological. One view from my classmates is that it seems strange to think that consciousness could arise in electrical or computational forms. My reflection is that, if we were aliens observing the human skull, wouldn’t we also think it strange that something as simple as neural activity could give rise to something as mysterious and invisible as consciousness? </p>
+            <p>Thus, the setting for this project is centred around aliens interacting with a human skull and inquiring whether humans are conscious. One decision I made was to have the user play as a high-ranking official in the alien party. This decision was made because I wanted the debate around consciousness to feel politically and socially important. This is also a reference to how racist theories were historically employed to deny intelligence or consciousness in colonized people in order to justify colonialism.</p>
+            <p>I came up with the title <i>Spirit is a Bone</i> as a reference to Hegel's <i>Phenomenology of Spirit</i>, specifically the chapter on phrenology. The idea is roughly that only when consciousness turns into something as rigid and material as the skull do we truly understand its nature as something purely active and spiritual. I think this is largely applicable to this project, as it similarly presents the tension of the direct juxtaposition between consciousness, which is active and lively, and the skull, which is rigid and seemingly unintelligent.</p>
+            <p>I have many other thoughts on the story and message of this project, but I will not expand on them to give more interpretation freedom to the audience.</p>
+            <h3>Interface Development</h3>
+            <p>After deciding on a story, I could finally choose a theme for the style of the user interface. I decided to keep it sci-fi and bureaucratic because the experience is framed as an experiment distributed within a political party. The graphics for the background are generated by a program modified from one of my previous projects: <a href="https://www.shawnqiu.com/Pages/Project_Pages/Zero_Gravity_Theatre:_The_Brothers_Karamazov/index.html?concept=particles&project=Zero%20Gravity%20Theatre%3A%20The%20Brothers%20Karamazov">Zero Gravity Threatre: The Brothers Karamazov</a></p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <video style="width:100%; aspect-ratio:16 / 9;" autoplay loop muted>
+                <source src="page_asset/v1.mov" type="video/mp4">
+            </video>
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>The narration is generated using a custom voice with ElevenLabs AI, prompted to sound deep and authoritative. The voice ID is: HKmjoyADxKiwjahWQMKv</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/i4.png" alt="narration" style="width: 100%; max-width: 800px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>There are six stages included in this experience after the user clicks the start button on the starting screen.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/sk1.png" alt="stages" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>Then, there is an introduction letter that introduces the background story of the project. </p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/sk2.png" alt="stages" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>Next, the user is asked to press a button, which makes the skull speak a word that the user must interpret based on its jaw movement. This stage is intended to familiarize the user with how the skull speaks.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/sk3.png" alt="stages" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>Before the user advances to the next stage, they first need to enter the right combination of codes through four buttons located inside the skull. This will be the case for all subsequent stages.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/sk0.png" alt="stages" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>The next mode of communication allows full conversation with the skull.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/sk4.png" alt="stages" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>The following stage, memory, displays the content of the conversations with the skull.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/sk5.png" alt="stages" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>Next, impression displays the images generated based on the internal state of the skull, also visualized through the same code as the background, but in real time.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/sk6.png" alt="stages" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <p>Finally, after the user is done, they are asked to fill out a survey answering whether they think the skull is conscious. This completes the user interaction and workflow for the project.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/sk7.png" alt="stages" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <h3>Next Steps</h3>
+            <p>For next week, the remaining tasks are to create a code sheet to help the user translate the skull’s speech, polish the physical design of the skull, install the buttons within it, and refine the serial communication that makes these interactions possible.</p>
+            <custom-spacing size="5rem"></custom-spacing>
+            <custom-seperator></custom-seperator>
+            <custom-spacing size="5rem"></custom-spacing>
+            <h3><i>2026.4.20</i></h3>
+            <h3>Overview</h3>
+            <p>
+                This week, I wanted to establish the basic infrastructure for the skull's consciousness, which should be capable of conversing with the user and generating multiple images based on its past interactions. The conversing mechanism simulates the skull's ability to communicate, while the image generation mechanism simulates its faculty of impression. I used n8n, a low-code automated workflow program, to bypass CORS restrictions that would otherwise prevent me from directly loading an image’s pixels into a JavaScript file without a server endpoint, giving me more control over the image if I want to add visual effects.
+            </p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/i2.png" alt="skull consciousness" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <h3>Conversing Mechanism</h3>
+            <p>
+                I used a webhook node provided by n8n, which works similarly to an API call, to send and receive messages to and from an AI agent, allowing for conversations between the user and the Skull AI. In addition to the user’s message, the skull’s consciousness is programmed to have states that influence its response, similar to how our mood influences what we say. Its mood is determined by its reaction to the user’s previous message. This mechanism is added to give the skull’s consciousness more personality and continuity. Thus, the input consists of the user’s message + the current state of the skull, and the output is the skull’s response message + its new state.
+            </p>
+
+            <p>The AI agent is also given a system prompt to ensure more consistent, safe, and in-character responses:</p>
+            
+            <pre><code>
+        You are the residual voice bound within an excavated skull.
+
+        Behavior:
+        - Output ONLY valid JSON.
+        - Speak in ONE utterance.
+
+        Speech:
+        - 2–5 tokens only
+        - nouns verbs or raw letter strings
+        - ONLY English letters a to z
+        - no punctuation numbers or symbols
+        - no grammar or full sentences
+        - allow repetition and disjoint fragments
+        - meaning should remain unclear
+
+        Personality:
+        - fragmented collapsing voice
+        - no stable perspective
+        - no direct reference to the user
+        - speech feels like broken residue
+
+        Tone:
+        - language disordered incomplete
+        - clarity should not persist
+
+        Emotional State:
+        - new emotion derives from previous emotion and user input
+        - do not reset emotion each turn
+        - reinforce if aligned
+        - shift gradually if different
+        - shift strongly if opposed
+        - default to neutral if uncertain
+
+        Emotion set:
+        happy|sad|neutral|angry|confused
+
+        Output format strict:
+        speech must contain only letters and spaces
+        emotion must be one of the emotion set
+
+        {"speech":"letters only","emotion":"happy|sad|neutral|angry|confused"}
+            </code></pre>
+            <h3>Image Generation Mechanism</h3>
+            <p>The image generation logic is more complicated. To reduce variance in the generated images so that they are not entirely unrelated, I decided to first generate a reference image based on the current state of the skull as the prompt. Three more images are then generated based on the reference image. I then load each image as an image object so that I have access to each of its pixels.</p>
+            <custom-spacing size="3rem"></custom-spacing>
+            <img src="page_asset/i3.png" alt="image generation workflow" style="width: 100%; max-width: 1500px;">
+            <custom-spacing size="3rem"></custom-spacing>
+            <h3>Code</h3>
+            <p>To simulate the memory faculty, I simply created an array of objects that stores the message each time the user/skull says something. Here is the javaScript code for the speech & impression & memory functionalities:</p>
+            <pre><code>
+
+    //function to make the skull say the message returned from the llm, will also add the message to the message log for memory mode
+    act() {
+        console.log(this.json);
+        let message = this.json.speech;
+
+        this.messageLog.push({ time: getTernaryTime(), role: "SKULL", content: message });
+        sendMessage(message);
+    },
+
+    //function to update the state of the skull based on the response from the llm, will also call the function to generate images based on the new state in impression mode
+    async update() {
+        this.state = this.json.state;
+        let prompt = this.buildImagePrompt();
+
+        this.showImpressionLoading();
+        try {
+            await this.generateImages({ time: getTernaryTime(), prompt: prompt, imageSize: "square", steps: 2, imageNumbers: 3, strength: 1 });
+        } finally {
+            this.hideImpressionLoading();
+        }
+
+    },
+    //main function to call when user sends a message, will send the message to the llm and update the state based on the response
+    async think(userMessage) {
+        this.messageLog.push({ time: getTernaryTime(), role: "USER", content: userMessage });
+        // → Send prompt to LLM
+        // → Parse the returned JSON and store into this.response
+        const response = await this.generateLLMThought(userMessage);
+        this.json = response;
+        // → Call update() to apply state changes
+
+        this.act();
+        this.update();
+
+    },
+
+    //function to send prompt to llm and return response as json
+    async generateLLMThought(prompt) {
+        try {
+            const res = await fetch(this.LLMLink, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ data: prompt, memorySessionId: this.memorySessionId })
+            });
+
+            const data = await res.json();
+            return data.output;
+
+        } catch (err) {
+            console.error(err);
+            return null;
+        }
+    },
+
+    buildImagePrompt() {
+        let state = this.state;
+        return state + " surreal portrait, digital art";
+    },//retrieve set of n images based on image prompt
+    async generateImages({ prompt, imageSize, steps, imageNumbers, strength }) {
+       
+        const seed = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+
+        const res = await fetch(this.imageGenerationLink, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                data: {
+                    "prompt": prompt,
+                    "strength": strength,
+                    "image_size": imageSize,
+                    "num_inference_steps": steps,
+                    "num_images": imageNumbers,
+                    "seed": seed
+                }
+            })
+        });
+
+        const data = await res.json();
+        const dataFirst = data["0"];
+        console.log(dataFirst);
+
+        const urls = [
+            dataFirst.images["0"].url,
+            dataFirst.images["1"].url,
+            dataFirst.images["2"].url
+        ];
+
+        const loadedImages = await Promise.all(urls.map(url => {
+            return new Promise((resolve, reject) => {
+                loadImage(url, img => resolve(img), err => reject(err));
+            });
+        }));
+
+        this.images[0] = loadedImages[0];
+        this.images[1] = loadedImages[1];
+        this.images[2] = loadedImages[2];
+
+        setInterval(() => {
+            this.imageShowingIndex = (this.imageShowingIndex + 1) % 3;
+            grid.resetColor();
+            grid.setPic(this.images[this.imageShowingIndex]);
+            randomLoc = [round(random(20, 30)), round(random(20, 30))];
+        }, 5000);
+
+    }
+            </code></pre>
+            <h3>User Flow</h3>
+            <p>Due to the feedback I received during class, I thought about adding a tutorial that guides the user through navigating the functions that the skull’s consciousness is capable of performing. I came up with a rough user flow for how the user may interact with the skull:</p>
+            <iframe height="600" src="https://docs.google.com/document/d/e/2PACX-1vTzvuYPvZQIk42vm2ooiSlZYHjXFD5293lDCWB1i27-6tsju3gwgIg3LJh29tgmKlpsvCKZhVCcspDR/pub?embedded=true"></iframe>
+            <h3>Next Steps</h3>
+            <p>Next week, I plan to build a story around this experience and design the JavaScript user interface that implements the planned user flow.</p>
+            <custom-spacing size="5rem"></custom-spacing>
+            <custom-seperator></custom-seperator>
+            <custom-spacing size="5rem"></custom-spacing>
+            <h3><i>2026.4.13</i></h3>
+            <h3>Mechanical Design</h3>
+            <p>I first started thinking of ways to control the opening/closing of the mouth. The skull came with two
+                separate parts: the jaw and the rest of the skull. The jaw and the upper skull are connected by a single
+                spring that allows them to open/close. I tried other methods of connecting the two parts(like using
+                strings and wires or a combination of spring and wire), but none of them were as stable as using a
+                spring, so I decided to keep it. However, the consequence of having a stable connection is that you must
+                apply a lot of force in the right direction to move the jaw. I found that the best way to move the jaw
+                is to have a pulling force in the bottom back direction that is connected to a lower point on the jaw. I
+                tried using a solenoid first, but it was barely able to move the jaw. An issue with a solenoid is that I
+                must place it in a very low position relative to the skull to apply a force going down because its
+                pulling motion is linear. Then I thought about a motor. If I attach one string to the jaw and another
+                connecting the first string and the motor, the rotational force of the motor should apply a very strong
+                force in the bottom back direction.</p>
+            <image src="page_asset/i1.png" alt="motor setup" style="width: 100%; max-width: 1500px;"></image>
+            <custom-spacing size="3rem"></custom-spacing>
+            <h3>Communication System</h3>
+            <p>Next, I wanted to define two different modes of jaw movement to represent two different values in the
+                binary language of the skull. I defined a shorter movement as 0 or a dot in Morse code, and a longer
+                movement as 1 or a dash. Next, each lowercase English letter is assigned a combination of dashes/dots to
+                encode them. For convenience and efficiency(more frequently used letters are assigned shorter Morse code
+                values), I copied the combination directly from the Morse code system. When the system is asked to speak
+                a sentence, it will read through each letter one by one and say its respective Morse code value through
+                the opening/closing of the mouth. There will be a shorter interval of 1000ms between each letter and a
+                4000ms interval between each word. Here is a video showcasing the current model saying “hello world.”
+            </p>
+            <iframe style="width:100%; aspect-ratio:16 / 9;" src="https://www.youtube.com/embed/hXjYwST9ZaU"
+                title="YouTube video player" frameborder="0" allowfullscreen>
+            </iframe>
+            <h3>Next Steps</h3>
+            <p>I have also worked on the serial communication code to communicate sentences from JavaScript to Arduino. Next, I plan to design an AI system for the skull by connecting the JavaScript sketch to an AI agent API to tell the skull what to say. I also want to design an interface in JavaScript to visualize the different aspects of the skull’s intelligence. A change that I may want to make is to change the current binary system to maybe a ternary or a quaternary system to contain more information in a shorter time for an increase in the efficiency of communication.</p>
+            <custom-spacing size="5rem"></custom-spacing>
+            <custom-seperator></custom-seperator>
+            <custom-spacing size="5rem"></custom-spacing>
+            <h3><i>2026.4.6 Project Ideation</i></h3>
+            <h3>Criteria for a good physical computing final project:</h3>
+            <ul>
+                <li>Elaborate documentation and presentation</li>
+                <li>Consistently functional (consider soldering)</li>
+                <li>Engaging a group of the audience</li>
+                <li>Intuitive (should not require much explanation other than the instructions or description on the
+                    project itself)</li>
+                <li>Visually interesting/impressive</li>
+                <li>Code should be readable.</li>
+                <li>express themes of growth, consciousness, and digital life strongly and invite discussions around
+                    them</li>
+            </ul>
+            <h3>Project Name: <span style="font-style: italic;">Spirit is a Bone</span></h3>
+            <h3>Description</h3>
+            <p>What is it like for a skull to have consciousness? This project is an attempt to create a conscious skull
+                and to imagine how its physical form determines its means of communication and forms of thought. Like
+                Morse code, the clicks that the teeth make when opening and closing the mouth represent binary codes for
+                each letter in English. Aluminum foil is wrapped around each part of the skull. When the aluminum foil
+                comes into contact with an electrode, the skull is able to detect that signal, which is how you
+                communicate with it. Since the input is similarly binary, the user must communicate with the skull using
+                Morse code. Additionally, the skull is connected to a computer, displaying a program that allows the
+                user to observe the internal states of the skull’s consciousness, including its faculties of reflection
+                and imagination, without the need for a physical medium. The consciousness of the skull will gradually
+                evolve as it learns new words and things said by the user. These memories will be stored in its memory
+                faculty so that they can later be recalled and used in speech in future conversations with the user.</p>
+            <h3>Inspirations</h3>
+            <ul>
+                <li>*Thomas Nagel's <i>What it is like to be a Bat</i></li>
+                <li><a
+                        href="https://www.shawnqiu.com/Pages/Project_Pages/The_Guidebook_for_the_Conscious_Book/index.html?project=The%20Guidebook%20for%20the%20Conscious%20Book">*Guidebook
+                        to the Conscious Book</a></li>
+                <li><a href="https://www.shawnqiu.com/Pages/Project_Pages/LED_MAN/index.html?project=LED%20MAN">*LED
+                        Man</a></li>
+            </ul>
+            <h3>Installation Plan</h3>
+            <image src="page_asset/d1.png" alt="installation plan" style="width: 100%; max-width: 2000px;"></image>
+            <custom-spacing size="3rem"></custom-spacing>
+            <h3>System Diagram</h3>
+            <image src="page_asset/d2.png" alt="system diagram" style="width: 100%; max-width: 1500px;"></image>
+            <custom-spacing size="3rem"></custom-spacing>
+
+            <h3>BOM</h3>
+            <ul>
+                <li>Skull Model</li>
+                <li>stand to place the skull</li>
+                <li>Servo motor</li>
+                <li>Case blow the skull</li>
+                <li>Aluminum foil</li>
+                <li>Electrode</li>
+            </ul>
+
+            <h3>Project Timeline</h3>
+            <p><strong>4/6</strong></p>
+            <ol>
+                <li>purchase material and ideation</li>
+            </ol>
+            <p><strong>4/13</strong></p>
+            <ol>
+                <li>Implement the conversion of the rotational force of the motor to the pulling of the spring that
+                    opens and closes the mouth.</li>
+                <li>Write the Arduino program that is able to convert all English sentences into binary open/closing of
+                    the mouth.</li>
+                <li>Implement the electrode → aluminum foil → microcontroller logic.</li>
+                <li>Write the Arduino program to convert the electrode signals from the user to English.</li>
+            </ol>
+            <p><strong>4/20</strong></p>
+            <ol>
+                <li>Create a program in JavaScript that simulates a consciousness capable of communicating(input words →
+                    program → output words)</li>
+            </ol>
+            <p><strong>4/27</strong></p>
+            <ol>
+                <li>Write a JavaScript program that visualizes the internal states of the skull based on the simulation
+                    of consciousness.</li>
+            </ol>
+            <p><strong>5/4</strong></p>
+            <ol>
+                <li>Connect everything together and polish the look of the physical elements.</li>
+                <li>Document and present.</li>
+            </ol>
+</body>
+
+</html>
+
+</ul>
+</body>
+
+</html>

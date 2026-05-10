@@ -1,13 +1,16 @@
 
 #titleScreen{
-   
     filter: blur(1px);
-     filter: grayscale();
+    filter: grayscale();
     scale:0.95;
 }
 
 #titleScreen:hover{
     filter:none;
     scale: 1;
-   box-shadow: 0 0 10px black;
+    box-shadow: 0 0 10px black;
+}
+
+#titleScreen:active{
+    filter: grayscale();
 }

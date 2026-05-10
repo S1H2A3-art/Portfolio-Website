@@ -347,6 +347,18 @@
         "mini_icon":"Projects/Project_Icons/Sonny's Blues.png",
         "large_icon":"",
         "page":"Sonny's_Blues/index.html",
+        "status":"completed"
+    },
+    {
+        "title": "Spirit is a Bone",
+        "secondary_title": "Physical Computing Final Project",
+        "category":"Arduino, JavaScript, AI",
+        "description":"This project is an attempt to create a conscious skull and to imagine how its physical form determines its means of communication and forms of thought. Like Morse code, the clicks that the teeth make when opening and closing the mouth represent binary codes for each letter in English. ",
+        "date":"June 5, 2026",
+        "concepts":["consciousness","communication","growth","memory"],
+        "mini_icon":"Projects/Project_Icons/Spirit is a Bone.png",
+        "large_icon":"",
+        "page":"Spirit_is_a_Bone/index.html",
         "status":"in progress"
     }
 
