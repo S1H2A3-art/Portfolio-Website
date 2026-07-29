@@ -23,7 +23,7 @@ async function displayBasicInformation(){
          <div class = "project">
             <div class = "projectInformation">
                <h1>${currentProject.title} - ${currentProject.secondary_title}</h1>
-               <p class = "projectDate"><i>${currentProject.date}</i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${currentProject.category}</p>
+               <p class = "projectDate">[${currentProject.status}]&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i>${currentProject.date}</i>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp${currentProject.category}</p>
                <p>${currentProject.description}</p>         
                   
             <div class = "projectConcepts">
