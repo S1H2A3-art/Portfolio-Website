@@ -27,7 +27,7 @@ function preload() {
   imaLogo = loadImage("assets/ima.png");
   lowResLogo = loadImage("assets/lowres.png");
   tischLogo = loadImage("assets/ColorTischLogo.png");
-  showTitle = loadImage("assets/showtitle.png");
+  showTitle = loadImage("assets/showTitle.png");
   qrCode = loadImage("assets/qrcode.png");
   info = loadImage("assets/information.png");
 }
